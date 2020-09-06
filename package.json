@@ -1,0 +1,32 @@
+{
+  "name": "tayeh",
+  "version": "1.0.0-alpha",
+  "description": "tayeh shop-api client",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "microbundle",       
+    "dev": "microbundle watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aref00/tayeh.git"
+  },
+  "keywords": [
+    "tayeh",
+    "shop",
+    "api"
+  ],
+  "author": "saeed.salehi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aref00/tayeh/issues"
+  },
+  "homepage": "https://github.com/aref00/tayeh#readme",
+  "devDependencies": {
+    "microbundle": "^0.12.3"
+  }
+}
