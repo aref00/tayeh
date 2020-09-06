@@ -1,4 +1,4 @@
-# Tayeh Client:
+# Tayeh Client (version: 1.0.0-alpha):
 [TayehClient](https://github.com/aref00/tayeh.git)  implementation in JS
 
 -   Easy to Use
@@ -8,22 +8,22 @@
 
 Install the package from  `npm`  or  `yarn`  and require it in your Node project:
 
-    npm install zarinpal-checkout
+    npm install tayeh-client
     # or
-    yarn add zarinpal-checkout   
+    yarn add tayeh-client   
  <br/>
 
-    const ZarinpalCheckout = require('zarinpal-checkout');
+    const TayehClient = require('tayeh-client');
     // or
-    import ZarinPalCheckout from 'zarinpal-checkout';
+    import TayehClient from 'tayeh-client';
 Then create an instance:
 
     /**
-     * Create ZarinPal
+     * Create TayehClient
      * @param {String} `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` [Merchant ID]
      * @param {Boolean} false [toggle `Sandbox` mode]
      */
-    const zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
+    const tayeh = TayehClient.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
 ## ![loudspeaker](https://github.githubassets.com/images/icons/emoji/unicode/1f4e2.png)  API
 
 ### [](https://github.com/siamak/zarinpal-checkout#-payment-request)★ Payment Request:
