@@ -6,12 +6,12 @@
 -   Comprehensive
 ## ![joystick](https://github.githubassets.com/images/icons/emoji/unicode/1f579.png)  Usage
 
-Install the package from  `npm`  or  `yarn`  and require it in your Node project:
+Install the package from  `npm`  or  `yarn`:  
 
     npm install tayeh-client
     # or
-    yarn add tayeh-client   
- <br/>
+    yarn add tayeh-client
+and require it in your Node project:
 
     const TayehClient = require('tayeh-client');
     // or
