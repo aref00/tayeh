@@ -11,7 +11,7 @@ Install the package from  `npm`  or  `yarn`:
     npm install tayeh-client
     # or
     yarn add tayeh-client
-and require it in your Node project:
+and require it in your project:
 
     const TayehClient = require('tayeh-client');
     // or
