@@ -3,12 +3,12 @@
   "version": "1.0.0-alpha",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "microbundle",       
+    "test": "jest",
+    "build": "microbundle",
     "dev": "microbundle watch"
   },
   "repository": {
@@ -27,6 +27,15 @@
   },
   "homepage": "https://github.com/aref00/tayeh#readme",
   "devDependencies": {
-    "microbundle": "^0.12.3"
+    "@types/jest": "^26.0.8",
+    "jest": "^26.4.2",
+    "microbundle": "^0.12.3",
+    "nock": "^13.0.4"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "querystringify": "^2.2.0",
+    "urix": "^0.1.0"
   }
 }
