@@ -1,5 +1,5 @@
 # Tayeh Client (version: 1.0.0-alpha):
-[TayehClient](https://github.com/aref00/tayeh.git)  implementation in JS
+[TayehClient](https://github.com/aref00/tayeh.git)  implementation in JS and TS
 
 -   Easy to Use
 -   Compatible
@@ -20,15 +20,15 @@ Where is this library now and how should it be used? I will tell you.
 Lets start...
 ## ![start](https://img.icons8.com/nolan/40/start.png) get started:
 You need to do something before installing the library.
-Go to the Taya website and get `API_KEY` as your username and `API_SECRET` as your password by following the steps described there.
+Go to the [Tayeh website](https://tayeh.ir/) and get `API_KEY` as your username and `API_SECRET` as your password by following the steps described there.
 We can now start the installation using this information...
 ### Installation and Usage:
 Install the package from `npm` or `yarn`
 We named it "tayeh_client":
 ```
-const TayehClient = require('tayeh-client');
-// or
-import TayehClient from 'tayeh-client';
+npm install zarinpal-checkout
+# or
+yarn add zarinpal-checkout
 ```
 and require it in your project:
 ```
