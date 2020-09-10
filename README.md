@@ -40,7 +40,7 @@ Then create an instance: (The values you received from the site apply here)
 ```
 const  tayeh  =  new  TayehClient({API_KEY: 'API_KEY', API_SECRET: 'API_SECRET'});
 ```
-After creating an instance in the project and sending the input arguments, a custom `API _ACCESS` will be created for you to use in the library's internal requests.
+After creating an instance in the project and sending the input arguments, a custom `API _ACCESS` will be generated for you to use in the library's internal requests.
 ## ![speaker](https://img.icons8.com/nolan/40/speaker.png) Requests:
 Library API requests are currently categorized into `User`, `Shop`, and `Media` classes.
 In this document, we try to provide you with a complete guide for using the functions of these libraries. Be sure to read this guide first.
