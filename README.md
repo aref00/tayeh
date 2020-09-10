@@ -1,4 +1,4 @@
-# Tayeh Client (version: 1.0.0-alpha):
+# tayeh_client (version: 1.0.0-alpha):
 [TayehClient](https://github.com/aref00/tayeh.git)  implementation in JS and TS
 
 -   Easy to Use
@@ -26,9 +26,9 @@ We can now start the installation using this information...
 Install the package from `npm` or `yarn`
 We named it "tayeh_client":
 ```
-npm install zarinpal-checkout
+npm install tayeh_client
 # or
-yarn add zarinpal-checkout
+yarn add tayeh_client
 ```
 and require it in your project:
 ```
