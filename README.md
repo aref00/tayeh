@@ -1,5 +1,5 @@
 # tayeh_client (version: 1.0.0-alpha):
-[TayehClient](https://github.com/aref00/tayeh.git)  implementation in JS and TS
+tayeh_client implementation in JS and TS
 
 -   Easy to Use
 -   Compatible
