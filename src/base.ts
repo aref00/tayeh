@@ -48,7 +48,10 @@ export abstract class Base {
     }
   }
 
-  protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<T> {
+  protected delete<T>(
+    endpoint: string,
+    options?: AxiosRequestConfig
+  ): Promise<T> {
     const url = this.basePath + endpoint;
     const headers = {
       Authorization: this.API_ACCESS,
@@ -78,7 +81,7 @@ export abstract class Base {
 
   protected post<T>(
     endpoint: string,
-    body={},
+    body = {},
     options?: AxiosRequestConfig
   ): Promise<T> {
     const url = this.basePath + endpoint;
