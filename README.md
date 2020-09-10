@@ -12,7 +12,7 @@ The tools we provide here are part of a larger project called Tayeh.
 Tayeh provides a complete and convenient environment for you so that you can easily do all the steps related to the expansion of your business.
 For more information, visit the [Tayeh website](https://tayeh.ir/).
 ### The purpose of this project:
-We provide users with the opportunity to use information about themselves and expand their business online.
+In "Tayeh" we provide users with the opportunity to use information about themselves and expand their business online.
 Now we want to give a special opportunity to developers in this regard who can use our API and no longer need to develop the server side and create data storage tables.
 Finally, we went a step further and created an API client library to minimize your workload and save you a lot of time.
 In short, we have made everything easier. Don't you think so? ;)
