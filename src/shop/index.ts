@@ -4,17 +4,38 @@ import {
   ShopCenter,
   NewShop,
   UpdateShop,
+  Product,
   NewProduct,
+  CreatedProduct,
+  DeletedProduct,
   UpdateProduct,
+  UpdatedProduct,
+  Transaction,
   NewTransaction,
+  CreatedTransaction,
   UpdateTransaction,
+  UpdatedTransaction,
+  Invoice,
+  Invoices,
   NewInvoice,
+  CreatedInvoice,
+  DeletedInvoice,
   UpdateInvoice,
+  UpdatedInvoice,
+  Customer,
   NewCustomer,
+  CreatedCustomer,
   UpdateCustomer,
+  UpdatedCustomer,
+  sub_user,
+  sub_users,
   NewUser,
+  CreatedUser,
+  DeletedUser,
   UpdateUser,
+  addresses,
   NewAddress,
+  DeletedAddress,
   UpdateAddress,
   SearchParams,
   RevenueParams,
@@ -56,28 +77,28 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<Product[]>(query);
   }
 
   createShopProduct(shop_id: number, params: NewProduct) {
     let path = `${resourceName}/${shop_id}/product`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<CreatedProduct>(path, params);
   }
 
   deleteShopProduct(shop_id: number, product_id: number) {
     let path = `${resourceName}/${shop_id}/product/${product_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<DeletedProduct>(path);
   }
 
   updateShopProduct(shop_id: number, params: UpdateProduct) {
     let path = `${resourceName}/${shop_id}/product/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<UpdatedProduct>(path, params);
   }
 
   // // ---------- SHOP-TRANSACTION ----------
   getShopTransactions(shop_id: number) {
     let path = `${resourceName}/${shop_id}/transactions`;
-    return this.get<ShopCenter>(path);
+    return this.get<Transaction[]>(path);
   }
 
   findShopTransactions(shop_id: number, params?: SearchParams) {
@@ -85,12 +106,12 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<Transaction[]>(query);
   }
 
   getProductTransactions(shop_id: number, product_id: number) {
     let path = `${resourceName}/${shop_id}/transactions/product/${product_id}`;
-    return this.get<ShopCenter>(path);
+    return this.get<Transaction[]>(path);
   }
 
   deleteShopTransaction(shop_id: number, transaction_id: number) {
@@ -100,12 +121,12 @@ export class Shop extends Base {
 
   createShopTransaction(shop_id: number, params: NewTransaction) {
     let path = `${resourceName}/${shop_id}/transaction`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<CreatedTransaction>(path, params);
   }
 
   updateShopTransaction(shop_id: number, params: UpdateTransaction) {
     let path = `${resourceName}/${shop_id}/transaction/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<UpdatedTransaction>(path, params);
   }
 
   // // ---------- SHOP-INVOICES ----------
@@ -114,27 +135,27 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<Invoices>(query);
   }
 
   getShopInvoice(shop_id: number, invoice_id: number) {
     let path = `${resourceName}/${shop_id}/invoice/${invoice_id}`;
-    return this.get<ShopCenter>(path);
+    return this.get<Invoice>(path);
   }
 
   deleteShopInvoice(shop_id: number, invoice_id: number) {
     let path = `${resourceName}/${shop_id}/invoice/${invoice_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<DeletedInvoice>(path);
   }
 
   createShopInvoice(shop_id: number, params: NewInvoice) {
     let path = `${resourceName}/${shop_id}/invoice`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<CreatedInvoice>(path, params);
   }
 
   updateShopInvoice(shop_id: number, params: UpdateInvoice) {
     let path = `${resourceName}/${shop_id}/invoice/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<UpdatedInvoice>(path, params);
   }
 
   // // ---------- SHOP-SERIES ----------
@@ -170,12 +191,12 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<Customer[]>(query);
   }
 
   getShopCustomer(shop_id: number, customer_id: number) {
     let path = `${resourceName}/${shop_id}/customer/${customer_id}`;
-    return this.get<ShopCenter>(path);
+    return this.get<Customer>(path);
   }
 
   deleteShopCustomer(shop_id: number, customer_id: number) {
@@ -185,12 +206,12 @@ export class Shop extends Base {
 
   createShopCustomer(shop_id: number, params: NewCustomer) {
     let path = `${resourceName}/${shop_id}/customer`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<CreatedCustomer>(path, params);
   }
 
   updateShopCustomer(shop_id: number, params: UpdateCustomer) {
     let path = `${resourceName}/${shop_id}/customer/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<UpdatedCustomer>(path, params);
   }
 
   // // ---------- SHOP-USER ----------
@@ -199,22 +220,22 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<sub_users>(query);
   }
 
   getShopUser(shop_id: number, user_id: number) {
     let path = `${resourceName}/${shop_id}/user/${user_id}`;
-    return this.get<ShopCenter>(path);
+    return this.get<sub_user>(path);
   }
 
   deleteShopUser(shop_id: number, user_id: number) {
     let path = `${resourceName}/${shop_id}/user/${user_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<DeletedUser>(path);
   }
 
   createShopUser(shop_id: number, params: NewUser) {
     let path = `${resourceName}/${shop_id}/user`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<CreatedUser>(path, params);
   }
 
   updateShopUser(shop_id: number, params: UpdateUser) {
@@ -228,12 +249,12 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<addresses>(query);
   }
 
   deleteShopAddress(shop_id: number, address_id: number) {
     let path = `${resourceName}/${shop_id}/address/${address_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<DeletedAddress>(path);
   }
 
   createShopAddress(shop_id: number, params: NewAddress) {
