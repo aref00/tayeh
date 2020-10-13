@@ -108,7 +108,6 @@ Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 | getShopPrimary |()||
 | createShopPrimary |(shop_id:  number)||
 | getUserShops |(params?:  Pagination)||
-| updateShop |(params?:  { page?:  number; per_page?: number; })||
 ### Media:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
