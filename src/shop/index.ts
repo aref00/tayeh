@@ -1,9 +1,9 @@
 import qs from "querystringify";
 import { Base } from "../base";
 import {
-  ShopCenter,
-  NewShop,
-  UpdateShop,
+  instance,
+  NewInstance,
+  UpdateInstance,
   Product,
   NewProduct,
   CreatedProduct,
@@ -44,22 +44,22 @@ import {
   ShopPageParams,
 } from "./types";
 
-const resourceName = "shop";
+const resourceName = "instance";
 
-export class Shop extends Base {
+export class Instance extends Base {
   // ---------- SHOP ----------
-  getShop(shop_id: number) {
-    return this.get<ShopCenter>(`${resourceName}/${shop_id}`);
+  getInstance(shop_id: number) {
+    return this.get<instance>(`${resourceName}/${shop_id}`);
   }
 
-  createShop(params: NewShop) {
+  createInstance(params: NewInstance) {
     let path = `${resourceName}/shop`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<instance>(path, params);
   }
 
-  updateShop(params: UpdateShop) {
+  updateInstance(params: UpdateInstance) {
     let path = `${resourceName}/shop/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<instance>(path, params);
   }
 
   // // ---------- SHOP-PAGE ----------
@@ -68,7 +68,7 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<instance[]>(query);
   }
 
   // // ---------- SHOP-PRODUCTS ----------
@@ -116,7 +116,7 @@ export class Shop extends Base {
 
   deleteShopTransaction(shop_id: number, transaction_id: number) {
     let path = `${resourceName}/${shop_id}/transaction/${transaction_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<instance>(path);
   }
 
   createShopTransaction(shop_id: number, params: NewTransaction) {
@@ -164,7 +164,7 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<instance[]>(query);
   }
 
   // // ---------- SHOP-TOTAL ----------
@@ -173,7 +173,7 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<instance[]>(query);
   }
 
   // // ---------- SHOP-REVENUE ----------
@@ -182,7 +182,7 @@ export class Shop extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<ShopCenter[]>(query);
+    return this.get<instance[]>(query);
   }
 
   // // ---------- SHOP-CUSTOMER ----------
@@ -201,7 +201,7 @@ export class Shop extends Base {
 
   deleteShopCustomer(shop_id: number, customer_id: number) {
     let path = `${resourceName}/${shop_id}/customer/${customer_id}`;
-    return this.delete<ShopCenter>(path);
+    return this.delete<instance>(path);
   }
 
   createShopCustomer(shop_id: number, params: NewCustomer) {
@@ -240,7 +240,7 @@ export class Shop extends Base {
 
   updateShopUser(shop_id: number, params: UpdateUser) {
     let path = `${resourceName}/${shop_id}/user/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<instance>(path, params);
   }
 
   // // ---------- SHOP-ADDRESS ----------
@@ -259,11 +259,11 @@ export class Shop extends Base {
 
   createShopAddress(shop_id: number, params: NewAddress) {
     let path = `${resourceName}/${shop_id}/address`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<instance>(path, params);
   }
 
   updateShopAddress(shop_id: number, params: UpdateAddress) {
     let path = `${resourceName}/${shop_id}/address/update`;
-    return this.post<ShopCenter>(path, params);
+    return this.post<instance>(path, params);
   }
 }

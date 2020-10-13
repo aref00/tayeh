@@ -194,7 +194,9 @@ type user = {
   date_deleted: Date;
 };
 
-type instance = {
+// ---------- INSTANCE ----------
+
+export type instance = {
   id: number;
   name: string;
   credit: number;
@@ -213,30 +215,9 @@ type instance = {
   image_id: number;
 };
 
-// ---------- SHOP ----------
+export type NewInstance = {};
 
-export type ShopCenter = {
-  id: number;
-  name: string;
-  credit: number;
-  description: string;
-  type: string;
-  category: string;
-  owner_id: number;
-  addresses: address[];
-  province_id: number;
-  city_id: number;
-  users_count: number;
-  invoices_count: number;
-  products_count: number;
-  transactions_count: number;
-  inventory_type: string;
-  image_id: number;
-};
-
-export type NewShop = {};
-
-export type UpdateShop = {
+export type UpdateInstance = {
   shop_id: number;
 };
 
