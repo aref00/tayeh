@@ -21,6 +21,7 @@
     "api"
   ],
   "author": "saeed.salehi",
+  "contributors": ["saeed.salehi", "Aref Akbari"],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/aref00/tayeh/issues"

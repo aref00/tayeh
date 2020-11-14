@@ -90,10 +90,8 @@ type source = {
   from_transaction_id: number;
   from_transaction: Transaction;
   count: number;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 type Payment = {
@@ -108,8 +106,6 @@ type Payment = {
   user: user;
   date_created: Date;
   date_paid: Date;
-  date_updated: Date;
-  date_deleted: Date;
 };
 
 type Media = {
@@ -128,8 +124,6 @@ type Media = {
   uploader_id: number;
   uploader: user;
   creator_type: string;
-  deleted: boolean;
-  date_deleted: Date;
   creator_id: number;
   date_created: Date;
 };
@@ -142,10 +136,8 @@ type subscription = {
   payment: Payment;
   gift: boolean;
   active: boolean;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 type user = {
@@ -188,10 +180,8 @@ type user = {
   lastonline: Date;
   role: user_role;
   is_developer: boolean;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 // ---------- INSTANCE ----------
@@ -233,8 +223,6 @@ export type Product = {
   reminders: reminder[];
   predicted_percent: number;
   remaining: number;
-  deleted: boolean;
-  date_deleted: string;
   date_created: string;
 };
 
@@ -289,12 +277,10 @@ export type Transaction = {
   options: string;
   locked: boolean;
   archived: boolean;
-  deleted: boolean;
   creator_id: number;
   date_created: string;
   date_updated: string;
   date_archived: string;
-  date_deleted: string;
 };
 
 export type NewTransaction = {
@@ -354,10 +340,8 @@ export type Invoice = {
   done: boolean;
   date_arrived: string;
   closed: boolean;
-  deleted: boolean;
   date_created: string;
   date_updated: string;
-  date_deleted: string;
 };
 
 export type Invoices = {
@@ -429,10 +413,8 @@ export type Customer = {
   socket: string;
   image_id: number;
   image: Media;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 export type NewCustomer = {
@@ -467,10 +449,8 @@ export type sub_user = {
   creator: user;
   reminders: reminder[];
   status: SubUser_Status;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 export type sub_users = {
@@ -517,10 +497,8 @@ type address = {
   description: string;
   phone: string;
   creator_id: number;
-  deleted: boolean;
   date_created: string;
   date_updated: string;
-  date_deleted: string;
 };
 
 export type addresses = {
