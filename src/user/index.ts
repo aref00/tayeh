@@ -10,20 +10,20 @@ export class User extends Base {
   }
 
   getShopPrimary() {
-    return this.get<UserType>(`${resourceName}/shop/primary`);
+    return this.get<UserType>(`${resourceName}/instance/primary`);
   }
 
   createShopPrimary(shop_id: number) {
-    let query = `${resourceName}/shop/primary`;
+    let query = `${resourceName}/instance/primary`;
     query += qs.stringify(shop_id, "?");
     return this.post<UserType>(query);
   }
 
   getUserShops(params?: Pagination) {
-    let query = `${resourceName}/shop/primary`;
+    let query = `${resourceName}/instance/primary`;
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<UserType>(`${resourceName}/shops`);
+    return this.get<UserType>(`${resourceName}/instances`);
   }
 }
