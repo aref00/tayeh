@@ -29,21 +29,18 @@ export abstract class Base {
   protected async get_token(): Promise<boolean> {
     const url = "api/token";
     try {
-      const { token, err } = await this.get<{ err: string; token: string }>(
+      const {access_token}  = await this.get<{ access_token }>(
         url,
         {
           auth: {
             username: this.API_KEY,
             password: this.API_SECRET,
           },
-        }
+        },
+        true
       );
-      if (err) {
-        this.API_ACCESS = null;
-        return false;
-      } else {
-        this.API_ACCESS = token;
-        return true;
+      this.API_ACCESS = access_token;
+      return true;
       }
     } catch (err) {
       throw new Error(err);
