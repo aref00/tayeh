@@ -1,16 +1,16 @@
 import qs from "querystringify";
 import { Base } from "../base";
-import { MediaType, NewMedia } from "./types";
+import { media, NewMedia } from "./types";
 
 const resourceName = "media";
 
 export class Media extends Base {
   getMedia(media_id: number) {
-    return this.get<MediaType>(`${resourceName}/get/${media_id}`);
+    return this.get<media>(`${resourceName}/get/${media_id}`);
   }
 
-  createMedia(params: NewMedia) {
+  uploadMedia(params: NewMedia) {
     let query = `${resourceName}/upload`;
-    return this.post<MediaType>(query, params);
+    return this.post<media>(query, params);
   }
 }

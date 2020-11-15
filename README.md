@@ -42,78 +42,78 @@ const  tayeh  =  new  TayehClient({API_KEY: 'API_KEY', API_SECRET: 'API_SECRET'}
 ```
 After creating an instance in the project and sending the input arguments, a custom `API _ACCESS` will be generated for you to use in the library's internal requests.
 ## ![speaker](https://img.icons8.com/nolan/40/speaker.png) Requests:
-Library API requests are currently categorized into `User`, `Shop`, and `Media` classes.
+Library API requests are currently categorized into `User`, `Instance`, and `Media` classes.
 In this document, we try to provide you with a complete guide for using the functions of these libraries. Be sure to read this guide first.
 Then it is enough to call the equivalent method from the created instance to achieve the desired result.
 for example:
 
-    //Get a shop with an ID 
-    tayeh.getShop(2).then((data) =>  {
+    //Get an instance with an ID 
+    tayeh.getInstance(2).then((data) =>  {
     //you have data. use it
     })
 We start the guide here...
-### Shop:
+### Instance:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
-| getShop |(shop_id:  number)||
-| createShop |(params:  NewShop)||
-| updateShop |(params:  UpdateShop)||
+| getInstance |(instance_id:  number)||
+| createInstance |(params:  NewInstance)||
+| updateInstance |(params:  UpdateInstance)||
 ||||
-| getShopPage |(page_number:  number, params?: { text?:  string; creator_id?:  number })||
+| getInstancePage |(page_number:  number, params?: { text?:  string; creator_id?:  number })||
 ||||
-| getShopProducts |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| createShopProduct |(shop_id:  number, params:  NewProduct)||
-| deleteShopProduct |(shop_id:  number, product_id:  number)||
-| updateShopProduct |(shop_id:  number, params:  UpdateProduct)||
+| getInstanceProducts |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| createInstanceProduct |(instance_id:  number, params:  NewProduct)||
+| deleteInstanceProduct |(instance_id:  number, product_id:  number)||
+| updateInstanceProduct |(instance_id:  number, params:  UpdateProduct)||
 ||||
-| getShopTransactions |(shop_id:  number)||
-| findShopTransactions |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getProductTransactions |(shop_id:  number, product_id:  number)||
-| deleteShopTransaction |(shop_id:  number, transaction_id:  number)||
-| createShopTransaction |(shop_id:  number, params:  NewTransaction)||
-| updateShopTransaction |(shop_id:  number, params:  UpdateTransaction)||
+| getInstanceTransactions |(instance_id:  number)||
+| findInstanceTransactions |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| getProductTransactions |(instance_id:  number, product_id:  number)||
+| deleteInstanceTransaction |(instance_id:  number, transaction_id:  number)||
+| createInstanceTransaction |(instance_id:  number, params:  NewTransaction)||
+| updateInstanceTransaction |(instance_id:  number, params:  UpdateTransaction)||
 ||||
-| getShopInvoices |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getShopInvoice |(shop_id:  number, invoice_id:  number)||
-| deleteShopInvoice |(shop_id:  number, invoice_id:  number)||
-| createShopInvoice |(shop_id:  number, params:  NewInvoice)||
-| updateShopInvoice |(shop_id:  number, params:  UpdateInvoice)||
+| getInstanceInvoices |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| getInstanceInvoice |(instance_id:  number, invoice_id:  number)||
+| deleteInstanceInvoice |(instance_id:  number, invoice_id:  number)||
+| createInstanceInvoice |(instance_id:  number, params:  NewInvoice)||
+| updateInstanceInvoice |(instance_id:  number, params:  UpdateInvoice)||
 ||||
-| getShopSeries |(shop_id:  number, params?: { page?:  number; per_page?: number; type?:  string; page_unit?:  string; })||
+| getInstanceSeries |(instance_id:  number, params?: { page?:  number; per_page?: number; type?:  string; page_unit?:  string; })||
 ||||
-| getShopTotal |(shop_id:  number, params?: { page?:  number; per_page?: number; product_id?:  number; })||
+| getInstanceTotal |(instance_id:  number, params?: { page?:  number; per_page?: number; product_id?:  number; })||
 ||||
-| getShopRevenue |(shop_id:  number, params?: { unit?:  string; product_id?:  number; start?:  number; end?:  number; })||
+| getInstanceRevenue |(instance_id:  number, params?: { unit?:  string; product_id?:  number; start?:  number; end?:  number; })||
 ||||
-| getShopCustomers |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getShopCustomer |(shop_id:  number, customer_id:  number)||
-| deleteShopCustomer |(shop_id:  number, customer_id:  number)||
-| createShopCustomer |(shop_id:  number, params:  NewCustomer)||
-| updateShopCustomer |(shop_id:  number, params:  UpdateCustomer)||
+| getInstanceCustomers |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| getInstanceCustomer |(instance_id:  number, customer_id:  number)||
+| deleteInstanceCustomer |(instance_id:  number, customer_id:  number)||
+| createInstanceCustomer |(instance_id:  number, params:  NewCustomer)||
+| updateInstanceCustomer |(instance_id:  number, params:  UpdateCustomer)||
 ||||
-| getShopUsers |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getShopUser |(shop_id:  number, user_id:  number)||
-| deleteShopUser |(shop_id:  number, user_id:  number)||
-| createShopUser |(shop_id:  number, params:  NewUser)||
-| updateShopUser |(shop_id:  number, params:  UpdateUser)||
+| getInstanceUsers |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| getInstanceUser |(instance_id:  number, user_id:  number)||
+| deleteInstanceUser |(instance_id:  number, user_id:  number)||
+| createInstanceUser |(instance_id:  number, params:  NewUser)||
+| updateInstanceUser |(instance_id:  number, params:  UpdateUser)||
 ||||
-| getShopAddresses |(shop_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| deleteShopAddress |(shop_id:  number, address_id:  number)||
-| createShopAddress |(shop_id:  number, params:  NewAddress)||
-| updateShopAddress |(shop_id:  number, params:  UpdateAddress)||
+| getInstanceAddresses |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
+| deleteInstanceAddress |(instance_id:  number, address_id:  number)||
+| createInstanceAddress |(instance_id:  number, params:  NewAddress)||
+| updateInstanceAddress |(instance_id:  number, params:  UpdateAddress)||
 ### User:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
 | getUserMe |()||
-| getShopPrimary |()||
-| createShopPrimary |(shop_id:  number)||
-| getUserShops |(params?:  Pagination)||
-| updateShop |(params?:  { page?:  number; per_page?: number; })||
+| getInstancePrimary |()||
+| setInstancePrimary |(instance_id:  number)||
+| getUserInstances |(params?:  Pagination)||
+| updateInstance |(params?:  { page?:  number; per_page?: number; })||
 ### Media:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
 | getMedia |(media_id:  number)||
-| createMedia |(params:  NewMedia)||
+| uploadMedia |(params:  NewMedia)||
 ## ![contribution](https://img.icons8.com/cotton/40/crowdfunding.png) Contribution:
 Contributions are welcome. Please submit an issue if you see something broken or in need of improving.
 You can also contact us through the communication channels mentioned in [Tayeh](https://tayeh.ir/) and [Pchas Company](https://pchas.ir/) websites.

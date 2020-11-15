@@ -1,7 +1,7 @@
 {
   "name": "tayeh",
   "version": "1.0.0-alpha",
-  "description": "tayeh shop-api client",
+  "description": "tayeh instance-api client",
   "main": "dist/index.js",
   "source": "src/index.ts",
   "module": "dist/index.module.js",
@@ -17,7 +17,7 @@
   },
   "keywords": [
     "tayeh",
-    "shop",
+    "instance",
     "api"
   ],
   "author": "saeed.salehi",

@@ -1,14 +1,16 @@
 import { Pagination } from "../base";
+import { customer } from "../customer/types"
+import { user } from '../user/types'
 
 // ---------- ENUMS ----------
 
-enum Sex {
+export enum Sex {
   male,
   female,
   na,
 }
 
-enum user_role {
+export enum user_role {
   user,
   manager,
   admin,
@@ -54,14 +56,14 @@ export type SeriesParams = Pagination & {
   page_unit?: string;
 };
 
-export type ShopPageParams = {
+export type InstancePageParams = {
   text?: string;
   creator_id?: number;
 };
 
-type reminder = {};
+export type reminder = {};
 
-type Province = {
+export type Province = {
   id: number;
   name: string;
   addresses: address[];
@@ -71,7 +73,7 @@ type Province = {
   date_updated: Date;
 };
 
-type City = {
+export type City = {
   id: number;
   province_id: number;
   county_id: number;
@@ -96,7 +98,7 @@ type source = {
   date_deleted: Date;
 };
 
-type Payment = {
+export type Payment = {
   id: number;
   Amount: number;
   url: string;
@@ -112,29 +114,7 @@ type Payment = {
   date_deleted: Date;
 };
 
-type Media = {
-  id: number;
-  name: string;
-  description: string;
-  file: string;
-  type: string;
-  instance_id: number;
-  instance: instance;
-  products: Product[];
-  user: user;
-  image_of_instance: instance;
-  customer: Customer;
-  invoice: Invoice;
-  uploader_id: number;
-  uploader: user;
-  creator_type: string;
-  deleted: boolean;
-  date_deleted: Date;
-  creator_id: number;
-  date_created: Date;
-};
-
-type subscription = {
+export type subscription = {
   id: number;
   user_id: number;
   user: user;
@@ -142,52 +122,6 @@ type subscription = {
   payment: Payment;
   gift: boolean;
   active: boolean;
-  deleted: boolean;
-  date_created: Date;
-  date_updated: Date;
-  date_deleted: Date;
-};
-
-type user = {
-  id: number;
-  name: string;
-  sex: Sex;
-  description: string;
-  id_card: string;
-  father: string;
-  birthdate: string;
-  addresses: address[];
-  phone: string;
-  mobile: string;
-  email: string;
-  website: string;
-  referent_id: number;
-  province_id: number;
-  province: Province;
-  city_id: number;
-  city: City;
-  sub_user_of: sub_user[];
-  customers_created: Customer[];
-  sub_users_created: sub_user[];
-  subscriptions: subscription[];
-  payments: Payment[];
-  instances: instance[];
-  my_instances: instance[];
-  my_instances_count: number;
-  primary_instance_id: number;
-  primary_instance: instance;
-  reminders: reminder[];
-  is_verified: boolean;
-  socket: string;
-  image_id: number;
-  image: Media;
-  uploads: Media[];
-  generated_invoices: Invoice[];
-  created_products: Product[];
-  online: boolean;
-  lastonline: Date;
-  role: user_role;
-  is_developer: boolean;
   deleted: boolean;
   date_created: Date;
   date_updated: Date;
@@ -218,7 +152,7 @@ export type instance = {
 export type NewInstance = {};
 
 export type UpdateInstance = {
-  shop_id: number;
+  instance_id: number;
 };
 
 // ---------- PRODUCTS ----------
@@ -345,7 +279,7 @@ export type Invoice = {
   reminders: reminder[];
   admin_id: number;
   customer_id: number;
-  customer: Customer;
+  customer: customer;
   more_info: string;
   sent: boolean;
   paid: boolean;
@@ -405,35 +339,6 @@ export type UpdatedInvoice = {
 };
 
 // ---------- CUSTOMER ----------
-
-export type Customer = {
-  id: number;
-  name: string;
-  sex: Sex;
-  instance_id: number;
-  instance: instance;
-  invoices: Invoice[];
-  description: string;
-  id_card: string;
-  father: string;
-  birthdate: string;
-  addresses: address[];
-  phone: string;
-  mobile: string;
-  email: string;
-  website: string;
-  creator_id: number;
-  creator: user;
-  reminders: reminder[];
-  is_verified: boolean;
-  socket: string;
-  image_id: number;
-  image: Media;
-  deleted: boolean;
-  date_created: Date;
-  date_updated: Date;
-  date_deleted: Date;
-};
 
 export type NewCustomer = {
   name: string;
@@ -500,7 +405,7 @@ export type UpdateUser = {
 
 // ---------- ADDRESS ----------
 
-type address = {
+export type address = {
   id: number;
   province_id: number;
   city_id: number;

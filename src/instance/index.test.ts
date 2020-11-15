@@ -10,7 +10,7 @@ describe("Article resource", () => {
         "Content-type": "application/json",
       },
     })
-      .get("/shop/2")
+      .get("/instance/2")
       .reply(200, { id: 2, name: "me", credit: 0 })
       .post("https://back.pchas.ir/api/token")
       .reply(200,{err: null,token: '123'})
@@ -19,9 +19,9 @@ describe("Article resource", () => {
 
     // Make the request
     const Tayeh_Client = new Tayeh({API_KEY: 'abcd', API_SECRET: '1234'});
-    const shop = await Tayeh_Client.getShop(2);
+    const instance = await Tayeh_Client.getInstance(2);
 
-    // expect(shop).toStrictEqual({ id: 2, name: "me", credit: 0 });
+    // expect(instance).toStrictEqual({ id: 2, name: "me", credit: 0 });
 
     // Assert that the expected request was made.
     scope.done();
