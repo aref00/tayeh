@@ -18,8 +18,6 @@ export type media = {
     uploader_id: number;
     uploader: user;
     creator_type: string;
-    deleted: boolean;
-    date_deleted: Date;
     creator_id: number;
     date_created: Date;
   };

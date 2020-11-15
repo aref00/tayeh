@@ -25,8 +25,6 @@ export type customer = {
     socket: string;
     image_id: number;
     image: media;
-    deleted: boolean;
     date_created: Date;
     date_updated: Date;
-    date_deleted: Date;
   };

@@ -23,7 +23,7 @@ export abstract class Base {
     this.API_SECRET = config.API_SECRET;
     if (typeof this.API_KEY !== 'string' || typeof this.API_SECRET !== 'string') throw new Error("You should define API_KEY & API_SECRET.")
     this.basePath = config.basePath || "https://api.tayeh.ir/";
-    this.get_token();
+    // this.get_token();
   }
 
   protected async get_token(): Promise<boolean> {
@@ -33,27 +33,26 @@ export abstract class Base {
         url,
         {
           auth: {
-            username: this.API_KEY,
-            password: this.API_SECRET,
+            password: this.API_KEY,
+            username: this.API_SECRET,
           },
         },
         true
       );
       this.API_ACCESS = access_token;
       return true;
-      }
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  protected delete<T>(
+  protected async delete<T>(
     endpoint: string,
     options?: AxiosRequestConfig
   ): Promise<T> {
     const url = this.basePath + endpoint;
     const headers = {
-      Authorization: this.API_ACCESS,
+      Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
     };
 
@@ -61,7 +60,8 @@ export abstract class Base {
       headers: {...headers},
       ...options,
     };
-    return Axios.delete(url, config);
+    const res = await Axios.delete(url, config);
+    return res.data;
   }
 
   protected async get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic : boolean = false ): Promise<T> {
@@ -80,14 +80,14 @@ export abstract class Base {
     return res.data;
   }
 
-  protected post<T>(
+  protected async post<T>(
     endpoint: string,
     body = {},
     options?: AxiosRequestConfig
   ): Promise<T> {
     const url = this.basePath + endpoint;
     const headers = {
-      Authorization: this.API_ACCESS,
+      Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
     };
 
@@ -95,7 +95,8 @@ export abstract class Base {
       headers: {...headers},
       ...options,
     };
-    return Axios.post(url, body, config);
+    const res = await Axios.post(url, body, config);
+    return res.data;
   }
 
   //   protected request<T>(endpoint: string, options?: AxiosRequestConfig): Promise<T> {

@@ -55,10 +55,8 @@ export type user = {
   lastonline: Date;
   role: user_role;
   is_developer: boolean;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 export type NewUser = {
