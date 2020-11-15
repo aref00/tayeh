@@ -1,5 +1,5 @@
-# tayeh_client (version: 1.0.0-alpha):
-tayeh_client implementation in JS and TS
+# Tayeh Web Client (version: 1.0.0-alpha.0):
+@tayeh/web-client implementation in JS and TS
 
 -   Easy to Use
 -   Compatible
@@ -24,11 +24,11 @@ Go to the [Tayeh website](https://tayeh.ir/) and get `API_KEY` as your username 
 We can now start the installation using this information...
 ### Installation and Usage:
 Install the package from `npm` or `yarn`
-We named it "tayeh_client":
+We named it "@tayeh/web-client":
 ```
-npm install tayeh_client
+npm install @tayeh/web-client
 # or
-yarn add tayeh_client
+yarn add @tayeh/web-client
 ```
 and require it in your project:
 ```

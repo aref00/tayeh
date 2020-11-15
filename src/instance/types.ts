@@ -92,10 +92,8 @@ type source = {
   from_transaction_id: number;
   from_transaction: Transaction;
   count: number;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 export type Payment = {
@@ -110,8 +108,6 @@ export type Payment = {
   user: user;
   date_created: Date;
   date_paid: Date;
-  date_updated: Date;
-  date_deleted: Date;
 };
 
 export type subscription = {
@@ -122,10 +118,8 @@ export type subscription = {
   payment: Payment;
   gift: boolean;
   active: boolean;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 // ---------- INSTANCE ----------
@@ -167,8 +161,6 @@ export type Product = {
   reminders: reminder[];
   predicted_percent: number;
   remaining: number;
-  deleted: boolean;
-  date_deleted: string;
   date_created: string;
 };
 
@@ -223,12 +215,10 @@ export type Transaction = {
   options: string;
   locked: boolean;
   archived: boolean;
-  deleted: boolean;
   creator_id: number;
   date_created: string;
   date_updated: string;
   date_archived: string;
-  date_deleted: string;
 };
 
 export type NewTransaction = {
@@ -288,10 +278,8 @@ export type Invoice = {
   done: boolean;
   date_arrived: string;
   closed: boolean;
-  deleted: boolean;
   date_created: string;
   date_updated: string;
-  date_deleted: string;
 };
 
 export type Invoices = {
@@ -372,10 +360,8 @@ export type sub_user = {
   creator: user;
   reminders: reminder[];
   status: SubUser_Status;
-  deleted: boolean;
   date_created: Date;
   date_updated: Date;
-  date_deleted: Date;
 };
 
 export type sub_users = {
@@ -422,10 +408,8 @@ export type address = {
   description: string;
   phone: string;
   creator_id: number;
-  deleted: boolean;
   date_created: string;
   date_updated: string;
-  date_deleted: string;
 };
 
 export type addresses = {
