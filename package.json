@@ -38,6 +38,5 @@
     "isomorphic-unfetch": "^3.0.0",
     "querystringify": "^2.2.0",
     "urix": "^0.1.0"
-  },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  }
 }
