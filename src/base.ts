@@ -27,7 +27,7 @@ export abstract class Base {
   }
 
   protected async get_token(): Promise<boolean> {
-    const url = this.basePath + "api/token";
+    const url = "api/token";
     try {
       const { token, err } = await this.get<{ err: string; token: string }>(
         url,
