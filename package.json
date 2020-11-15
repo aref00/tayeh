@@ -1,5 +1,5 @@
 {
-  "name": "tayeh",
+  "name": "@tayeh/web-client",
   "version": "1.0.0-alpha",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
@@ -24,9 +24,9 @@
   "contributors": ["saeed.salehi", "Aref Akbari"],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aref00/tayeh/issues"
+    "url": "https://github.com/PchasSoftware/tayeh/issues"
   },
-  "homepage": "https://github.com/aref00/tayeh#readme",
+  "homepage": "https://github.com/PchasSoftware/tayeh#readme",
   "devDependencies": {
     "@types/jest": "^26.0.8",
     "jest": "^26.4.2",
