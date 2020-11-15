@@ -67,7 +67,7 @@ export abstract class Base {
     return Axios.delete(url, config);
   }
 
-  protected get<T>(endpoint: string, options?: AxiosRequestConfig): Promise<T> {
+  protected async get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic : boolean = false ): Promise<T> {
     const url = this.basePath + endpoint;
     const headers = {
       Authorization: this.API_ACCESS,
@@ -78,7 +78,8 @@ export abstract class Base {
       headers,
       ...options,
     };
-    return Axios.get(url, config);
+    const res = await Axios.get(url, config);
+    return res.data;
   }
 
   protected post<T>(
