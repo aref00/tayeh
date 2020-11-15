@@ -1,4 +1,4 @@
-# @tayeh/web-client (version: 1.0.0-alpha.0):
+# Tayeh Web Client (version: 1.0.0-alpha.0):
 @tayeh/web-client implementation in JS and TS
 
 -   Easy to Use
