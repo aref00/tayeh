@@ -21,10 +21,12 @@ export abstract class Base {
   constructor(config: Config) {
     this.API_KEY = config.API_KEY;
     this.API_SECRET = config.API_SECRET;
-    this.basePath = config.basePath || "https://back.pchas.ir/";
+    if (typeof this.API_KEY !== 'string' || typeof this.API_SECRET !== 'string') throw new Error("You should define API_KEY & API_SECRET.")
+    this.basePath = config.basePath || "https://api.tayeh.ir/";
+    this.get_token();
   }
 
-  protected async get_token(API_KEY, API_SECRET): Promise<boolean> {
+  protected async get_token(): Promise<boolean> {
     const url = this.basePath + "api/token";
     try {
       const { token, err } = await this.get<{ err: string; token: string }>(
