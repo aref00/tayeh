@@ -58,7 +58,7 @@ export abstract class Base {
     };
 
     const config: AxiosRequestConfig = {
-      headers,
+      headers: {...headers},
       ...options,
     };
     return Axios.delete(url, config);
@@ -66,13 +66,14 @@ export abstract class Base {
 
   protected async get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic : boolean = false ): Promise<T> {
     const url = this.basePath + endpoint;
-    const headers = {
-      Authorization: this.API_ACCESS,
+    const headers: any = {
       "Content-type": "application/json",
-    };
-
+    }
+    if (!isBasic) {
+       headers.Authorization = `Bearer ${this.API_ACCESS}`
+    }
     const config: AxiosRequestConfig = {
-      headers,
+      headers: {...headers},
       ...options,
     };
     const res = await Axios.get(url, config);
@@ -91,7 +92,7 @@ export abstract class Base {
     };
 
     const config: AxiosRequestConfig = {
-      headers,
+      headers: {...headers},
       ...options,
     };
     return Axios.post(url, body, config);
