@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/web-client",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.0",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
   "source": "src/index.ts",
@@ -21,7 +21,10 @@
     "api"
   ],
   "author": "saeed.salehi",
-  "contributors": ["saeed.salehi", "Aref Akbari"],
+  "contributors": [
+    "saeed.salehi",
+    "Aref Akbari"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PchasSoftware/tayeh/issues"
