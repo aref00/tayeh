@@ -8,7 +8,7 @@ import {
 
 const resourceName = "crm";
 
-export class Instance extends Base {
+export class Crm extends Base {
   // ---------- SHOP ----------
   sendSms(shop_id: number, params: SendSmsParams) {
     const path = `${resourceName}/${shop_id}/send/normal`;
