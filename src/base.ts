@@ -33,8 +33,8 @@ export abstract class Base {
         url,
         {
           auth: {
-            password: this.API_KEY,
-            username: this.API_SECRET,
+            username: this.API_KEY,
+            password: this.API_SECRET,
           },
         },
         true
