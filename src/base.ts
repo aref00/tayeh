@@ -4,7 +4,6 @@ import Axios, { AxiosRequestConfig } from "axios";
 type Config = {
   API_KEY: string;
   API_SECRET: string;
-  basePath?: string;
 };
 
 export type Pagination = {
@@ -15,18 +14,18 @@ export type Pagination = {
 export abstract class Base {
   private API_KEY: string;
   private API_SECRET: string;
-  private basePath: string;
+  private basePath: string = process.env.BASE_URL;
+  private mediaPath: string = process.env.MEDIA_URL;
   private API_ACCESS: string;
 
   constructor(config: Config) {
     this.API_KEY = config.API_KEY;
     this.API_SECRET = config.API_SECRET;
     if (typeof this.API_KEY !== 'string' || typeof this.API_SECRET !== 'string') throw new Error("You should define API_KEY & API_SECRET.")
-    this.basePath = config.basePath || "https://api.tayeh.ir/";
     // this.get_token();
   }
 
-  protected async get_token(): Promise<boolean> {
+  async get_token(): Promise<boolean> {
     const url = "api/token";
     try {
       const {access_token}  = await this.get<{ access_token }>(
