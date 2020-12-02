@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/web-client",
-  "version": "1.0.8-alpha.2",
+  "version": "1.0.9",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
   "types": "src/types.ts",
@@ -10,7 +10,8 @@
   "scripts": {
     "test": "jest",
     "build": "microbundle",
-    "dev": "microbundle watch"
+    "dev": "microbundle watch",
+    "pulish": "npm run test && npm run build && cp ./package.json ./dist/package.json && cd ./dist/ && npm publish --publich"
   },
   "repository": {
     "type": "git",
