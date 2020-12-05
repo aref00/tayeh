@@ -3,6 +3,10 @@
   "version": "1.1.0-alpha",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "*.md"
+  ],
   "types": "src/types.ts",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
