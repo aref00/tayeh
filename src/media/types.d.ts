@@ -1,0 +1,23 @@
+import { instance, Product, Invoice } from "../instance/types";
+import { customer } from "../customer/types";
+import { user } from '../user/types';
+export declare type media = {
+    id: number;
+    name: string;
+    description: string;
+    file: string;
+    type: string;
+    instance_id: number;
+    instance: instance;
+    products: Product[];
+    user: user;
+    image_of_instance: instance;
+    customer: customer;
+    invoice: Invoice;
+    uploader_id: number;
+    uploader: user;
+    creator_type: string;
+    creator_id: number;
+    date_created: Date;
+};
+export declare type NewMedia = {};

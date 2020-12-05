@@ -4,7 +4,6 @@
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
   "types": "src/types.ts",
-  "source": "src/index.ts",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
