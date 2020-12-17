@@ -1,6 +1,6 @@
 import qs from "querystringify";
 import { Base } from "../base";
-import { customer } from "../customer/types"
+import { customer } from "../customer/types";
 import {
   instance,
   NewInstance,
@@ -265,5 +265,14 @@ export class Instance extends Base {
   updateInstanceAddress(instance_id: number, params: UpdateAddress) {
     let path = `${resourceName}/${instance_id}/address/update`;
     return this.post<instance>(path, params);
+  }
+
+  // // ---------- INSTANCE-CATEGORIES ----------
+  getInstanceCategories(instance_id: number, params?: SearchParams) {
+    let query = `${resourceName}/${instance_id}/categories`;
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
   }
 }

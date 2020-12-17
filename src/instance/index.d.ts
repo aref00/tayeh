@@ -38,4 +38,5 @@ export declare class Instance extends Base {
     deleteInstanceAddress(instance_id: number, address_id: number): Promise<DeletedAddress>;
     createInstanceAddress(instance_id: number, params: NewAddress): Promise<instance>;
     updateInstanceAddress(instance_id: number, params: UpdateAddress): Promise<instance>;
+    getInstanceCategories(instance_id: number, params?: SearchParams): Promise<any[]>;
 }
