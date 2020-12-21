@@ -5,6 +5,11 @@ export type Pagination = {
   per_page?: number;
 };
 
+type Config = {
+  API_KEY_VARIABLE?: string,
+  API_SECRET_VARIABLE?: string
+}
+
 export abstract class Base {
   private API_KEY: string;
   private API_SECRET: string;
@@ -13,9 +18,9 @@ export abstract class Base {
   private mediaPath: string;
   private API_ACCESS: string;
 
-  constructor() {
-    this.API_KEY = process.env.TAYEH_API_KEY;
-    this.API_SECRET = process.env.TAYEH_API_SECRET;
+  constructor(config: Config = {}) {
+    this.API_KEY = process.env[config.API_KEY_VARIABLE||'TAYEH_API_KEY'];
+    this.API_SECRET = process.env[config.API_SECRET_VARIABLE||'TAYEH_API_SECRET'];   
     this.basePath = process.env.TAYEH_BASE_URL;
     this.authPath = process.env.TAYEH_AUTH_URL;
     this.mediaPath = process.env.TAYEH_MEDIA_URL;

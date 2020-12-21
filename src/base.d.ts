@@ -3,6 +3,10 @@ export declare type Pagination = {
     page?: number;
     per_page?: number;
 };
+declare type Config = {
+    API_KEY_VARIABLE?: string;
+    API_SECRET_VARIABLE?: string;
+};
 export declare abstract class Base {
     private API_KEY;
     private API_SECRET;
@@ -10,7 +14,7 @@ export declare abstract class Base {
     private authPath;
     private mediaPath;
     private API_ACCESS;
-    constructor();
+    constructor(config?: Config);
     get_token(): Promise<boolean>;
     set_token(access_token: any): void;
     protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
@@ -19,3 +23,4 @@ export declare abstract class Base {
     protected post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected post_auth<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
 }
+export {};
