@@ -275,4 +275,48 @@ export class Instance extends Base {
     }
     return this.get<any[]>(query);
   }
+
+  // // ---------- INSTANCE-BANNERS ----------
+  getInstanceBanners(instance_id: number, params?: SearchParams) {
+    let query = `banner/${instance_id}`;
+    console.log(query);
+    
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
+  }
+
+  // // ---------- ProductComments ----------
+  getProductComments(product_id: number, params?: SearchParams) {
+    let query = `product/${product_id}/comments`;
+    console.log(query);
+    
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
+  }
+
+  // // ---------- ProductRating ----------
+  getProductRating(product_id: number, params?: SearchParams) {
+    let query = `product/${product_id}/rating`;
+    console.log(query);
+    
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
+  }
+
+  // // ---------- ProductRating ----------
+  getSearchFilters(category_id: number=null, params?: SearchParams) {
+    let query = `category/${category_id}/search-filters`;
+    console.log(query);
+    
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
+  }
 }
