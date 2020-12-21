@@ -1,9 +1,4 @@
-import { AxiosRequestConfig } from "axios";
-declare type Config = {
-    API_KEY: string;
-    API_SECRET: string;
-    API_ACCESS: string;
-};
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 export declare type Pagination = {
     page?: number;
     per_page?: number;
@@ -15,11 +10,12 @@ export declare abstract class Base {
     private authPath;
     private mediaPath;
     private API_ACCESS;
-    constructor(config: Config);
+    constructor();
     get_token(): Promise<boolean>;
-    protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<T>;
-    protected get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<T>;
-    protected get_auth<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<T>;
-    protected post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<T>;
+    set_token(access_token: any): void;
+    protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+    protected get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<AxiosResponse<T>>;
+    protected get_auth<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<AxiosResponse<T>>;
+    protected post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+    protected post_auth<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
 }
-export {};
