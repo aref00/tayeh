@@ -20,8 +20,7 @@ export abstract class Base {
 
   constructor(config: Config = {}) {
     this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
-    this.API_SECRET =
-      process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
+    this.API_SECRET = process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
     this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
     this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
     this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
