@@ -6,9 +6,9 @@ export type Pagination = {
 };
 
 type Config = {
-  API_KEY_VARIABLE?: string,
-  API_SECRET_VARIABLE?: string
-}
+  API_KEY_VARIABLE?: string;
+  API_SECRET_VARIABLE?: string;
+};
 
 export abstract class Base {
   private API_KEY: string;
@@ -19,11 +19,12 @@ export abstract class Base {
   private API_ACCESS: string;
 
   constructor(config: Config = {}) {
-    this.API_KEY = process.env[config.API_KEY_VARIABLE||'TAYEH_API_KEY'];
-    this.API_SECRET = process.env[config.API_SECRET_VARIABLE||'TAYEH_API_SECRET'];   
-    this.basePath = process.env.TAYEH_BASE_URL;
-    this.authPath = process.env.TAYEH_AUTH_URL;
-    this.mediaPath = process.env.TAYEH_MEDIA_URL;
+    this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
+    this.API_SECRET =
+      process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
+    this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
+    this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
+    this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
     if (typeof this.API_KEY !== "string" || typeof this.API_SECRET !== "string")
       throw new Error(
         "You should define TAYEH_API_KEY & TAYEH_API_SECRET in your environment variables."
