@@ -1,6 +1,6 @@
 import { Base } from "../base";
 import { customer } from "../customer/types";
-import { instance, NewInstance, UpdateInstance, Product, NewProduct, CreatedProduct, DeletedProduct, UpdateProduct, UpdatedProduct, Transaction, NewTransaction, CreatedTransaction, UpdateTransaction, UpdatedTransaction, Invoice, Invoices, NewInvoice, CreatedInvoice, DeletedInvoice, UpdateInvoice, UpdatedInvoice, NewCustomer, CreatedCustomer, UpdateCustomer, UpdatedCustomer, sub_user, sub_users, NewUser, CreatedUser, DeletedUser, UpdateUser, addresses, NewAddress, DeletedAddress, UpdateAddress, SearchParams, RevenueParams, TotalParams, SeriesParams, InstancePageParams } from "./types";
+import { instance, NewInstance, UpdateInstance, Product, NewProduct, CreatedProduct, DeletedProduct, UpdateProduct, UpdatedProduct, Transaction, NewTransaction, CreatedTransaction, UpdateTransaction, UpdatedTransaction, Invoice, Invoices, NewInvoice, CreatedInvoice, DeletedInvoice, UpdateInvoice, UpdatedInvoice, NewCustomer, CreatedCustomer, UpdateCustomer, UpdatedCustomer, sub_user, sub_users, NewUser, CreatedUser, DeletedUser, UpdateUser, addresses, NewAddress, DeletedAddress, UpdateAddress, SearchParams, RevenueParams, TotalParams, SeriesParams, InstancePageParams, CategoryParams } from "./types";
 export declare class Instance extends Base {
     getInstance(instance_id: number): Promise<import("axios").AxiosResponse<instance>>;
     createInstance(params: NewInstance): Promise<import("axios").AxiosResponse<instance>>;
@@ -38,9 +38,10 @@ export declare class Instance extends Base {
     deleteInstanceAddress(instance_id: number, address_id: number): Promise<import("axios").AxiosResponse<DeletedAddress>>;
     createInstanceAddress(instance_id: number, params: NewAddress): Promise<import("axios").AxiosResponse<instance>>;
     updateInstanceAddress(instance_id: number, params: UpdateAddress): Promise<import("axios").AxiosResponse<instance>>;
-    getInstanceCategories(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
+    getInstanceCategories(instance_id: number, params?: CategoryParams): Promise<import("axios").AxiosResponse<any[]>>;
     getInstanceBanners(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
     getProductComments(product_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
     getProductRating(product_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
     getSearchFilters(category_id?: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
+    getFilters(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
 }

@@ -40,6 +40,10 @@ export type SearchParams = Pagination & {
   search?: string;
 };
 
+export type CategoryParams = SearchParams & {
+  show_filters?: boolean;
+};
+
 export type RevenueParams = {
   unit?: string;
   product_id?: number;

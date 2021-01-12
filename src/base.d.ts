@@ -18,8 +18,8 @@ export declare abstract class Base {
     get_token(): Promise<boolean>;
     set_token(access_token: any): void;
     protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
-    protected get<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<AxiosResponse<T>>;
-    protected get_auth<T>(endpoint: string, options?: AxiosRequestConfig, isBasic?: boolean): Promise<AxiosResponse<T>>;
+    protected get<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+    protected get_auth<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected post_auth<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
 }

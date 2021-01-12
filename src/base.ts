@@ -20,7 +20,8 @@ export abstract class Base {
 
   constructor(config: Config = {}) {
     this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
-    this.API_SECRET = process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
+    this.API_SECRET =
+      process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
     this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
     this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
     this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
@@ -28,25 +29,22 @@ export abstract class Base {
       throw new Error(
         "You should define TAYEH_API_KEY & TAYEH_API_SECRET in your environment variables."
       );
-    this.get_token();
+    // this.get_token();
   }
 
   async get_token(): Promise<boolean> {
     const url = "api/token";
     try {
       const { access_token } = (
-        await this.get_auth<{ access_token }>(
-          url,
-          {
-            auth: {
-              username: this.API_KEY,
-              password: this.API_SECRET,
-            },
+        await this.get_auth<{ access_token }>(url, {
+          auth: {
+            username: this.API_KEY,
+            password: this.API_SECRET,
           },
-          true
-        )
+        })
       ).data;
       this.API_ACCESS = access_token;
+      console.log("string", access_token);
       return true;
     } catch (err) {
       throw new Error(err);
@@ -66,7 +64,6 @@ export abstract class Base {
       Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
     };
-
     const config: AxiosRequestConfig = {
       headers: { ...headers },
       ...options,
@@ -77,17 +74,13 @@ export abstract class Base {
 
   protected async get<T>(
     endpoint: string,
-    options?: AxiosRequestConfig,
-    isBasic: boolean = false
+    options?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     const url = this.basePath + endpoint;
-
-    const headers: any = {
+    const headers = {
+      Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
     };
-    if (!isBasic) {
-      headers.Authorization = `Bearer ${this.API_ACCESS}`;
-    }
     const config: AxiosRequestConfig = {
       headers: { ...headers },
       ...options,
@@ -98,16 +91,12 @@ export abstract class Base {
 
   protected async get_auth<T>(
     endpoint: string,
-    options?: AxiosRequestConfig,
-    isBasic: boolean = false
+    options?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     const url = this.authPath + endpoint;
-    const headers: any = {
+    const headers = {
       "Content-type": "application/json",
     };
-    if (!isBasic) {
-      headers.Authorization = `Bearer ${this.API_ACCESS}`;
-    }
     const config: AxiosRequestConfig = {
       headers: { ...headers },
       ...options,
@@ -126,7 +115,6 @@ export abstract class Base {
       Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
     };
-
     const config: AxiosRequestConfig = {
       headers: { ...headers },
       ...options,

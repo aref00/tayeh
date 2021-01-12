@@ -42,6 +42,7 @@ import {
   TotalParams,
   SeriesParams,
   InstancePageParams,
+  CategoryParams
 } from "./types";
 
 const resourceName = "instance";
@@ -268,7 +269,7 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-CATEGORIES ----------
-  getInstanceCategories(instance_id: number, params?: SearchParams) {
+  getInstanceCategories(instance_id: number, params?: CategoryParams) {
     let query = `${resourceName}/${instance_id}/categories`;
     if (params) {
       query += qs.stringify(params, "?");
@@ -312,6 +313,17 @@ export class Instance extends Base {
   // // ---------- ProductRating ----------
   getSearchFilters(category_id: number=null, params?: SearchParams) {
     let query = `category/${category_id}/search-filters`;
+    console.log(query);
+    
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any[]>(query);
+  }
+
+  // // ---------- GetFillters ----------
+  getFilters(instance_id: number, params?: SearchParams) {
+    let query = `${resourceName}/${instance_id}/search/filters`;
     console.log(query);
     
     if (params) {

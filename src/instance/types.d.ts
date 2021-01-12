@@ -29,6 +29,9 @@ declare enum Transaction_Type {
 export declare type SearchParams = Pagination & {
     search?: string;
 };
+export declare type CategoryParams = SearchParams & {
+    show_filters?: boolean;
+};
 export declare type RevenueParams = {
     unit?: string;
     product_id?: number;
