@@ -20,4 +20,6 @@ export declare type media = {
     creator_id: number;
     date_created: Date;
 };
-export declare type NewMedia = {};
+export declare type UploadMedia = {
+    image: File;
+};

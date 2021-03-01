@@ -22,6 +22,6 @@ export type media = {
     date_created: Date;
   };
 
-export type NewMedia = {
-
+export type UploadMedia = {
+  image: File;
 }
