@@ -27,3 +27,50 @@ export declare type customer = {
     date_created: Date;
     date_updated: Date;
 };
+export declare type AddToCartBody = {
+    product_id: string;
+    price_id: string;
+    choices: string[] | [];
+};
+export declare type ToggleFavorite = {
+    product_id: string;
+    favorite: boolean;
+};
+export declare type UpdateCartItem = {
+    cart_item_id: string;
+    count: number;
+};
+export declare type UpdateCustomer = {
+    mobile: string;
+    name?: string;
+    email?: string;
+    id_card?: string;
+    sex?: Sex;
+    birthdate?: Date;
+    payment_return_card_number?: string;
+};
+declare type Position = {
+    latitude: string;
+    longitude: string;
+};
+declare type Location = {
+    countryId: number;
+    stateId: number;
+    cityId: number;
+    verbal: string;
+};
+export declare type NewAddress = {
+    title: string;
+    description: string;
+    location: Location;
+    position: Position;
+    reciver_name: string;
+    phone: string;
+    mobile: string;
+    id_card: string;
+    postcode: string;
+};
+export declare type UpdateAddress = NewAddress & {
+    id: string;
+};
+export {};
