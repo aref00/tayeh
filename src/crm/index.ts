@@ -19,5 +19,4 @@ export class Crm extends Base {
     const path = `${resourceName}/${shop_id}/send/typed/${type}`;
     return this.post<sms>(path, params);
   }
-
 }

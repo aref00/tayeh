@@ -25,6 +25,7 @@ export abstract class Base {
     this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
     this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
     this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
+    // this.mediaPath = process.env["REACT_APP_MEDIA_URL"] || "http://media.tayeh.ir/";
     if (typeof this.API_KEY !== "string" || typeof this.API_SECRET !== "string")
       throw new Error(
         "You should define TAYEH_API_KEY & TAYEH_API_SECRET in your environment variables."
@@ -44,7 +45,6 @@ export abstract class Base {
         })
       ).data;
       this.API_ACCESS = access_token;
-      console.log("string", access_token);
       return true;
     } catch (err) {
       throw new Error(err);
@@ -59,7 +59,7 @@ export abstract class Base {
     endpoint: string,
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    const url = this.authPath + endpoint;
+    const url = this.basePath + endpoint;
     const headers = {
       Authorization: `Bearer ${this.API_ACCESS}`,
       "Content-type": "application/json",
@@ -120,6 +120,42 @@ export abstract class Base {
       ...options,
     };
     const res = await Axios.post(url, body, config);
+    return res;
+  }
+
+  protected async post_media<T>(
+    endpoint: string,
+    body = {},
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.mediaPath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.API_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.post(url, body, config);
+    return res;
+  }
+
+  protected async put<T>(
+    endpoint: string,
+    body = {},
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.basePath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.API_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.put(url, body, config);
     return res;
   }
 
