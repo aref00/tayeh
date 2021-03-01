@@ -42,7 +42,11 @@ import {
   TotalParams,
   SeriesParams,
   InstancePageParams,
-  CategoryParams
+  CategoryParams,
+  BannerParams,
+  InviteParams,
+  ProductParams,
+  SearchFilters
 } from "./types";
 
 const resourceName = "instance";
@@ -73,7 +77,7 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-PRODUCTS ----------
-  getInstanceProducts(instance_id: number, params?: SearchParams) {
+  getProducts(instance_id: number, params?: ProductParams) {
     let query = `${resourceName}/${instance_id}/products`;
     if (params) {
       query += qs.stringify(params, "?");
@@ -269,7 +273,7 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-CATEGORIES ----------
-  getInstanceCategories(instance_id: number, params?: CategoryParams) {
+  getCategories(instance_id: number, params?: CategoryParams) {
     let query = `${resourceName}/${instance_id}/categories`;
     if (params) {
       query += qs.stringify(params, "?");
@@ -278,9 +282,8 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-BANNERS ----------
-  getInstanceBanners(instance_id: number, params?: SearchParams) {
-    let query = `banner/${instance_id}`;
-    console.log(query);
+  getBanners(instance_id: number, params?: BannerParams) {
+    let query = `${resourceName}/${instance_id}/banners`;
     
     if (params) {
       query += qs.stringify(params, "?");
@@ -288,47 +291,27 @@ export class Instance extends Base {
     return this.get<any[]>(query);
   }
 
-  // // ---------- ProductComments ----------
-  getProductComments(product_id: number, params?: SearchParams) {
-    let query = `product/${product_id}/comments`;
-    console.log(query);
-    
+  // // ---------- GetSearchFillters ----------
+  getSearchFilters(instance_id: number, params?: SearchFilters) {
+    let query = `${resourceName}/${instance_id}/search-filters`;
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<any[]>(query);
+    return this.get<any>(query);
   }
 
-  // // ---------- ProductRating ----------
-  getProductRating(product_id: number, params?: SearchParams) {
-    let query = `product/${product_id}/rating`;
-    console.log(query);
-    
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<any[]>(query);
+  // // ---------- InviteSms ----------
+  sendInviteSms(instance_id: number, params: InviteParams){
+    let path = `${resourceName}/${instance_id}/invite-sms`;
+    return this.post<instance>(path, params);
   }
 
-  // // ---------- ProductRating ----------
-  getSearchFilters(category_id: number=null, params?: SearchParams) {
-    let query = `category/${category_id}/search-filters`;
-    console.log(query);
-    
+  // // ---------- SearchKeywords ----------
+  getTopKeywords(instance_id: number, params: SearchFilters){
+    let query = `${resourceName}/${instance_id}/top-search-keywords`;
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<any[]>(query);
-  }
-
-  // // ---------- GetFillters ----------
-  getFilters(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/search/filters`;
-    console.log(query);
-    
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<any[]>(query);
+    return this.post<instance>(query, params);
   }
 }

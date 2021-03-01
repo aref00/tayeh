@@ -1,6 +1,6 @@
 import { Pagination } from "../base";
 import { customer } from "../customer/types";
-import { user } from '../user/types';
+import { user } from "../user/types";
 export declare enum Sex {
     male = 0,
     female = 1,
@@ -16,6 +16,12 @@ declare enum SubUser_Status {
     accepted = 1,
     rejected = 2
 }
+declare enum Banner_Size {
+    all = 0,
+    small = 1,
+    medium = 2,
+    large = 3
+}
 declare enum Invoice_Type {
     Sold = 0,
     Bought = 1
@@ -26,11 +32,42 @@ declare enum Transaction_Type {
     income = 2,
     cost = 3
 }
+declare enum ProductSort {
+    fresh = 0,
+    price_low_2_high = 1,
+    price_high_2_low = 2,
+    discount = 3,
+    bestsellers = 4
+}
 export declare type SearchParams = Pagination & {
     search?: string;
 };
 export declare type CategoryParams = SearchParams & {
     show_filters?: boolean;
+    parent_id?: number;
+    category_id?: string;
+};
+export declare type ProductParams = SearchParams & {
+    suggested?: boolean;
+    min_price?: number;
+    max_price?: number;
+    category?: string;
+    brands?: string[];
+    only_available?: boolean;
+    discounted?: boolean;
+    sort?: ProductSort;
+    filters?: string[];
+    similar_to?: string;
+};
+export declare type SearchFilters = {
+    category?: string;
+};
+export declare type BannerParams = {
+    category?: string;
+    size?: Banner_Size;
+};
+export declare type InviteParams = {
+    mobile: string;
 };
 export declare type RevenueParams = {
     unit?: string;

@@ -1,6 +1,6 @@
 import { Pagination } from "../base";
-import { customer } from "../customer/types"
-import { user } from '../user/types'
+import { customer } from "../customer/types";
+import { user } from "../user/types";
 
 // ---------- ENUMS ----------
 
@@ -22,6 +22,13 @@ enum SubUser_Status {
   rejected,
 }
 
+enum Banner_Size {
+  all,
+  small,
+  medium,
+  large,
+}
+
 enum Invoice_Type {
   Sold,
   Bought,
@@ -34,6 +41,14 @@ enum Transaction_Type {
   cost,
 }
 
+enum ProductSort {
+  fresh,
+  price_low_2_high,
+  price_high_2_low,
+  discount,
+  bestsellers
+}
+
 // ---------- GENERAL ----------
 
 export type SearchParams = Pagination & {
@@ -42,6 +57,34 @@ export type SearchParams = Pagination & {
 
 export type CategoryParams = SearchParams & {
   show_filters?: boolean;
+  parent_id?: number;
+  category_id?: string;
+};
+
+export type ProductParams = SearchParams & {
+  suggested?: boolean;
+  min_price?: number;
+  max_price?: number;
+  category?: string;
+  brands?: string[];
+  only_available?: boolean;
+  discounted?: boolean;
+  sort?: ProductSort;
+  filters?: string[];
+  similar_to?: string;
+};
+
+export type SearchFilters = {
+  category?: string;
+}
+
+export type BannerParams = {
+  category?: string;
+  size?: Banner_Size;
+};
+
+export type InviteParams = {
+  mobile: string;
 };
 
 export type RevenueParams = {

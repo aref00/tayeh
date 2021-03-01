@@ -1,12 +1,12 @@
 import { Base } from "../base";
 import { customer } from "../customer/types";
-import { instance, NewInstance, UpdateInstance, Product, NewProduct, CreatedProduct, DeletedProduct, UpdateProduct, UpdatedProduct, Transaction, NewTransaction, CreatedTransaction, UpdateTransaction, UpdatedTransaction, Invoice, Invoices, NewInvoice, CreatedInvoice, DeletedInvoice, UpdateInvoice, UpdatedInvoice, NewCustomer, CreatedCustomer, UpdateCustomer, UpdatedCustomer, sub_user, sub_users, NewUser, CreatedUser, DeletedUser, UpdateUser, addresses, NewAddress, DeletedAddress, UpdateAddress, SearchParams, RevenueParams, TotalParams, SeriesParams, InstancePageParams, CategoryParams } from "./types";
+import { instance, NewInstance, UpdateInstance, Product, NewProduct, CreatedProduct, DeletedProduct, UpdateProduct, UpdatedProduct, Transaction, NewTransaction, CreatedTransaction, UpdateTransaction, UpdatedTransaction, Invoice, Invoices, NewInvoice, CreatedInvoice, DeletedInvoice, UpdateInvoice, UpdatedInvoice, NewCustomer, CreatedCustomer, UpdateCustomer, UpdatedCustomer, sub_user, sub_users, NewUser, CreatedUser, DeletedUser, UpdateUser, addresses, NewAddress, DeletedAddress, UpdateAddress, SearchParams, RevenueParams, TotalParams, SeriesParams, InstancePageParams, CategoryParams, BannerParams, InviteParams, ProductParams, SearchFilters } from "./types";
 export declare class Instance extends Base {
     getInstance(instance_id: number): Promise<import("axios").AxiosResponse<instance>>;
     createInstance(params: NewInstance): Promise<import("axios").AxiosResponse<instance>>;
     updateInstance(params: UpdateInstance): Promise<import("axios").AxiosResponse<instance>>;
     getInstancePage(page_number: number, params?: InstancePageParams): Promise<import("axios").AxiosResponse<instance[]>>;
-    getInstanceProducts(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<Product[]>>;
+    getProducts(instance_id: number, params?: ProductParams): Promise<import("axios").AxiosResponse<Product[]>>;
     createInstanceProduct(instance_id: number, params: NewProduct): Promise<import("axios").AxiosResponse<CreatedProduct>>;
     deleteInstanceProduct(instance_id: number, product_id: number): Promise<import("axios").AxiosResponse<DeletedProduct>>;
     updateInstanceProduct(instance_id: number, params: UpdateProduct): Promise<import("axios").AxiosResponse<UpdatedProduct>>;
@@ -38,10 +38,9 @@ export declare class Instance extends Base {
     deleteInstanceAddress(instance_id: number, address_id: number): Promise<import("axios").AxiosResponse<DeletedAddress>>;
     createInstanceAddress(instance_id: number, params: NewAddress): Promise<import("axios").AxiosResponse<instance>>;
     updateInstanceAddress(instance_id: number, params: UpdateAddress): Promise<import("axios").AxiosResponse<instance>>;
-    getInstanceCategories(instance_id: number, params?: CategoryParams): Promise<import("axios").AxiosResponse<any[]>>;
-    getInstanceBanners(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
-    getProductComments(product_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
-    getProductRating(product_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
-    getSearchFilters(category_id?: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
-    getFilters(instance_id: number, params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
+    getCategories(instance_id: number, params?: CategoryParams): Promise<import("axios").AxiosResponse<any[]>>;
+    getBanners(instance_id: number, params?: BannerParams): Promise<import("axios").AxiosResponse<any[]>>;
+    getSearchFilters(instance_id: number, params?: SearchFilters): Promise<import("axios").AxiosResponse<any>>;
+    sendInviteSms(instance_id: number, params: InviteParams): Promise<import("axios").AxiosResponse<instance>>;
+    getTopKeywords(instance_id: number, params: SearchFilters): Promise<import("axios").AxiosResponse<instance>>;
 }
