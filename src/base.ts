@@ -1,14 +1,15 @@
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-
+import { ConnectionOptions } from "./connection/ConnectionOptions";
+import { ConnectionOptionsReader } from './connection/ConnectionOptionsReader'
 export type Pagination = {
   page?: number;
   per_page?: number;
 };
 
-type Config = {
-  API_KEY_VARIABLE?: string;
-  API_SECRET_VARIABLE?: string;
-};
+// type Config = {
+//   API_KEY_VARIABLE?: string;
+//   API_SECRET_VARIABLE?: string;
+// };
 
 export abstract class Base {
   private API_KEY: string;
@@ -18,13 +19,24 @@ export abstract class Base {
   private mediaPath: string;
   private API_ACCESS: string;
 
-  constructor(config: Config = {}) {
-    this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
-    this.API_SECRET =
-      process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
-    this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
-    this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
-    this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
+  constructor(
+    options: ConnectionOptions
+    ) {
+    // const optionsReader = new ConnectionOptionsReader();
+    // const options = optionsReader.plainRead();
+    this.API_KEY = options.api_key;
+    this.API_SECRET = options.api_secret;
+    this.basePath = options.api_url;
+    this.authPath = options.auth_url;
+    this.mediaPath = options.media_url;
+    this.mediaPath = options.media_url;    
+
+    // this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
+    // this.API_SECRET =
+    //   process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
+    // this.basePath = process.env["TAYEH_BASE_URL"] || "http://api.tayeh.ir/";
+    // this.authPath = process.env["TAYEH_AUTH_URL"] || "http://auth.tayeh.ir/";
+    // this.mediaPath = process.env["TAYEH_MEDIA_URL"] || "http://media.tayeh.ir/";
     // this.mediaPath = process.env["REACT_APP_MEDIA_URL"] || "http://media.tayeh.ir/";
     if (typeof this.API_KEY !== "string" || typeof this.API_SECRET !== "string")
       throw new Error(
