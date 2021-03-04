@@ -1,10 +1,10 @@
 import { Base, Pagination } from "../base";
 import { customer, AddToCartBody, ToggleFavorite, UpdateCartItem, UpdateCustomer, NewAddress, UpdateAddress } from "./types";
 export declare class Customer extends Base {
-    getPassword(username: string, instance_id: number): Promise<import("axios").AxiosResponse<{
+    getPassword(username: string): Promise<import("axios").AxiosResponse<{
         access_token: any;
     }>>;
-    customerVerify(usename: string, password: string, instance_id: number): Promise<import("axios").AxiosResponse<{
+    customerVerify(usename: string, password: string): Promise<import("axios").AxiosResponse<{
         access_token: any;
     }>>;
     getCustomerMe(): Promise<import("axios").AxiosResponse<customer>>;

@@ -46,15 +46,15 @@ import {
   BannerParams,
   InviteParams,
   ProductParams,
-  SearchFilters
+  SearchFilters,
 } from "./types";
 
 const resourceName = "instance";
 
 export class Instance extends Base {
   // ---------- INSTANCE ----------
-  getInstance(instance_id: number) {
-    return this.get<instance>(`${resourceName}/${instance_id}`);
+  getInstance() {
+    return this.get<instance>(`${resourceName}/${this.instance_id}`);
   }
 
   createInstance(params: NewInstance) {
@@ -77,95 +77,95 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-PRODUCTS ----------
-  getProducts(instance_id: number, params?: ProductParams) {
-    let query = `${resourceName}/${instance_id}/products`;
+  getProducts(params?: ProductParams) {
+    let query = `${resourceName}/${this.instance_id}/products`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<Product[]>(query);
   }
 
-  createInstanceProduct(instance_id: number, params: NewProduct) {
-    let path = `${resourceName}/${instance_id}/product`;
+  createInstanceProduct(params: NewProduct) {
+    let path = `${resourceName}/${this.instance_id}/product`;
     return this.post<CreatedProduct>(path, params);
   }
 
-  deleteInstanceProduct(instance_id: number, product_id: number) {
-    let path = `${resourceName}/${instance_id}/product/${product_id}`;
+  deleteInstanceProduct(product_id: number) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}`;
     return this.delete<DeletedProduct>(path);
   }
 
-  updateInstanceProduct(instance_id: number, params: UpdateProduct) {
-    let path = `${resourceName}/${instance_id}/product/update`;
+  updateInstanceProduct(params: UpdateProduct) {
+    let path = `${resourceName}/${this.instance_id}/product/update`;
     return this.post<UpdatedProduct>(path, params);
   }
 
   // // ---------- INSTANCE-TRANSACTION ----------
-  getInstanceTransactions(instance_id: number) {
-    let path = `${resourceName}/${instance_id}/transactions`;
+  getInstanceTransactions() {
+    let path = `${resourceName}/${this.instance_id}/transactions`;
     return this.get<Transaction[]>(path);
   }
 
-  findInstanceTransactions(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/transactions/open`;
+  findInstanceTransactions(params?: SearchParams) {
+    let query = `${resourceName}/${this.instance_id}/transactions/open`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<Transaction[]>(query);
   }
 
-  getProductTransactions(instance_id: number, product_id: number) {
-    let path = `${resourceName}/${instance_id}/transactions/product/${product_id}`;
+  getProductTransactions(product_id: number) {
+    let path = `${resourceName}/${this.instance_id}/transactions/product/${product_id}`;
     return this.get<Transaction[]>(path);
   }
 
-  deleteInstanceTransaction(instance_id: number, transaction_id: number) {
-    let path = `${resourceName}/${instance_id}/transaction/${transaction_id}`;
+  deleteInstanceTransaction(transaction_id: number) {
+    let path = `${resourceName}/${this.instance_id}/transaction/${transaction_id}`;
     return this.delete<instance>(path);
   }
 
-  createInstanceTransaction(instance_id: number, params: NewTransaction) {
-    let path = `${resourceName}/${instance_id}/transaction`;
+  createInstanceTransaction(params: NewTransaction) {
+    let path = `${resourceName}/${this.instance_id}/transaction`;
     return this.post<CreatedTransaction>(path, params);
   }
 
-  updateInstanceTransaction(instance_id: number, params: UpdateTransaction) {
-    let path = `${resourceName}/${instance_id}/transaction/update`;
+  updateInstanceTransaction(params: UpdateTransaction) {
+    let path = `${resourceName}/${this.instance_id}/transaction/update`;
     return this.post<UpdatedTransaction>(path, params);
   }
 
   // // ---------- INSTANCE-INVOICES ----------
-  getInstanceInvoices(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/invoices`;
+  getInstanceInvoices(params?: SearchParams) {
+    let query = `${resourceName}/${this.instance_id}/invoices`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<Invoices>(query);
   }
 
-  getInstanceInvoice(instance_id: number, invoice_id: number) {
-    let path = `${resourceName}/${instance_id}/invoice/${invoice_id}`;
+  getInstanceInvoice(invoice_id: number) {
+    let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
     return this.get<Invoice>(path);
   }
 
-  deleteInstanceInvoice(instance_id: number, invoice_id: number) {
-    let path = `${resourceName}/${instance_id}/invoice/${invoice_id}`;
+  deleteInstanceInvoice(invoice_id: number) {
+    let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
     return this.delete<DeletedInvoice>(path);
   }
 
-  createInstanceInvoice(instance_id: number, params: NewInvoice) {
-    let path = `${resourceName}/${instance_id}/invoice`;
+  createInstanceInvoice(params: NewInvoice) {
+    let path = `${resourceName}/${this.instance_id}/invoice`;
     return this.post<CreatedInvoice>(path, params);
   }
 
-  updateInstanceInvoice(instance_id: number, params: UpdateInvoice) {
-    let path = `${resourceName}/${instance_id}/invoice/update`;
+  updateInstanceInvoice(params: UpdateInvoice) {
+    let path = `${resourceName}/${this.instance_id}/invoice/update`;
     return this.post<UpdatedInvoice>(path, params);
   }
 
   // // ---------- INSTANCE-SERIES ----------
-  getInstanceSeries(instance_id: number, params?: SeriesParams) {
-    let query = `${resourceName}/${instance_id}/series`;
+  getInstanceSeries(params?: SeriesParams) {
+    let query = `${resourceName}/${this.instance_id}/series`;
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -173,8 +173,8 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-TOTAL ----------
-  getInstanceTotal(instance_id: number, params?: TotalParams) {
-    let query = `${resourceName}/${instance_id}/total/monthly`;
+  getInstanceTotal(params?: TotalParams) {
+    let query = `${resourceName}/${this.instance_id}/total/monthly`;
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -182,8 +182,8 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-REVENUE ----------
-  getInstanceRevenue(instance_id: number, params?: RevenueParams) {
-    let query = `${resourceName}/${instance_id}/revenue`;
+  getInstanceRevenue(params?: RevenueParams) {
+    let query = `${resourceName}/${this.instance_id}/revenue`;
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -191,90 +191,90 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-CUSTOMER ----------
-  getInstanceCustomers(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/customers`;
+  getInstanceCustomers(params?: SearchParams) {
+    let query = `${resourceName}/${this.instance_id}/customers`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<customer[]>(query);
   }
 
-  getInstanceCustomer(instance_id: number, customer_id: number) {
-    let path = `${resourceName}/${instance_id}/customer/${customer_id}`;
+  getInstanceCustomer(customer_id: number) {
+    let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
     return this.get<customer>(path);
   }
 
-  deleteInstanceCustomer(instance_id: number, customer_id: number) {
-    let path = `${resourceName}/${instance_id}/customer/${customer_id}`;
+  deleteInstanceCustomer(customer_id: number) {
+    let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
     return this.delete<instance>(path);
   }
 
-  createInstanceCustomer(instance_id: number, params: NewCustomer) {
-    let path = `${resourceName}/${instance_id}/customer`;
+  createInstanceCustomer(params: NewCustomer) {
+    let path = `${resourceName}/${this.instance_id}/customer`;
     return this.post<CreatedCustomer>(path, params);
   }
 
-  updateInstanceCustomer(instance_id: number, params: UpdateCustomer) {
-    let path = `${resourceName}/${instance_id}/customer/update`;
+  updateInstanceCustomer(params: UpdateCustomer) {
+    let path = `${resourceName}/${this.instance_id}/customer/update`;
     return this.post<UpdatedCustomer>(path, params);
   }
 
   // // ---------- INSTANCE-USER ----------
-  getInstanceUsers(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/users`;
+  getInstanceUsers(params?: SearchParams) {
+    let query = `${resourceName}/${this.instance_id}/users`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<sub_users>(query);
   }
 
-  getInstanceUser(instance_id: number, user_id: number) {
-    let path = `${resourceName}/${instance_id}/user/${user_id}`;
+  getInstanceUser(user_id: number) {
+    let path = `${resourceName}/${this.instance_id}/user/${user_id}`;
     return this.get<sub_user>(path);
   }
 
-  deleteInstanceUser(instance_id: number, user_id: number) {
-    let path = `${resourceName}/${instance_id}/user/${user_id}`;
+  deleteInstanceUser(user_id: number) {
+    let path = `${resourceName}/${this.instance_id}/user/${user_id}`;
     return this.delete<DeletedUser>(path);
   }
 
-  createInstanceUser(instance_id: number, params: NewUser) {
-    let path = `${resourceName}/${instance_id}/user`;
+  createInstanceUser(params: NewUser) {
+    let path = `${resourceName}/${this.instance_id}/user`;
     return this.post<CreatedUser>(path, params);
   }
 
-  updateInstanceUser(instance_id: number, params: UpdateUser) {
-    let path = `${resourceName}/${instance_id}/user/update`;
+  updateInstanceUser(params: UpdateUser) {
+    let path = `${resourceName}/${this.instance_id}/user/update`;
     return this.post<instance>(path, params);
   }
 
   // // ---------- INSTANCE-ADDRESS ----------
-  getInstanceAddresses(instance_id: number, params?: SearchParams) {
-    let query = `${resourceName}/${instance_id}/addresses`;
+  getInstanceAddresses(params?: SearchParams) {
+    let query = `${resourceName}/${this.instance_id}/addresses`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<addresses>(query);
   }
 
-  deleteInstanceAddress(instance_id: number, address_id: number) {
-    let path = `${resourceName}/${instance_id}/address/${address_id}`;
+  deleteInstanceAddress(address_id: number) {
+    let path = `${resourceName}/${this.instance_id}/address/${address_id}`;
     return this.delete<DeletedAddress>(path);
   }
 
-  createInstanceAddress(instance_id: number, params: NewAddress) {
-    let path = `${resourceName}/${instance_id}/address`;
+  createInstanceAddress(params: NewAddress) {
+    let path = `${resourceName}/${this.instance_id}/address`;
     return this.post<instance>(path, params);
   }
 
-  updateInstanceAddress(instance_id: number, params: UpdateAddress) {
-    let path = `${resourceName}/${instance_id}/address/update`;
+  updateInstanceAddress(params: UpdateAddress) {
+    let path = `${resourceName}/${this.instance_id}/address/update`;
     return this.post<instance>(path, params);
   }
 
   // // ---------- INSTANCE-CATEGORIES ----------
-  getCategories(instance_id: number, params?: CategoryParams) {
-    let query = `${resourceName}/${instance_id}/categories`;
+  getCategories(params?: CategoryParams) {
+    let query = `${resourceName}/${this.instance_id}/categories`;
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -282,9 +282,9 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-BANNERS ----------
-  getBanners(instance_id: number, params?: BannerParams) {
-    let query = `${resourceName}/${instance_id}/banners`;
-    
+  getBanners(params?: BannerParams) {
+    let query = `${resourceName}/${this.instance_id}/banners`;
+
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -292,8 +292,8 @@ export class Instance extends Base {
   }
 
   // // ---------- GetSearchFillters ----------
-  getSearchFilters(instance_id: number, params?: SearchFilters) {
-    let query = `${resourceName}/${instance_id}/search-filters`;
+  getSearchFilters(params?: SearchFilters) {
+    let query = `${resourceName}/${this.instance_id}/search-filters`;
     if (params) {
       query += qs.stringify(params, "?");
     }
@@ -301,14 +301,14 @@ export class Instance extends Base {
   }
 
   // // ---------- InviteSms ----------
-  sendInviteSms(instance_id: number, params: InviteParams){
-    let path = `${resourceName}/${instance_id}/invite-sms`;
+  sendInviteSms(params: InviteParams) {
+    let path = `${resourceName}/${this.instance_id}/invite-sms`;
     return this.post<instance>(path, params);
   }
 
   // // ---------- SearchKeywords ----------
-  getTopKeywords(instance_id: number, params: SearchFilters){
-    let query = `${resourceName}/${instance_id}/top-search-keywords`;
+  getTopKeywords(params: SearchFilters) {
+    let query = `${resourceName}/${this.instance_id}/top-search-keywords`;
     if (params) {
       query += qs.stringify(params, "?");
     }

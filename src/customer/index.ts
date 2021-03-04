@@ -13,20 +13,20 @@ import {
 const resourceName = "customer";
 
 export class Customer extends Base {
-  getPassword(username: string, instance_id: number) {
+  getPassword(username: string) {
     const url = "customer/login";
     return this.post_auth<{ access_token }>(url, {
       username: username,
-      instance: instance_id,
+      instance: this.instance_id,
     });
   }
 
-  customerVerify(usename: string, password: string, instance_id: number) {
+  customerVerify(usename: string, password: string) {
     const url = "customer/verify";
     return this.post_auth<{ access_token }>(url, {
       username: usename,
       password: password,
-      instance: instance_id,
+      instance: this.instance_id,
     });
   }
 

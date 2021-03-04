@@ -5,6 +5,7 @@ export interface ConnectionOptionsBase {
     readonly media_url: "media.tayeh.ir"|string;
     readonly api_key: string;
     readonly api_secret: string;
+    readonly instance_id: number;
 }
 
 export type ConnectionOptions = ConnectionOptionsBase;

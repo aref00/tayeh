@@ -11,6 +11,7 @@ export declare abstract class Base {
     private authPath;
     private mediaPath;
     private API_ACCESS;
+    instance_id: number;
     constructor(options: ConnectionOptions);
     get_token(): Promise<boolean>;
     set_token(access_token: any): void;

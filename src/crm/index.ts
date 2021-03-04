@@ -10,13 +10,13 @@ const resourceName = "crm";
 
 export class Crm extends Base {
   // ---------- SHOP ----------
-  sendSms(shop_id: number, params: SendSmsParams) {
-    const path = `${resourceName}/${shop_id}/send/normal`;
+  sendSms(params: SendSmsParams) {
+    const path = `${resourceName}/${this.instance_id}/send/normal`;
     return this.post<sms>(path, params);
   }
 
-  sendTypedSms(shop_id: number, type, params: SendTypedSmsParams) {
-    const path = `${resourceName}/${shop_id}/send/typed/${type}`;
+  sendTypedSms(type, params: SendTypedSmsParams) {
+    const path = `${resourceName}/${this.instance_id}/send/typed/${type}`;
     return this.post<sms>(path, params);
   }
 }

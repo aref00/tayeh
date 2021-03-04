@@ -18,6 +18,7 @@ export abstract class Base {
   private authPath: string;
   private mediaPath: string;
   private API_ACCESS: string;
+  public instance_id: number;
 
   constructor(
     options: ConnectionOptions
@@ -28,9 +29,8 @@ export abstract class Base {
     this.API_SECRET = options.api_secret;
     this.basePath = options.api_url;
     this.authPath = options.auth_url;
-    this.mediaPath = options.media_url;
-    this.mediaPath = options.media_url;    
-
+    this.mediaPath = options.media_url;   
+    this.instance_id = options.instance_id;
     // this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
     // this.API_SECRET =
     //   process.env[config.API_SECRET_VARIABLE || "TAYEH_API_SECRET"];
