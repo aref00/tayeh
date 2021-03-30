@@ -1,6 +1,31 @@
+import { Pagination } from "src/base";
 import { Sex, instance, Invoice, address, reminder } from "../instance/types";
 import { media } from "../media/types";
 import { user } from "../user/types";
+
+// enum
+
+type DeliveryStatus = {
+  
+}
+
+type DeliveryType = {
+  
+}
+
+// general
+
+type Position = {
+  latitude: string;
+  longitude: string;
+};
+
+type Location = {
+  countryId: number;
+  stateId: number;
+  cityId: number;
+  verbal: string;
+};
 
 export type customer = {
   id: number;
@@ -51,21 +76,9 @@ export type UpdateCustomer = {
   email?: string;
   id_card?: string;
   sex?: Sex;
-  birthdate?:Date;
+  birthdate?: Date;
   payment_return_card_number?: string;
-}
-
-type Position = {
-  latitude: string;
-  longitude: string;
-}
-
-type Location = {
-  countryId: number;
-  stateId: number;
-  cityId: number;
-  verbal: string;
-}
+};
 
 export type NewAddress = {
   title: string;
@@ -77,8 +90,19 @@ export type NewAddress = {
   mobile: string;
   id_card: string;
   postcode: string;
-}
+};
 
 export type UpdateAddress = NewAddress & {
   id: string;
+};
+
+export type DeliveryParams = {
+  customer: string;
+  next: string;
+};
+
+export type InvoiceHistory = Pagination & {
+  paid?: boolean;
+  delivery_status?: DeliveryStatus;
+  delivery_type?: DeliveryType;
 }

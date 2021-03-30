@@ -8,6 +8,7 @@ import {
   UpdateCustomer,
   NewAddress,
   UpdateAddress,
+  InvoiceHistory,
 } from "./types";
 
 const resourceName = "customer";
@@ -102,5 +103,33 @@ export class Customer extends Base {
   deleteAddress(address_id: string) {
     const path = `${resourceName}/address/${address_id}`;
     return this.delete<any>(path);
+  }
+
+  setCartDelivery(body: NewAddress) {
+    let path = `${resourceName}/cart/delivery`;
+    return this.post<any>(path, { address: body });
+  }
+
+  setAvatar(avatar_id: string) {
+    let path = `${resourceName}/avatar`;
+    return this.post<any>(path, { avatar_id: avatar_id });
+  }
+
+  getInvoicesHistory(params?: InvoiceHistory) {
+    let query = `${resourceName}/cart/history`;
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any>(query);
+  }
+
+  getInvoice(invoice_id: string) {
+    let path = `${resourceName}/invoice/${invoice_id}`;
+    return this.get<any>(path);
+  }
+
+  getCustomerCredit() {
+    let path = `${resourceName}/credit`;
+    return this.get<any>(path);
   }
 }

@@ -1,5 +1,5 @@
 import { Base, Pagination } from "../base";
-import { customer, AddToCartBody, ToggleFavorite, UpdateCartItem, UpdateCustomer, NewAddress, UpdateAddress } from "./types";
+import { customer, AddToCartBody, ToggleFavorite, UpdateCartItem, UpdateCustomer, NewAddress, UpdateAddress, InvoiceHistory } from "./types";
 export declare class Customer extends Base {
     getPassword(username: string): Promise<import("axios").AxiosResponse<{
         access_token: any;
@@ -21,4 +21,9 @@ export declare class Customer extends Base {
     createAddress(body: NewAddress): Promise<import("axios").AxiosResponse<any>>;
     updateAddress(body: UpdateAddress): Promise<import("axios").AxiosResponse<any>>;
     deleteAddress(address_id: string): Promise<import("axios").AxiosResponse<any>>;
+    setCartDelivery(body: NewAddress): Promise<import("axios").AxiosResponse<any>>;
+    setAvatar(avatar_id: string): Promise<import("axios").AxiosResponse<any>>;
+    getInvoicesHistory(params?: InvoiceHistory): Promise<import("axios").AxiosResponse<any>>;
+    getInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
+    getCustomerCredit(): Promise<import("axios").AxiosResponse<any>>;
 }

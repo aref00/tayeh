@@ -1,6 +1,19 @@
+import { Pagination } from "src/base";
 import { Sex, instance, Invoice, address, reminder } from "../instance/types";
 import { media } from "../media/types";
 import { user } from "../user/types";
+declare type DeliveryStatus = {};
+declare type DeliveryType = {};
+declare type Position = {
+    latitude: string;
+    longitude: string;
+};
+declare type Location = {
+    countryId: number;
+    stateId: number;
+    cityId: number;
+    verbal: string;
+};
 export declare type customer = {
     id: number;
     name: string;
@@ -49,16 +62,6 @@ export declare type UpdateCustomer = {
     birthdate?: Date;
     payment_return_card_number?: string;
 };
-declare type Position = {
-    latitude: string;
-    longitude: string;
-};
-declare type Location = {
-    countryId: number;
-    stateId: number;
-    cityId: number;
-    verbal: string;
-};
 export declare type NewAddress = {
     title: string;
     description: string;
@@ -72,5 +75,14 @@ export declare type NewAddress = {
 };
 export declare type UpdateAddress = NewAddress & {
     id: string;
+};
+export declare type DeliveryParams = {
+    customer: string;
+    next: string;
+};
+export declare type InvoiceHistory = Pagination & {
+    paid?: boolean;
+    delivery_status?: DeliveryStatus;
+    delivery_type?: DeliveryType;
 };
 export {};
