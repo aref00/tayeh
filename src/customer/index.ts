@@ -85,6 +85,14 @@ export class Customer extends Base {
     return this.get<any>(query);
   }
 
+  getProductsHistory(params: Pagination) {
+    let query = `${resourceName}/products-history`;
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any>(query);
+  }
+
   getAddresses() {
     let path = `${resourceName}/addresses`;
     return this.get<any>(path);

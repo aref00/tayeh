@@ -3,8 +3,7 @@ export interface ConnectionOptionsBase {
     readonly api_url: "api.tayeh.ir" | string;
     readonly auth_url: "auth.tayeh.ir" | string;
     readonly media_url: "media.tayeh.ir" | string;
-    readonly api_key: string;
-    readonly api_secret: string;
+    readonly api_access: string;
     readonly instance_id: number;
 }
 export declare type ConnectionOptions = ConnectionOptionsBase;

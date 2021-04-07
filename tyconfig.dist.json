@@ -3,7 +3,6 @@
     "api_url": "http://api.tayeh.ir",
     "auth_url": "http://auth.tayeh.ir",
     "media_url": "http://media.tayeh.ir",
-    "api_key": "",
-    "api_secret": "",
+    "api_access": "",
     "instance_id": 1 
 }

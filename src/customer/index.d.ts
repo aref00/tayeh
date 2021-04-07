@@ -17,6 +17,7 @@ export declare class Customer extends Base {
     deleteCartItem(cart_item_id: string): Promise<import("axios").AxiosResponse<any>>;
     getNotifications(params?: Pagination): Promise<import("axios").AxiosResponse<any>>;
     getFavorites(params: Pagination): Promise<import("axios").AxiosResponse<any>>;
+    getProductsHistory(params: Pagination): Promise<import("axios").AxiosResponse<any>>;
     getAddresses(): Promise<import("axios").AxiosResponse<any>>;
     createAddress(body: NewAddress): Promise<import("axios").AxiosResponse<any>>;
     updateAddress(body: UpdateAddress): Promise<import("axios").AxiosResponse<any>>;
