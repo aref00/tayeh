@@ -1,6 +1,6 @@
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ConnectionOptions } from "./connection/ConnectionOptions";
-import { ConnectionOptionsReader } from './connection/ConnectionOptionsReader'
+import { ConnectionOptionsReader } from "./connection/ConnectionOptionsReader";
 export type Pagination = {
   page?: number;
   per_page?: number;
@@ -16,17 +16,17 @@ export abstract class Base {
   private authPath: string;
   private mediaPath: string;
   private API_ACCESS: string;
+  private USER_ACCESS: string;
   public instance_id: number;
 
-  constructor(
-    options: ConnectionOptions
-    ) {
+  constructor(options: ConnectionOptions) {
     // const optionsReader = new ConnectionOptionsReader();
     // const options = optionsReader.plainRead();
     this.API_ACCESS = options.api_access;
+    this.USER_ACCESS;
     this.basePath = options.api_url;
     this.authPath = options.auth_url;
-    this.mediaPath = options.media_url;   
+    this.mediaPath = options.media_url;
     this.instance_id = options.instance_id;
     // this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
     // this.API_SECRET =
@@ -37,7 +37,7 @@ export abstract class Base {
     // this.mediaPath = process.env["REACT_APP_MEDIA_URL"] || "http://media.tayeh.ir/";
     if (typeof this.API_ACCESS !== "string")
       throw new Error(
-        "You should define TAYEH_API_KEY & TAYEH_API_SECRET in your environment variables."
+        "You should define TAYEH_API_ACCESS in your environment variables."
       );
     // this.get_token();
   }
@@ -64,6 +64,10 @@ export abstract class Base {
     this.API_ACCESS = access_token;
   }
 
+  set_user(access_token) {
+    this.USER_ACCESS = access_token;
+  }
+
   protected async delete<T>(
     endpoint: string,
     options?: AxiosRequestConfig
@@ -88,6 +92,23 @@ export abstract class Base {
     const url = this.basePath + endpoint;
     const headers = {
       Authorization: `Bearer ${this.API_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.get(url, config);
+    return res;
+  }
+
+  protected async user_get<T>(
+    endpoint: string,
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.basePath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.USER_ACCESS}`,
       "Content-type": "application/json",
     };
     const config: AxiosRequestConfig = {

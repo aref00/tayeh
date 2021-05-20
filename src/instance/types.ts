@@ -46,7 +46,7 @@ enum ProductSort {
   price_low_2_high,
   price_high_2_low,
   discount,
-  bestsellers
+  bestsellers,
 }
 
 // ---------- GENERAL ----------
@@ -61,22 +61,9 @@ export type CategoryParams = SearchParams & {
   category_id?: string;
 };
 
-export type ProductParams = SearchParams & {
-  suggested?: boolean;
-  min_price?: number;
-  max_price?: number;
-  category?: string;
-  brands?: string[];
-  only_available?: boolean;
-  discounted?: boolean;
-  sort?: ProductSort;
-  filters?: string[];
-  similar_to?: string;
-};
-
 export type SearchFilters = {
   category?: string;
-}
+};
 
 export type BannerParams = {
   category?: string;
@@ -85,27 +72,6 @@ export type BannerParams = {
 
 export type InviteParams = {
   mobile: string;
-};
-
-export type RevenueParams = {
-  unit?: string;
-  product_id?: number;
-  start?: number;
-  end?: number;
-};
-
-export type TotalParams = Pagination & {
-  product_id?: number;
-};
-
-export type SeriesParams = Pagination & {
-  type?: string;
-  page_unit?: string;
-};
-
-export type InstancePageParams = {
-  text?: string;
-  creator_id?: number;
 };
 
 export type reminder = {};
@@ -190,12 +156,6 @@ export type instance = {
   image_id: number;
 };
 
-export type NewInstance = {};
-
-export type UpdateInstance = {
-  instance_id: number;
-};
-
 // ---------- PRODUCTS ----------
 
 export type Product = {
@@ -211,37 +171,55 @@ export type Product = {
   date_created: string;
 };
 
+export type ProductParams = SearchParams & {
+  suggested?: boolean;
+  min_price?: number;
+  max_price?: number;
+  category?: string;
+  brands?: string[];
+  only_available?: boolean;
+  discounted?: boolean;
+  sort?: ProductSort;
+  filters?: string[];
+  similar_to?: string;
+};
+
 export type NewProduct = {
   name: string;
-  description?: string;
-  predicted_percent?: number;
+  description: string;
+  category_id: string;
+  brand_id: string;
+  image_id: string;
+  barcode: string;
+  price: number;
+  price_with_off: number;
+  predicted_percent: number;
 };
 
-export type CreatedProduct = {
-  err: string;
-  response: string;
+export type UpdateProduct = NewProduct & {
+  id: string;
 };
 
-export type DeletedProduct = {
-  err: string;
-  response: string;
+export type CreatePrice = {
+  product_id: string;
+  option_id: string;
+  price: number;
+  price_with_off: number;
 };
 
-export type UpdateProduct = {
-  id: number;
-  name?: string;
-  description?: string;
-  predicted_percent?: number;
+export type UpdatePrice = CreatePrice & {
+  id: string;
 };
 
-export type UpdatedProduct = {
-  err: string;
-  response: string;
+export type UpdatePrices = UpdatePrice[];
+
+export type ProductMedia = {
+  media_id: string;
 };
 
 // ---------- TRANSACTION ----------
 
-export type Transaction = {
+type Transaction = {
   id: number;
   transaction_no: number;
   instance_id: number;
@@ -266,38 +244,6 @@ export type Transaction = {
   date_created: string;
   date_updated: string;
   date_archived: string;
-};
-
-export type NewTransaction = {
-  product_id: number;
-  count: number;
-  value: number;
-  name: string;
-  description: string;
-  type: Transaction_Type;
-  paid: boolean;
-};
-
-export type CreatedTransaction = {
-  err: string;
-  transaction: Transaction;
-};
-
-export type UpdateTransaction = {
-  id: number;
-  product_id: number;
-  count: number;
-  value: number;
-  name: string;
-  description: string;
-  invoice_id: number;
-  options: string;
-  locked: boolean;
-};
-
-export type UpdatedTransaction = {
-  err: string;
-  transaction: Transaction;
 };
 
 // ---------- INVOICE ----------
@@ -329,11 +275,6 @@ export type Invoice = {
   date_updated: string;
 };
 
-export type Invoices = {
-  invoices: Invoice[];
-  count: number;
-};
-
 export type NewInvoice = {
   transactions: number[];
   count: number;
@@ -342,16 +283,6 @@ export type NewInvoice = {
   description: string;
   type: string;
   paid: boolean;
-};
-
-export type CreatedInvoice = {
-  err: string;
-};
-
-export type DeletedInvoice = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
 };
 
 export type UpdateInvoice = {
@@ -367,12 +298,6 @@ export type UpdateInvoice = {
   closed: boolean;
 };
 
-export type UpdatedInvoice = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
-};
-
 // ---------- CUSTOMER ----------
 
 export type NewCustomer = {
@@ -381,18 +306,8 @@ export type NewCustomer = {
   mobile: string;
 };
 
-export type CreatedCustomer = {
-  err: string;
-};
-
 export type UpdateCustomer = {
   customer_id: number;
-};
-
-export type UpdatedCustomer = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
 };
 
 // ---------- SUB_USER ----------
@@ -411,34 +326,9 @@ export type sub_user = {
   date_updated: Date;
 };
 
-export type sub_users = {
-  users: sub_user[];
-  count: number;
-};
-
-export type NewUser = {
-  name: string;
-  description: string;
-  mobile: string;
-};
-
-export type CreatedUser = {
-  err: string;
-};
-
-export type DeletedUser = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
-};
-
-export type UpdateUser = {
-  user_id: number;
-};
-
 // ---------- ADDRESS ----------
 
-export type address = {
+type address = {
   id: number;
   province_id: number;
   city_id: number;
@@ -459,19 +349,56 @@ export type address = {
   date_updated: string;
 };
 
-export type addresses = {
-  addresses: address[];
-  count: number;
+// ------------------------- Category -----------------------
+
+type CategoryFilterType = {
+  TEXT: "text";
+  SELECT: "select";
+  NUMBER: "number";
+  BOOLEAN: "boolean";
+  COLOR: "color";
+  RATING: "rating";
+  IMAGE: "image";
 };
 
-export type NewAddress = {};
-
-export type DeletedAddress = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
+type Option = {
+  value: string;
+  id: string;
+  category_filter_id: string;
 };
 
-export type UpdateAddress = {
-  address_id: number;
+export type NewCategory = {
+  name: string;
+  parent_id: string;
+};
+
+export type EditCategory = {
+  id: string;
+  name: string;
+  description: string;
+  parent_id: string;
+};
+
+export type FilterGroup = {
+  name: string;
+};
+
+export type CategoryFilter = {
+  name: string;
+  options: Option[];
+  type: CategoryFilterType;
+  category_id: string;
+  group_id?: string;
+};
+
+// ------------------------- Brand -----------------------
+
+export type NewBrand = {
+  name: string;
+  translated_name: string;
+  logo_id: string;
+};
+
+export type EditBrand = NewBrand & {
+  id: string;
 };

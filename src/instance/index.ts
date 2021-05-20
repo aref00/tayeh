@@ -3,79 +3,35 @@ import { Base } from "../base";
 import { customer } from "../customer/types";
 import {
   instance,
-  NewInstance,
-  UpdateInstance,
   Product,
   NewProduct,
-  CreatedProduct,
-  DeletedProduct,
   UpdateProduct,
-  UpdatedProduct,
-  Transaction,
-  NewTransaction,
-  CreatedTransaction,
-  UpdateTransaction,
-  UpdatedTransaction,
   Invoice,
-  Invoices,
   NewInvoice,
-  CreatedInvoice,
-  DeletedInvoice,
   UpdateInvoice,
-  UpdatedInvoice,
   NewCustomer,
-  CreatedCustomer,
   UpdateCustomer,
-  UpdatedCustomer,
-  sub_user,
-  sub_users,
-  NewUser,
-  CreatedUser,
-  DeletedUser,
-  UpdateUser,
-  addresses,
-  NewAddress,
-  DeletedAddress,
-  UpdateAddress,
   SearchParams,
-  RevenueParams,
-  TotalParams,
-  SeriesParams,
-  InstancePageParams,
   CategoryParams,
+  NewCategory,
+  EditCategory,
+  FilterGroup,
+  CategoryFilter,
+  NewBrand,
+  EditBrand,
   BannerParams,
   InviteParams,
   ProductParams,
+  CreatePrice,
+  UpdatePrice,
+  UpdatePrices,
+  ProductMedia,
   SearchFilters,
 } from "./types";
 
 const resourceName = "instance";
 
 export class Instance extends Base {
-  // ---------- INSTANCE ----------
-  getInstance() {
-    return this.get<instance>(`${resourceName}/${this.instance_id}`);
-  }
-
-  createInstance(params: NewInstance) {
-    let path = `${resourceName}/instance`;
-    return this.post<instance>(path, params);
-  }
-
-  updateInstance(params: UpdateInstance) {
-    let path = `${resourceName}/instance/update`;
-    return this.post<instance>(path, params);
-  }
-
-  // // ---------- INSTANCE-PAGE ----------
-  getInstancePage(page_number: number, params?: InstancePageParams) {
-    let query = `${resourceName}/page/${page_number}`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<instance[]>(query);
-  }
-
   // // ---------- INSTANCE-PRODUCTS ----------
   getProducts(params?: ProductParams) {
     let query = `${resourceName}/${this.instance_id}/products`;
@@ -85,53 +41,49 @@ export class Instance extends Base {
     return this.get<Product[]>(query);
   }
 
-  createInstanceProduct(params: NewProduct) {
+  createProduct(params: NewProduct) {
     let path = `${resourceName}/${this.instance_id}/product`;
-    return this.post<CreatedProduct>(path, params);
+    return this.put<any>(path, params);
   }
 
-  deleteInstanceProduct(product_id: number) {
+  deleteProduct(product_id: string) {
     let path = `${resourceName}/${this.instance_id}/product/${product_id}`;
-    return this.delete<DeletedProduct>(path);
+    return this.delete<any>(path);
   }
 
-  updateInstanceProduct(params: UpdateProduct) {
+  updateProduct(params: UpdateProduct) {
     let path = `${resourceName}/${this.instance_id}/product/update`;
-    return this.post<UpdatedProduct>(path, params);
+    return this.post<any>(path, params);
   }
 
-  // // ---------- INSTANCE-TRANSACTION ----------
-  getInstanceTransactions() {
-    let path = `${resourceName}/${this.instance_id}/transactions`;
-    return this.get<Transaction[]>(path);
+  createProductPrice(params: CreatePrice) {
+    let path = `${resourceName}/${this.instance_id}/product/price`;
+    return this.put<any>(path, params);
   }
 
-  findInstanceTransactions(params?: SearchParams) {
-    let query = `${resourceName}/${this.instance_id}/transactions/open`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<Transaction[]>(query);
+  updateProductPrice(params: UpdatePrice) {
+    let path = `${resourceName}/${this.instance_id}/product/price`;
+    return this.post<any>(path, params);
   }
 
-  getProductTransactions(product_id: number) {
-    let path = `${resourceName}/${this.instance_id}/transactions/product/${product_id}`;
-    return this.get<Transaction[]>(path);
+  updateProductPrices(params: UpdatePrices) {
+    let path = `${resourceName}/${this.instance_id}/product/prices`;
+    return this.post<any>(path, params);
   }
 
-  deleteInstanceTransaction(transaction_id: number) {
-    let path = `${resourceName}/${this.instance_id}/transaction/${transaction_id}`;
-    return this.delete<instance>(path);
+  getProductPrices(product_id: string) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}/price-filter`;
+    return this.get<any>(path);
   }
 
-  createInstanceTransaction(params: NewTransaction) {
-    let path = `${resourceName}/${this.instance_id}/transaction`;
-    return this.post<CreatedTransaction>(path, params);
+  addProductMedia(product_id: string, params: ProductMedia) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}/media`;
+    return this.post<any>(path, params);
   }
 
-  updateInstanceTransaction(params: UpdateTransaction) {
-    let path = `${resourceName}/${this.instance_id}/transaction/update`;
-    return this.post<UpdatedTransaction>(path, params);
+  deleteProductMedia(product_id: string, media_id: string) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}/media/${media_id}`;
+    return this.delete<any>(path);
   }
 
   // // ---------- INSTANCE-INVOICES ----------
@@ -140,7 +92,7 @@ export class Instance extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<Invoices>(query);
+    return this.get<any[]>(query);
   }
 
   getInstanceInvoice(invoice_id: number) {
@@ -150,44 +102,17 @@ export class Instance extends Base {
 
   deleteInstanceInvoice(invoice_id: number) {
     let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
-    return this.delete<DeletedInvoice>(path);
+    return this.delete<any>(path);
   }
 
   createInstanceInvoice(params: NewInvoice) {
     let path = `${resourceName}/${this.instance_id}/invoice`;
-    return this.post<CreatedInvoice>(path, params);
+    return this.post<any>(path, params);
   }
 
   updateInstanceInvoice(params: UpdateInvoice) {
     let path = `${resourceName}/${this.instance_id}/invoice/update`;
-    return this.post<UpdatedInvoice>(path, params);
-  }
-
-  // // ---------- INSTANCE-SERIES ----------
-  getInstanceSeries(params?: SeriesParams) {
-    let query = `${resourceName}/${this.instance_id}/series`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<instance[]>(query);
-  }
-
-  // // ---------- INSTANCE-TOTAL ----------
-  getInstanceTotal(params?: TotalParams) {
-    let query = `${resourceName}/${this.instance_id}/total/monthly`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<instance[]>(query);
-  }
-
-  // // ---------- INSTANCE-REVENUE ----------
-  getInstanceRevenue(params?: RevenueParams) {
-    let query = `${resourceName}/${this.instance_id}/revenue`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<instance[]>(query);
+    return this.post<any>(path, params);
   }
 
   // // ---------- INSTANCE-CUSTOMER ----------
@@ -211,65 +136,12 @@ export class Instance extends Base {
 
   createInstanceCustomer(params: NewCustomer) {
     let path = `${resourceName}/${this.instance_id}/customer`;
-    return this.post<CreatedCustomer>(path, params);
+    return this.post<any>(path, params);
   }
 
-  updateInstanceCustomer(params: UpdateCustomer) {
-    let path = `${resourceName}/${this.instance_id}/customer/update`;
-    return this.post<UpdatedCustomer>(path, params);
-  }
-
-  // // ---------- INSTANCE-USER ----------
-  getInstanceUsers(params?: SearchParams) {
-    let query = `${resourceName}/${this.instance_id}/users`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<sub_users>(query);
-  }
-
-  getInstanceUser(user_id: number) {
-    let path = `${resourceName}/${this.instance_id}/user/${user_id}`;
-    return this.get<sub_user>(path);
-  }
-
-  deleteInstanceUser(user_id: number) {
-    let path = `${resourceName}/${this.instance_id}/user/${user_id}`;
-    return this.delete<DeletedUser>(path);
-  }
-
-  createInstanceUser(params: NewUser) {
-    let path = `${resourceName}/${this.instance_id}/user`;
-    return this.post<CreatedUser>(path, params);
-  }
-
-  updateInstanceUser(params: UpdateUser) {
-    let path = `${resourceName}/${this.instance_id}/user/update`;
-    return this.post<instance>(path, params);
-  }
-
-  // // ---------- INSTANCE-ADDRESS ----------
-  getInstanceAddresses(params?: SearchParams) {
-    let query = `${resourceName}/${this.instance_id}/addresses`;
-    if (params) {
-      query += qs.stringify(params, "?");
-    }
-    return this.get<addresses>(query);
-  }
-
-  deleteInstanceAddress(address_id: number) {
-    let path = `${resourceName}/${this.instance_id}/address/${address_id}`;
-    return this.delete<DeletedAddress>(path);
-  }
-
-  createInstanceAddress(params: NewAddress) {
-    let path = `${resourceName}/${this.instance_id}/address`;
-    return this.post<instance>(path, params);
-  }
-
-  updateInstanceAddress(params: UpdateAddress) {
-    let path = `${resourceName}/${this.instance_id}/address/update`;
-    return this.post<instance>(path, params);
+  updateInstanceCustomer(customer_id: string, params: UpdateCustomer) {
+    let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
+    return this.post<any>(path, params);
   }
 
   // // ---------- INSTANCE-CATEGORIES ----------
@@ -279,6 +151,53 @@ export class Instance extends Base {
       query += qs.stringify(params, "?");
     }
     return this.get<any[]>(query);
+  }
+
+  createCategory(params: NewCategory) {
+    let path = `${resourceName}/${this.instance_id}/category`;
+    return this.put<instance>(path, params);
+  }
+
+  updateCategory(params: EditCategory) {
+    let path = `${resourceName}/${this.instance_id}/category`;
+    return this.post<instance>(path, params);
+  }
+
+  deleteCategory(category_id: string) {
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}`;
+    return this.delete<instance>(path);
+  }
+
+  createCategoryFilterGroup(category_id: string, params: FilterGroup) {
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter-group`;
+    return this.put<instance>(path, params);
+  }
+
+  createCategoryFilter(category_id: string, params: CategoryFilter) {
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter`;
+    return this.put<instance>(path, params);
+  }
+
+  // // ---------- INSTANCE-BRANDS ----------
+
+  createBrand(params: NewBrand) {
+    let path = `${resourceName}/${this.instance_id}/brand`;
+    return this.put<instance>(path, params);
+  }
+
+  updateBrand(params: EditBrand) {
+    let path = `${resourceName}/${this.instance_id}/brand`;
+    return this.post<instance>(path, params);
+  }
+
+  deleteBrand(brand_id: string) {
+    let path = `${resourceName}/${this.instance_id}/brand/${brand_id}`;
+    return this.delete<instance>(path);
+  }
+
+  getBrands() {
+    let path = `${resourceName}/${this.instance_id}/brands`;
+    return this.get<instance>(path);
   }
 
   // // ---------- INSTANCE-BANNERS ----------

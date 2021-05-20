@@ -1,6 +1,6 @@
 import qs from "querystringify";
 import { Base } from "../base";
-import { SearchParams } from "../instance/types";
+import { Qsearch, SearchParams } from "./types";
 
 const resourceName = "countries";
 
@@ -13,16 +13,16 @@ export class Countries extends Base {
     return this.get<any>(query);
   }
 
-  getIranProvinces(params: SearchParams) {
-    let query = `${resourceName}/IR/states`;
+  getIranProvinces(params: Qsearch) {
+    let query = `${resourceName}/103/states`;
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<any>(query);
   }
 
-  getStateCities(state_code: string, params: SearchParams) {
-    let query = `${resourceName}/IR/states/${state_code}/cities`;
+  getStateCities(state_id: string, params: Qsearch) {
+    let query = `${resourceName}/103/states/${state_id}/cities`;
     if (params) {
       query += qs.stringify(params, "?");
     }

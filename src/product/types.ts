@@ -31,3 +31,8 @@ export type GetReviews = Pagination & {
   sort: Sort;
   only_buyers: boolean;
 };
+
+export type GetRemaining = {
+  price_id: string | null;
+  options: string[] | [];
+};

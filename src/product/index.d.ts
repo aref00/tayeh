@@ -1,5 +1,5 @@
 import { Base } from "../base";
-import { SendNewReview, GetReviews } from "./types";
+import { SendNewReview, GetReviews, GetRemaining } from "./types";
 export declare class Product extends Base {
     getProduct(product_id: string): Promise<import("axios").AxiosResponse<any[]>>;
     getProductFeatures(product_id: string): Promise<import("axios").AxiosResponse<any[]>>;
@@ -9,4 +9,5 @@ export declare class Product extends Base {
     getRatingOptions(product_id: string): Promise<import("axios").AxiosResponse<any>>;
     sendNewReview(product_id: string, body: SendNewReview): Promise<import("axios").AxiosResponse<any>>;
     reportReview(product_id: string, review_id: string): Promise<import("axios").AxiosResponse<any>>;
+    getProductRemaining(product_id: string, params?: GetRemaining): Promise<import("axios").AxiosResponse<any>>;
 }

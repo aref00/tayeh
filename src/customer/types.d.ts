@@ -1,5 +1,5 @@
 import { Pagination } from "src/base";
-import { Sex, instance, Invoice, address, reminder } from "../instance/types";
+import { Sex, instance, Invoice, reminder } from "../instance/types";
 import { media } from "../media/types";
 import { user } from "../user/types";
 declare type DeliveryStatus = {};
@@ -25,7 +25,7 @@ export declare type customer = {
     id_card: string;
     father: string;
     birthdate: string;
-    addresses: address[];
+    addresses: object[];
     phone: string;
     mobile: string;
     email: string;
@@ -44,6 +44,7 @@ export declare type AddToCartBody = {
     product_id: string;
     price_id: string;
     choices: string[] | [];
+    count?: number;
 };
 export declare type ToggleFavorite = {
     product_id: string;
@@ -61,6 +62,20 @@ export declare type UpdateCustomer = {
     sex?: Sex;
     birthdate?: Date;
     payment_return_card_number?: string;
+};
+export declare type RegisterCustomer = {
+    instance_username: string;
+    name: string;
+    mobile: string;
+    email: string;
+    password: string;
+    username: string;
+    father: string;
+    website: string;
+    id_card: string;
+    id_card_image_id: string;
+    license_image_id: string;
+    sex: Sex;
 };
 export declare type NewAddress = {
     title: string;

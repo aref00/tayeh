@@ -9,26 +9,58 @@ import {
   NewAddress,
   UpdateAddress,
   InvoiceHistory,
+  RegisterCustomer,
 } from "./types";
 
 const resourceName = "customer";
 
 export class Customer extends Base {
-  getPassword(username: string) {
-    const url = "customer/login";
+  getPassword(mobile: string) {
+    const url = "customer/send-mobile-verification";
     return this.post_auth<{ access_token }>(url, {
-      username: username,
+      mobile: mobile,
       instance: this.instance_id,
     });
   }
 
-  customerVerify(usename: string, password: string) {
-    const url = "customer/verify";
+  customerVerify(mobile: string, code: string) {
+    const url = "customer/verify-mobile";
     return this.post_auth<{ access_token }>(url, {
-      username: usename,
+      mobile: mobile,
+      verification_code: code,
+      instance: this.instance_id,
+    });
+  }
+
+  getVerification(email: string) {
+    const url = "customer/send-email-verification";
+    return this.post_auth<{ access_token }>(url, {
+      email: email,
+      instance: this.instance_id,
+    });
+  }
+
+  emailVerify(email: string, code: string) {
+    const url = "customer/verify-email";
+    return this.post_auth<{ access_token }>(url, {
+      email: email,
+      verification_code: code,
+      instance: this.instance_id,
+    });
+  }
+
+  customerLogin(username: string, password: string) {
+    const url = "customer/login";
+    return this.post_auth<{ access_token }>(url, {
+      username: username,
       password: password,
       instance: this.instance_id,
     });
+  }
+
+  customerRegister(body: RegisterCustomer) {
+    const url = "customer/register";
+    return this.post_auth<any>(url, body);
   }
 
   getCustomerMe() {

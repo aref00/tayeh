@@ -47,18 +47,6 @@ export declare type CategoryParams = SearchParams & {
     parent_id?: number;
     category_id?: string;
 };
-export declare type ProductParams = SearchParams & {
-    suggested?: boolean;
-    min_price?: number;
-    max_price?: number;
-    category?: string;
-    brands?: string[];
-    only_available?: boolean;
-    discounted?: boolean;
-    sort?: ProductSort;
-    filters?: string[];
-    similar_to?: string;
-};
 export declare type SearchFilters = {
     category?: string;
 };
@@ -68,23 +56,6 @@ export declare type BannerParams = {
 };
 export declare type InviteParams = {
     mobile: string;
-};
-export declare type RevenueParams = {
-    unit?: string;
-    product_id?: number;
-    start?: number;
-    end?: number;
-};
-export declare type TotalParams = Pagination & {
-    product_id?: number;
-};
-export declare type SeriesParams = Pagination & {
-    type?: string;
-    page_unit?: string;
-};
-export declare type InstancePageParams = {
-    text?: string;
-    creator_id?: number;
 };
 export declare type reminder = {};
 export declare type Province = {
@@ -159,10 +130,6 @@ export declare type instance = {
     inventory_type: string;
     image_id: number;
 };
-export declare type NewInstance = {};
-export declare type UpdateInstance = {
-    instance_id: number;
-};
 export declare type Product = {
     id: number;
     name: string;
@@ -175,30 +142,46 @@ export declare type Product = {
     remaining: number;
     date_created: string;
 };
+export declare type ProductParams = SearchParams & {
+    suggested?: boolean;
+    min_price?: number;
+    max_price?: number;
+    category?: string;
+    brands?: string[];
+    only_available?: boolean;
+    discounted?: boolean;
+    sort?: ProductSort;
+    filters?: string[];
+    similar_to?: string;
+};
 export declare type NewProduct = {
     name: string;
-    description?: string;
-    predicted_percent?: number;
+    description: string;
+    category_id: string;
+    brand_id: string;
+    image_id: string;
+    barcode: string;
+    price: number;
+    price_with_off: number;
+    predicted_percent: number;
 };
-export declare type CreatedProduct = {
-    err: string;
-    response: string;
+export declare type UpdateProduct = NewProduct & {
+    id: string;
 };
-export declare type DeletedProduct = {
-    err: string;
-    response: string;
+export declare type CreatePrice = {
+    product_id: string;
+    option_id: string;
+    price: number;
+    price_with_off: number;
 };
-export declare type UpdateProduct = {
-    id: number;
-    name?: string;
-    description?: string;
-    predicted_percent?: number;
+export declare type UpdatePrice = CreatePrice & {
+    id: string;
 };
-export declare type UpdatedProduct = {
-    err: string;
-    response: string;
+export declare type UpdatePrices = UpdatePrice[];
+export declare type ProductMedia = {
+    media_id: string;
 };
-export declare type Transaction = {
+declare type Transaction = {
     id: number;
     transaction_no: number;
     instance_id: number;
@@ -223,34 +206,6 @@ export declare type Transaction = {
     date_created: string;
     date_updated: string;
     date_archived: string;
-};
-export declare type NewTransaction = {
-    product_id: number;
-    count: number;
-    value: number;
-    name: string;
-    description: string;
-    type: Transaction_Type;
-    paid: boolean;
-};
-export declare type CreatedTransaction = {
-    err: string;
-    transaction: Transaction;
-};
-export declare type UpdateTransaction = {
-    id: number;
-    product_id: number;
-    count: number;
-    value: number;
-    name: string;
-    description: string;
-    invoice_id: number;
-    options: string;
-    locked: boolean;
-};
-export declare type UpdatedTransaction = {
-    err: string;
-    transaction: Transaction;
 };
 export declare type Invoice = {
     id: number;
@@ -278,10 +233,6 @@ export declare type Invoice = {
     date_created: string;
     date_updated: string;
 };
-export declare type Invoices = {
-    invoices: Invoice[];
-    count: number;
-};
 export declare type NewInvoice = {
     transactions: number[];
     count: number;
@@ -290,14 +241,6 @@ export declare type NewInvoice = {
     description: string;
     type: string;
     paid: boolean;
-};
-export declare type CreatedInvoice = {
-    err: string;
-};
-export declare type DeletedInvoice = {
-    raw: any;
-    affected: number;
-    generatedMaps: any;
 };
 export declare type UpdateInvoice = {
     id: number;
@@ -311,26 +254,13 @@ export declare type UpdateInvoice = {
     done: boolean;
     closed: boolean;
 };
-export declare type UpdatedInvoice = {
-    raw: any;
-    affected: number;
-    generatedMaps: any;
-};
 export declare type NewCustomer = {
     name: string;
     description: string;
     mobile: string;
 };
-export declare type CreatedCustomer = {
-    err: string;
-};
 export declare type UpdateCustomer = {
     customer_id: number;
-};
-export declare type UpdatedCustomer = {
-    raw: any;
-    affected: number;
-    generatedMaps: any;
 };
 export declare type sub_user = {
     id: number;
@@ -345,27 +275,7 @@ export declare type sub_user = {
     date_created: Date;
     date_updated: Date;
 };
-export declare type sub_users = {
-    users: sub_user[];
-    count: number;
-};
-export declare type NewUser = {
-    name: string;
-    description: string;
-    mobile: string;
-};
-export declare type CreatedUser = {
-    err: string;
-};
-export declare type DeletedUser = {
-    raw: any;
-    affected: number;
-    generatedMaps: any;
-};
-export declare type UpdateUser = {
-    user_id: number;
-};
-export declare type address = {
+declare type address = {
     id: number;
     province_id: number;
     city_id: number;
@@ -385,17 +295,46 @@ export declare type address = {
     date_created: string;
     date_updated: string;
 };
-export declare type addresses = {
-    addresses: address[];
-    count: number;
+declare type CategoryFilterType = {
+    TEXT: "text";
+    SELECT: "select";
+    NUMBER: "number";
+    BOOLEAN: "boolean";
+    COLOR: "color";
+    RATING: "rating";
+    IMAGE: "image";
 };
-export declare type NewAddress = {};
-export declare type DeletedAddress = {
-    raw: any;
-    affected: number;
-    generatedMaps: any;
+declare type Option = {
+    value: string;
+    id: string;
+    category_filter_id: string;
 };
-export declare type UpdateAddress = {
-    address_id: number;
+export declare type NewCategory = {
+    name: string;
+    parent_id: string;
+};
+export declare type EditCategory = {
+    id: string;
+    name: string;
+    description: string;
+    parent_id: string;
+};
+export declare type FilterGroup = {
+    name: string;
+};
+export declare type CategoryFilter = {
+    name: string;
+    options: Option[];
+    type: CategoryFilterType;
+    category_id: string;
+    group_id?: string;
+};
+export declare type NewBrand = {
+    name: string;
+    translated_name: string;
+    logo_id: string;
+};
+export declare type EditBrand = NewBrand & {
+    id: string;
 };
 export {};
