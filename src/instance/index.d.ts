@@ -18,7 +18,7 @@ export declare class Instance extends Base {
     createInstanceInvoice(params: NewInvoice): Promise<import("axios").AxiosResponse<any>>;
     updateInstanceInvoice(params: UpdateInvoice): Promise<import("axios").AxiosResponse<any>>;
     getInstanceCustomers(params?: SearchParams): Promise<import("axios").AxiosResponse<customer[]>>;
-    getInstanceCustomer(customer_id: number): Promise<import("axios").AxiosResponse<customer>>;
+    getInstanceCustomer(customer_id: string): Promise<import("axios").AxiosResponse<customer>>;
     deleteInstanceCustomer(customer_id: number): Promise<import("axios").AxiosResponse<instance>>;
     createInstanceCustomer(params: NewCustomer): Promise<import("axios").AxiosResponse<any>>;
     updateInstanceCustomer(customer_id: string, params: UpdateCustomer): Promise<import("axios").AxiosResponse<any>>;

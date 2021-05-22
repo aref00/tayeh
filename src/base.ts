@@ -85,6 +85,23 @@ export abstract class Base {
     return res;
   }
 
+  protected async user_delete<T>(
+    endpoint: string,
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.basePath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.USER_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.delete(url, config);
+    return res;
+  }
+
   protected async get<T>(
     endpoint: string,
     options?: AxiosRequestConfig
@@ -153,6 +170,24 @@ export abstract class Base {
     return res;
   }
 
+  protected async user_post<T>(
+    endpoint: string,
+    body = {},
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.basePath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.USER_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.post(url, body, config);
+    return res;
+  }
+
   protected async post_media<T>(
     endpoint: string,
     body = {},
@@ -179,6 +214,24 @@ export abstract class Base {
     const url = this.basePath + endpoint;
     const headers = {
       Authorization: `Bearer ${this.API_ACCESS}`,
+      "Content-type": "application/json",
+    };
+    const config: AxiosRequestConfig = {
+      headers: { ...headers },
+      ...options,
+    };
+    const res = await Axios.put(url, body, config);
+    return res;
+  }
+
+  protected async user_put<T>(
+    endpoint: string,
+    body = {},
+    options?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const url = this.basePath + endpoint;
+    const headers = {
+      Authorization: `Bearer ${this.USER_ACCESS}`,
       "Content-type": "application/json",
     };
     const config: AxiosRequestConfig = {

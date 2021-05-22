@@ -1,6 +1,6 @@
 {
   "name": "tayeh.js",
-  "version": "0.0.7",
+  "version": "0.0.75",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
   "files": [
