@@ -200,7 +200,7 @@ export class Instance extends Base {
   }
 
   getBannerCategories(){
-    let path = `${resourceName}/${this.instance_id}/banner-category`;
+    let path = `${resourceName}/${this.instance_id}/banner-categories`;
     return this.user_get<any[]>(path);
   }
 
