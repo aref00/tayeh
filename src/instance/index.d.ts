@@ -1,5 +1,5 @@
 import { Base } from "../base";
-import { NewProduct, UpdateProduct, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, InviteParams, ProductParams, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams } from "./types";
+import { NewProduct, UpdateProduct, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams } from "./types";
 export declare class Instance extends Base {
     getProducts(params?: ProductParams): Promise<import("axios").AxiosResponse<any[]>>;
     createProduct(params: NewProduct): Promise<import("axios").AxiosResponse<any>>;
@@ -29,8 +29,14 @@ export declare class Instance extends Base {
     createBrand(params: NewBrand): Promise<import("axios").AxiosResponse<any>>;
     updateBrand(params: EditBrand): Promise<import("axios").AxiosResponse<any>>;
     deleteBrand(brand_id: string): Promise<import("axios").AxiosResponse<any>>;
-    getBrands(): Promise<import("axios").AxiosResponse<any>>;
+    getBrands(): Promise<import("axios").AxiosResponse<any[]>>;
+    createBannerCategory(body: NewBannerCat): Promise<import("axios").AxiosResponse<any>>;
+    getBannerCategories(): Promise<import("axios").AxiosResponse<any[]>>;
+    deleteBannerCategory(category_id: string): Promise<import("axios").AxiosResponse<any>>;
     getBanners(params?: BannerParams): Promise<import("axios").AxiosResponse<any[]>>;
+    createBanner(body: NewBanner): Promise<import("axios").AxiosResponse<any>>;
+    deleteBanner(banner_id: string): Promise<import("axios").AxiosResponse<any>>;
+    updateBanner(body: EditBanner): Promise<import("axios").AxiosResponse<any>>;
     getSearchFilters(params?: SearchFilters): Promise<import("axios").AxiosResponse<any>>;
     sendInviteSms(params: InviteParams): Promise<import("axios").AxiosResponse<any>>;
     getTopKeywords(params: SearchFilters): Promise<import("axios").AxiosResponse<any>>;

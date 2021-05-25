@@ -14,6 +14,9 @@ import {
   NewBrand,
   EditBrand,
   BannerParams,
+  NewBannerCat,
+  NewBanner,
+  EditBanner,
   InviteParams,
   ProductParams,
   CreatePrice,
@@ -187,17 +190,46 @@ export class Instance extends Base {
 
   getBrands() {
     let path = `${resourceName}/${this.instance_id}/brands`;
-    return this.get<any>(path);
+    return this.get<any[]>(path);
   }
 
   // // ---------- INSTANCE-BANNERS ----------
+  createBannerCategory(body: NewBannerCat){
+    let path = `${resourceName}/${this.instance_id}/banner-category`;
+    return this.user_put<any>(path, body);
+  }
+
+  getBannerCategories(){
+    let path = `${resourceName}/${this.instance_id}/banner-category`;
+    return this.user_get<any[]>(path);
+  }
+
+  deleteBannerCategory(category_id: string){
+    let path = `${resourceName}/${this.instance_id}/banner-category/${category_id}`;
+    return this.user_delete<any>(path);
+  }
+
   getBanners(params?: BannerParams) {
     let query = `${resourceName}/${this.instance_id}/banners`;
-
     if (params) {
       query += qs.stringify(params, "?");
     }
     return this.get<any[]>(query);
+  }
+
+  createBanner(body: NewBanner){
+    let path = `${resourceName}/${this.instance_id}/banner`;
+    return this.user_put<any>(path, body);
+  }
+
+  deleteBanner(banner_id: string){
+    let path = `${resourceName}/${this.instance_id}/banner/${banner_id}`;
+    return this.user_delete<any>(path);
+  }
+
+  updateBanner(body: EditBanner){
+    let path = `${resourceName}/${this.instance_id}/banner/update`;
+    return this.user_post<any>(path, body);
   }
 
   // // ---------- GetSearchFillters ----------

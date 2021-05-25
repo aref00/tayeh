@@ -133,8 +133,42 @@ declare enum Banner_Size {
     medium = 2,
     large = 3
 }
+declare enum BannerPosition {
+    CUSTOM = "custom",
+    MAIN = "main",
+    SOCIAL_SHOP = "social_shop"
+}
+declare enum BannerSize {
+    ALL = "all",
+    SMALL = "small",
+    MEDIUM = "medium",
+    LARGE = "large"
+}
+declare enum BannerLinkType {
+    NONE = "none",
+    URL = "url",
+    PRODUCT = "product",
+    CATEGORY = "category"
+}
 export declare type BannerParams = {
     category?: string;
     size?: Banner_Size;
+};
+export declare type NewBannerCat = {
+    type: BannerPosition;
+    title: string;
+};
+export declare type NewBanner = {
+    banner_category_id: string;
+    link_type: BannerLinkType;
+    link: string;
+    media_id: string;
+    size: BannerSize;
+    title: string;
+    description: string;
+    status: boolean;
+};
+export declare type EditBanner = NewBanner & {
+    id: string;
 };
 export {};

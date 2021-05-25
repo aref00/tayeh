@@ -3,7 +3,7 @@ import { Pagination } from "../base";
 export enum Sex {
   male,
   female,
-  na
+  na,
 }
 
 // ---------- GENERAL ----------
@@ -82,10 +82,10 @@ enum InvoiceType {
   SOLD = "sold", //فروش
   BOUGHT = "bought", //خرید
   INCOME = "income", //درآمد
-  COST = "cost",// هزینه
-  RETURN_FROM_SOLD = "rs",// بازگشت از فروش
+  COST = "cost", // هزینه
+  RETURN_FROM_SOLD = "rs", // بازگشت از فروش
   RETURN_FROM_BOUGHT = "rb", // بازگشت از خرید
-  TRANSFER = "transfer" //انتقال
+  TRANSFER = "transfer", //انتقال
 }
 
 export type InvoicesParams = {
@@ -174,7 +174,47 @@ enum Banner_Size {
   large,
 }
 
+enum BannerPosition {
+  CUSTOM = "custom",
+  MAIN = "main",
+  SOCIAL_SHOP = "social_shop",
+}
+
+enum BannerSize {
+  ALL = "all",
+  SMALL = "small",
+  MEDIUM = "medium",
+  LARGE = "large",
+}
+
+enum BannerLinkType {
+  NONE = "none",
+  URL = "url",
+  PRODUCT = "product",
+  CATEGORY = "category",
+}
+
 export type BannerParams = {
   category?: string;
   size?: Banner_Size;
+};
+
+export type NewBannerCat = {
+  type: BannerPosition;
+  title: string;
+};
+
+export type NewBanner = {
+  banner_category_id: string;
+  link_type: BannerLinkType;
+  link: string;
+  media_id: string;
+  size: BannerSize;
+  title: string;
+  description: string;
+  status: boolean; //true
+};
+
+export type EditBanner = NewBanner & {
+  id: string;
 };
