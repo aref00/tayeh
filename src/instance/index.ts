@@ -1,14 +1,8 @@
 import qs from "querystringify";
 import { Base } from "../base";
-import { customer } from "../customer/types";
 import {
-  instance,
-  Product,
   NewProduct,
   UpdateProduct,
-  Invoice,
-  NewInvoice,
-  UpdateInvoice,
   NewCustomer,
   UpdateCustomer,
   SearchParams,
@@ -27,6 +21,7 @@ import {
   UpdatePrices,
   ProductMedia,
   SearchFilters,
+  InvoicesParams,
 } from "./types";
 
 const resourceName = "instance";
@@ -38,7 +33,7 @@ export class Instance extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<Product[]>(query);
+    return this.get<any[]>(query);
   }
 
   createProduct(params: NewProduct) {
@@ -87,32 +82,22 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-INVOICES ----------
-  getInstanceInvoices(params?: SearchParams) {
+  getInstanceInvoices(params?: InvoicesParams) {
     let query = `${resourceName}/${this.instance_id}/invoices`;
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.get<any[]>(query);
+    return this.user_get<any[]>(query);
   }
 
-  getInstanceInvoice(invoice_id: number) {
+  getInstanceInvoice(invoice_id: string) {
     let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
-    return this.get<Invoice>(path);
+    return this.user_get<any>(path);
   }
 
   deleteInstanceInvoice(invoice_id: number) {
     let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
     return this.delete<any>(path);
-  }
-
-  createInstanceInvoice(params: NewInvoice) {
-    let path = `${resourceName}/${this.instance_id}/invoice`;
-    return this.post<any>(path, params);
-  }
-
-  updateInstanceInvoice(params: UpdateInvoice) {
-    let path = `${resourceName}/${this.instance_id}/invoice/update`;
-    return this.post<any>(path, params);
   }
 
   // // ---------- INSTANCE-CUSTOMER ----------
@@ -121,17 +106,17 @@ export class Instance extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.user_get<customer[]>(query);
+    return this.user_get<any[]>(query);
   }
 
   getInstanceCustomer(customer_id: string) {
     let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
-    return this.user_get<customer>(path);
+    return this.user_get<any>(path);
   }
 
   deleteInstanceCustomer(customer_id: number) {
     let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
-    return this.user_delete<instance>(path);
+    return this.user_delete<any>(path);
   }
 
   createInstanceCustomer(params: NewCustomer) {
@@ -142,6 +127,11 @@ export class Instance extends Base {
   updateInstanceCustomer(customer_id: string, params: UpdateCustomer) {
     let path = `${resourceName}/${this.instance_id}/customer/${customer_id}`;
     return this.user_post<any>(path, params);
+  }
+
+  acceptInstanceCustomer(customer_id: string) {
+    let path = `${resourceName}/${this.instance_id}/customer/${customer_id}/accept`;
+    return this.user_post<any>(path);
   }
 
   // // ---------- INSTANCE-CATEGORIES ----------
@@ -155,49 +145,49 @@ export class Instance extends Base {
 
   createCategory(params: NewCategory) {
     let path = `${resourceName}/${this.instance_id}/category`;
-    return this.user_put<instance>(path, params);
+    return this.user_put<any>(path, params);
   }
 
   updateCategory(params: EditCategory) {
     let path = `${resourceName}/${this.instance_id}/category`;
-    return this.user_post<instance>(path, params);
+    return this.user_post<any>(path, params);
   }
 
   deleteCategory(category_id: string) {
     let path = `${resourceName}/${this.instance_id}/category/${category_id}`;
-    return this.user_delete<instance>(path);
+    return this.user_delete<any>(path);
   }
 
   createCategoryFilterGroup(category_id: string, params: FilterGroup) {
     let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter-group`;
-    return this.user_put<instance>(path, params);
+    return this.user_put<any>(path, params);
   }
 
   createCategoryFilter(category_id: string, params: CategoryFilter) {
     let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter`;
-    return this.user_put<instance>(path, params);
+    return this.user_put<any>(path, params);
   }
 
   // // ---------- INSTANCE-BRANDS ----------
 
   createBrand(params: NewBrand) {
     let path = `${resourceName}/${this.instance_id}/brand`;
-    return this.user_put<instance>(path, params);
+    return this.user_put<any>(path, params);
   }
 
   updateBrand(params: EditBrand) {
     let path = `${resourceName}/${this.instance_id}/brand`;
-    return this.user_post<instance>(path, params);
+    return this.user_post<any>(path, params);
   }
 
   deleteBrand(brand_id: string) {
     let path = `${resourceName}/${this.instance_id}/brand/${brand_id}`;
-    return this.user_delete<instance>(path);
+    return this.user_delete<any>(path);
   }
 
   getBrands() {
     let path = `${resourceName}/${this.instance_id}/brands`;
-    return this.get<instance>(path);
+    return this.get<any>(path);
   }
 
   // // ---------- INSTANCE-BANNERS ----------
@@ -222,7 +212,7 @@ export class Instance extends Base {
   // // ---------- InviteSms ----------
   sendInviteSms(params: InviteParams) {
     let path = `${resourceName}/${this.instance_id}/invite-sms`;
-    return this.post<instance>(path, params);
+    return this.post<any>(path, params);
   }
 
   // // ---------- SearchKeywords ----------
@@ -231,6 +221,6 @@ export class Instance extends Base {
     if (params) {
       query += qs.stringify(params, "?");
     }
-    return this.post<instance>(query, params);
+    return this.post<any>(query, params);
   }
 }

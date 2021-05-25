@@ -1,7 +1,5 @@
 import { Pagination } from "src/base";
-import { Sex, instance, Invoice, reminder } from "../instance/types";
-import { media } from "../media/types";
-import { user } from "../user/types";
+import { Sex } from "../instance/types";
 declare type DeliveryStatus = {};
 declare type DeliveryType = {};
 declare type Position = {
@@ -13,32 +11,6 @@ declare type Location = {
     stateId: number;
     cityId: number;
     verbal: string;
-};
-export declare type customer = {
-    id: number;
-    name: string;
-    sex: Sex;
-    instance_id: number;
-    instance: instance;
-    invoices: Invoice[];
-    description: string;
-    id_card: string;
-    father: string;
-    birthdate: string;
-    addresses: object[];
-    phone: string;
-    mobile: string;
-    email: string;
-    website: string;
-    creator_id: number;
-    creator: user;
-    reminders: reminder[];
-    is_verified: boolean;
-    socket: string;
-    image_id: number;
-    image: media;
-    date_created: Date;
-    date_updated: Date;
 };
 export declare type AddToCartBody = {
     product_id: string;

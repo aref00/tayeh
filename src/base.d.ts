@@ -17,7 +17,7 @@ export declare abstract class Base {
     protected delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected user_delete<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected get<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
-    protected userGet<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+    protected user_get<T>(endpoint: string, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected user_post<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;
     protected post_media<T>(endpoint: string, body?: {}, options?: AxiosRequestConfig): Promise<AxiosResponse<T>>;

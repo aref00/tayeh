@@ -1,6 +1,5 @@
 import qs from "querystringify";
 import { Base } from "../base";
-import { user } from "./types";
 
 const resourceName = "user";
 
@@ -14,6 +13,6 @@ export class User extends Base {
   }
 
   getUserMe() {
-    return this.user_get<user>(`${resourceName}/me`);
+    return this.user_get<any>(`${resourceName}/me`);
   }
 }

@@ -1,7 +1,6 @@
 import qs from "querystringify";
 import { Base, Pagination } from "../base";
 import {
-  customer,
   AddToCartBody,
   ToggleFavorite,
   UpdateCartItem,
@@ -64,11 +63,11 @@ export class Customer extends Base {
   }
 
   getCustomerMe() {
-    return this.get<customer>(`${resourceName}/me`);
+    return this.get<any>(`${resourceName}/me`);
   }
 
   getCustomer() {
-    return this.get<customer>(`${resourceName}`);
+    return this.get<any>(`${resourceName}`);
   }
 
   updateCustomer(body: UpdateCustomer) {
