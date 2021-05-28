@@ -134,11 +134,9 @@ export type NewCategory = {
   parent_id: string;
 };
 
-export type EditCategory = {
+export type EditCategory = NewCategory & {
   id: string;
-  name: string;
   description: string;
-  parent_id: string;
 };
 
 export type FilterGroup = {

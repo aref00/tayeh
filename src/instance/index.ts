@@ -171,6 +171,11 @@ export class Instance extends Base {
     return this.user_put<any>(path, params);
   }
 
+  getCategoryFeatures(category_id: string){
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter-group`;
+    return this.user_get<any>(path);
+  }
+
   // // ---------- INSTANCE-BRANDS ----------
 
   createBrand(params: NewBrand) {

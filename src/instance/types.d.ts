@@ -103,11 +103,9 @@ export declare type NewCategory = {
     name: string;
     parent_id: string;
 };
-export declare type EditCategory = {
+export declare type EditCategory = NewCategory & {
     id: string;
-    name: string;
     description: string;
-    parent_id: string;
 };
 export declare type FilterGroup = {
     name: string;
