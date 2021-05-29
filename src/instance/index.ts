@@ -85,7 +85,7 @@ export class Instance extends Base {
     return this.user_delete<any>(path);
   }
 
-  setProductFeatures(product_id: string, body: SetFeatures){
+  setProductFeatures(product_id: string, body: SetFeatures) {
     const path = `${resourceName}/${this.instance_id}/product/${product_id}/features`;
     return this.user_put<any>(path, body);
   }
@@ -177,9 +177,14 @@ export class Instance extends Base {
     return this.user_put<any>(path, params);
   }
 
-  getCategoryFeatures(category_id: string){
+  getCategoryFeatures(category_id: string) {
     let path = `${resourceName}/${this.instance_id}/category/${category_id}/features`;
     return this.user_get<any>(path);
+  }
+
+  deleteCategoryFilter(category_id: string, filter_id: string) {
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter/${filter_id}`;
+    return this.user_delete<any>(path);
   }
 
   // // ---------- INSTANCE-BRANDS ----------
@@ -205,17 +210,17 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-BANNERS ----------
-  createBannerCategory(body: NewBannerCat){
+  createBannerCategory(body: NewBannerCat) {
     let path = `${resourceName}/${this.instance_id}/banner-category`;
     return this.user_put<any>(path, body);
   }
 
-  getBannerCategories(){
+  getBannerCategories() {
     let path = `${resourceName}/${this.instance_id}/banner-categories`;
     return this.user_get<any[]>(path);
   }
 
-  deleteBannerCategory(category_id: string){
+  deleteBannerCategory(category_id: string) {
     let path = `${resourceName}/${this.instance_id}/banner-category/${category_id}`;
     return this.user_delete<any>(path);
   }
@@ -228,17 +233,17 @@ export class Instance extends Base {
     return this.get<any[]>(query);
   }
 
-  createBanner(body: NewBanner){
+  createBanner(body: NewBanner) {
     let path = `${resourceName}/${this.instance_id}/banner`;
     return this.user_put<any>(path, body);
   }
 
-  deleteBanner(banner_id: string){
+  deleteBanner(banner_id: string) {
     let path = `${resourceName}/${this.instance_id}/banner/${banner_id}`;
     return this.user_delete<any>(path);
   }
 
-  updateBanner(body: EditBanner){
+  updateBanner(body: EditBanner) {
     let path = `${resourceName}/${this.instance_id}/banner/update`;
     return this.user_post<any>(path, body);
   }
