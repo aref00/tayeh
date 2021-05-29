@@ -87,7 +87,7 @@ export class Instance extends Base {
 
   setProductFeatures(product_id: string, body: SetFeatures){
     const path = `${resourceName}/${this.instance_id}/product/${product_id}/features`;
-    return this.put<any>(path, body);
+    return this.user_put<any>(path, body);
   }
 
   // // ---------- INSTANCE-INVOICES ----------
