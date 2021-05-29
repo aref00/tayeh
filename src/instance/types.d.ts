@@ -20,6 +20,19 @@ declare enum ProductSort {
     discount = 3,
     bestsellers = 4
 }
+declare type SetProductFeaturesRequestFilter = {
+    category_id: string;
+    position?: number;
+    group_id?: string;
+    name: string;
+    id: string;
+    type?: CategoryFilterType;
+};
+declare type SetProductFeaturesRequestFeature = {
+    filter_id: string;
+    text?: string;
+    id?: string | null;
+};
 export declare type ProductParams = SearchParams & {
     suggested?: boolean;
     min_price?: number;
@@ -58,6 +71,10 @@ export declare type UpdatePrice = CreatePrice & {
 export declare type UpdatePrices = UpdatePrice[];
 export declare type ProductMedia = {
     media_id: string;
+};
+export declare type SetFeatures = {
+    filters: SetProductFeaturesRequestFilter[];
+    features: SetProductFeaturesRequestFeature[];
 };
 declare enum InvoiceType {
     SOLD = "sold",

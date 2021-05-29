@@ -30,6 +30,21 @@ enum ProductSort {
   bestsellers,
 }
 
+type SetProductFeaturesRequestFilter = {
+  category_id: string;
+  position?: number;
+  group_id?: string;
+  name: string;
+  id: string;
+  type?: CategoryFilterType;
+};
+
+type SetProductFeaturesRequestFeature = {
+  filter_id: string;
+  text?: string;
+  id?: string | null;
+};
+
 export type ProductParams = SearchParams & {
   suggested?: boolean;
   min_price?: number;
@@ -74,6 +89,11 @@ export type UpdatePrices = UpdatePrice[];
 
 export type ProductMedia = {
   media_id: string;
+};
+
+export type SetFeatures = {
+  filters: SetProductFeaturesRequestFilter[];
+  features: SetProductFeaturesRequestFeature[];
 };
 
 // ---------- INVOICE ----------

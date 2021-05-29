@@ -3,6 +3,7 @@ import { Base } from "../base";
 import {
   NewProduct,
   UpdateProduct,
+  SetFeatures,
   NewCustomer,
   UpdateCustomer,
   SearchParams,
@@ -82,6 +83,11 @@ export class Instance extends Base {
   deleteProductMedia(product_id: string, media_id: string) {
     let path = `${resourceName}/${this.instance_id}/product/${product_id}/media/${media_id}`;
     return this.user_delete<any>(path);
+  }
+
+  setProductFeatures(product_id: string, body: SetFeatures){
+    const path = `${resourceName}/${this.instance_id}/product/${product_id}/features`;
+    return this.put<any>(path, body);
   }
 
   // // ---------- INSTANCE-INVOICES ----------
@@ -172,7 +178,7 @@ export class Instance extends Base {
   }
 
   getCategoryFeatures(category_id: string){
-    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter-group`;
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/features`;
     return this.user_get<any>(path);
   }
 
