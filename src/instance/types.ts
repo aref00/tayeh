@@ -236,3 +236,13 @@ export type NewBanner = {
 export type EditBanner = NewBanner & {
   id: string;
 };
+
+// ------------------------- Notifications -----------------------
+
+export type CreateNotif = {
+  customer_id: string;
+  title: string;
+  message: string;
+  clipboard: string;
+  url: string;
+};

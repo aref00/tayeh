@@ -89,3 +89,8 @@ export type InvoiceHistory = Pagination & {
   delivery_status?: DeliveryStatus;
   delivery_type?: DeliveryType;
 };
+
+export type CustomerResetPass = {
+  old_password: string;
+  new_password: string;
+};

@@ -186,4 +186,11 @@ export declare type NewBanner = {
 export declare type EditBanner = NewBanner & {
     id: string;
 };
+export declare type CreateNotif = {
+    customer_id: string;
+    title: string;
+    message: string;
+    clipboard: string;
+    url: string;
+};
 export {};

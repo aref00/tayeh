@@ -1,6 +1,7 @@
 import qs from "querystringify";
 import { Base, Pagination } from "../base";
 import {
+  CustomerResetPass,
   AddToCartBody,
   ToggleFavorite,
   UpdateCartItem,
@@ -59,6 +60,11 @@ export class Customer extends Base {
 
   customerRegister(body: RegisterCustomer) {
     const url = "customer/register";
+    return this.post_auth<any>(url, body);
+  }
+
+  resetCustomerPassword(body: CustomerResetPass){
+    const url = "customer/reset-password";
     return this.post_auth<any>(url, body);
   }
 

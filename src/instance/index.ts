@@ -26,6 +26,7 @@ import {
   ProductMedia,
   SearchFilters,
   InvoicesParams,
+  CreateNotif
 } from "./types";
 
 const resourceName = "instance";
@@ -246,6 +247,17 @@ export class Instance extends Base {
   updateBanner(body: EditBanner) {
     let path = `${resourceName}/${this.instance_id}/banner/update`;
     return this.user_post<any>(path, body);
+  }
+
+  // // ---------- INSTANCE-NOTIFICATIONS ----------
+  createNotification(body: CreateNotif){
+    let path = `${resourceName}/${this.instance_id}/notification`;
+    return this.user_put<any>(path, body);
+  }
+
+  getInstanceNotifications(){
+    let path = `${resourceName}/${this.instance_id}/notifications`;
+    return this.user_get<any[]>(path);
   }
 
   // // ---------- GetSearchFillters ----------
