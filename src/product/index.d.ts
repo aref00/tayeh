@@ -10,4 +10,5 @@ export declare class Product extends Base {
     sendNewReview(product_id: string, body: SendNewReview): Promise<import("axios").AxiosResponse<any>>;
     reportReview(product_id: string, review_id: string): Promise<import("axios").AxiosResponse<any>>;
     getProductRemaining(product_id: string, params?: GetRemaining): Promise<import("axios").AxiosResponse<any>>;
+    getPricableFilters(product_id: string): Promise<import("axios").AxiosResponse<any>>;
 }

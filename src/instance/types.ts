@@ -96,6 +96,18 @@ export type SetFeatures = {
   features: SetProductFeaturesRequestFeature[];
 };
 
+class Price  {
+  id: string = null;
+  price: number = 0;
+  price_with_off: number = null;
+  option_id: string;
+}
+
+export type SetProPrices = {
+  filter_id: string;
+  prices: Price[];
+};
+
 // ---------- INVOICE ----------
 
 enum InvoiceType {

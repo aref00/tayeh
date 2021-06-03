@@ -55,4 +55,9 @@ export class Product extends Base {
     }
     return this.get<any>(query);
   }
+
+  getPricableFilters(product_id: string) {
+    let path = `${resourceName}/${product_id}/price-filter`;
+    return this.user_get<any>(path);
+  }
 }

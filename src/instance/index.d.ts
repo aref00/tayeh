@@ -1,5 +1,5 @@
 import { Base } from "../base";
-import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif } from "./types";
+import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif } from "./types";
 export declare class Instance extends Base {
     getProducts(params?: ProductParams): Promise<import("axios").AxiosResponse<any[]>>;
     createProduct(params: NewProduct): Promise<import("axios").AxiosResponse<any>>;
@@ -12,6 +12,7 @@ export declare class Instance extends Base {
     addProductMedia(product_id: string, params: ProductMedia): Promise<import("axios").AxiosResponse<any>>;
     deleteProductMedia(product_id: string, media_id: string): Promise<import("axios").AxiosResponse<any>>;
     setProductFeatures(product_id: string, body: SetFeatures): Promise<import("axios").AxiosResponse<any>>;
+    setProductPriceFilter(product_id: string, params: SetProPrices): Promise<import("axios").AxiosResponse<any>>;
     getInstanceInvoices(params?: InvoicesParams): Promise<import("axios").AxiosResponse<any[]>>;
     getInstanceInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
     deleteInstanceInvoice(invoice_id: number): Promise<import("axios").AxiosResponse<any>>;

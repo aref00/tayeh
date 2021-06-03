@@ -76,6 +76,16 @@ export declare type SetFeatures = {
     filters: SetProductFeaturesRequestFilter[];
     features: SetProductFeaturesRequestFeature[];
 };
+declare class Price {
+    id: string;
+    price: number;
+    price_with_off: number;
+    option_id: string;
+}
+export declare type SetProPrices = {
+    filter_id: string;
+    prices: Price[];
+};
 declare enum InvoiceType {
     SOLD = "sold",
     BOUGHT = "bought",

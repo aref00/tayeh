@@ -20,13 +20,14 @@ import {
   EditBanner,
   InviteParams,
   ProductParams,
+  SetProPrices,
   CreatePrice,
   UpdatePrice,
   UpdatePrices,
   ProductMedia,
   SearchFilters,
   InvoicesParams,
-  CreateNotif
+  CreateNotif,
 } from "./types";
 
 const resourceName = "instance";
@@ -89,6 +90,11 @@ export class Instance extends Base {
   setProductFeatures(product_id: string, body: SetFeatures) {
     const path = `${resourceName}/${this.instance_id}/product/${product_id}/features`;
     return this.user_put<any>(path, body);
+  }
+
+  setProductPriceFilter(product_id: string, params: SetProPrices) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}/price-filter`;
+    return this.user_post<any>(path, params);
   }
 
   // // ---------- INSTANCE-INVOICES ----------
@@ -250,12 +256,12 @@ export class Instance extends Base {
   }
 
   // // ---------- INSTANCE-NOTIFICATIONS ----------
-  createNotification(body: CreateNotif){
+  createNotification(body: CreateNotif) {
     let path = `${resourceName}/${this.instance_id}/notification`;
     return this.user_put<any>(path, body);
   }
 
-  getInstanceNotifications(){
+  getInstanceNotifications() {
     let path = `${resourceName}/${this.instance_id}/notifications`;
     return this.user_get<any[]>(path);
   }
