@@ -79,7 +79,7 @@ export class Instance extends Base {
 
   addProductMedia(product_id: string, params: ProductMedia) {
     let path = `${resourceName}/${this.instance_id}/product/${product_id}/media`;
-    return this.user_post<any>(path, params);
+    return this.user_put<any>(path, params);
   }
 
   deleteProductMedia(product_id: string, media_id: string) {
