@@ -70,7 +70,7 @@ export declare type UpdatePrice = CreatePrice & {
 };
 export declare type UpdatePrices = UpdatePrice[];
 export declare type ProductMedia = {
-    media_id: string;
+    media: string;
 };
 export declare type SetFeatures = {
     filters: SetProductFeaturesRequestFilter[];

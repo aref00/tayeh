@@ -194,6 +194,15 @@ export class Instance extends Base {
     return this.user_delete<any>(path);
   }
 
+  deleteFilterOption(
+    category_id: string,
+    filter_id: string,
+    option_id: string
+  ) {
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter/${filter_id}/option/${option_id}`;
+    return this.user_delete<any>(path);
+  }
+
   // // ---------- INSTANCE-BRANDS ----------
 
   createBrand(params: NewBrand) {

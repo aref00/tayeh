@@ -88,7 +88,7 @@ export type UpdatePrice = CreatePrice & {
 export type UpdatePrices = UpdatePrice[];
 
 export type ProductMedia = {
-  media_id: string;
+  media: string;
 };
 
 export type SetFeatures = {

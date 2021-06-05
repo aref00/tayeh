@@ -30,6 +30,7 @@ export declare class Instance extends Base {
     createCategoryFilter(category_id: string, params: CategoryFilter): Promise<import("axios").AxiosResponse<any>>;
     getCategoryFeatures(category_id: string): Promise<import("axios").AxiosResponse<any>>;
     deleteCategoryFilter(category_id: string, filter_id: string): Promise<import("axios").AxiosResponse<any>>;
+    deleteFilterOption(category_id: string, filter_id: string, option_id: string): Promise<import("axios").AxiosResponse<any>>;
     createBrand(params: NewBrand): Promise<import("axios").AxiosResponse<any>>;
     updateBrand(params: EditBrand): Promise<import("axios").AxiosResponse<any>>;
     deleteBrand(brand_id: string): Promise<import("axios").AxiosResponse<any>>;
