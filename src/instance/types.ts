@@ -96,7 +96,7 @@ export type SetFeatures = {
   features: SetProductFeaturesRequestFeature[];
 };
 
-class Price  {
+class Price {
   id: string = null;
   price: number = 0;
   price_with_off: number = null;
@@ -258,3 +258,17 @@ export type CreateNotif = {
   clipboard: string;
   url: string;
 };
+
+// ------------------------- Auto-Remaining -----------------------
+
+export class AutoRemaining {
+  product_id: string;
+  remaining: number;
+  price_id: string;
+  inventory_id?: string = null;
+  choices?: string[] = [];
+}
+
+export class BatchRemaining {
+  remainings: AutoRemaining[];
+}

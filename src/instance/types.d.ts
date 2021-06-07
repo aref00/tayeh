@@ -203,4 +203,14 @@ export declare type CreateNotif = {
     clipboard: string;
     url: string;
 };
+export declare class AutoRemaining {
+    product_id: string;
+    remaining: number;
+    price_id: string;
+    inventory_id?: string;
+    choices?: string[];
+}
+export declare class BatchRemaining {
+    remainings: AutoRemaining[];
+}
 export {};

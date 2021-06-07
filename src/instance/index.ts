@@ -28,6 +28,8 @@ import {
   SearchFilters,
   InvoicesParams,
   CreateNotif,
+  AutoRemaining,
+  BatchRemaining
 } from "./types";
 
 const resourceName = "instance";
@@ -297,5 +299,16 @@ export class Instance extends Base {
       query += qs.stringify(params, "?");
     }
     return this.post<any>(query, params);
+  }
+
+  // // ---------- AutoRemaining ----------
+  updateRemainingWithChoices(body: AutoRemaining) {
+    let path = `${resourceName}/${this.instance_id}/auto-remaining`;
+    return this.user_post<any>(path, body);
+  }
+
+  updateRemainingsWithChoices(body: BatchRemaining) {
+    let path = `${resourceName}/${this.instance_id}/batch-auto-remaining`;
+    return this.user_post<any>(path, body);
   }
 }
