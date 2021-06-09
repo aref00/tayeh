@@ -1,5 +1,5 @@
 import qs from "querystringify";
-import { Base } from "../base";
+import { Base, Pagination } from "../base";
 import {
   NewProduct,
   UpdateProduct,
@@ -272,9 +272,12 @@ export class Instance extends Base {
     return this.user_put<any>(path, body);
   }
 
-  getInstanceNotifications() {
-    let path = `${resourceName}/${this.instance_id}/notifications`;
-    return this.user_get<any[]>(path);
+  getInstanceNotifications(params: Pagination) {
+    let query = `${resourceName}/${this.instance_id}/notifications`;
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.user_get<any[]>(query);
   }
 
   // // ---------- GetSearchFillters ----------

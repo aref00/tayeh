@@ -63,7 +63,7 @@ export class Customer extends Base {
     return this.post_auth<any>(url, body);
   }
 
-  resetCustomerPassword(body: CustomerResetPass){
+  resetCustomerPassword(body: CustomerResetPass) {
     const url = "customer/reset-password";
     return this.post_auth<any>(url, body);
   }
@@ -91,9 +91,12 @@ export class Customer extends Base {
     return this.post<any>(path, body);
   }
 
-  getCustomerCart() {
-    let path = `${resourceName}/cart`;
-    return this.get<any>(path);
+  getCustomerCart(params: Pagination) {
+    let query = `${resourceName}/cart`;
+    if (params) {
+      query += qs.stringify(params, "?");
+    }
+    return this.get<any>(query);
   }
 
   updateCartItem(body: UpdateCartItem) {
@@ -112,6 +115,11 @@ export class Customer extends Base {
       query += qs.stringify(params, "?");
     }
     return this.get<any>(query);
+  }
+
+  getCustomerNotification(notification_id: string) {
+    let path = `${resourceName}/notifications/${notification_id}`;
+    return this.get<any>(path);
   }
 
   getFavorites(params: Pagination) {

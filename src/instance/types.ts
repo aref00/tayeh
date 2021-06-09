@@ -122,6 +122,7 @@ enum InvoiceType {
 
 export type InvoicesParams = {
   page: number;
+  per_page: number;
   type: InvoiceType;
 };
 

@@ -1,4 +1,4 @@
-import { Base } from "../base";
+import { Base, Pagination } from "../base";
 import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif, AutoRemaining, BatchRemaining } from "./types";
 export declare class Instance extends Base {
     getProducts(params?: ProductParams): Promise<import("axios").AxiosResponse<any[]>>;
@@ -43,7 +43,7 @@ export declare class Instance extends Base {
     deleteBanner(banner_id: string): Promise<import("axios").AxiosResponse<any>>;
     updateBanner(body: EditBanner): Promise<import("axios").AxiosResponse<any>>;
     createNotification(body: CreateNotif): Promise<import("axios").AxiosResponse<any>>;
-    getInstanceNotifications(): Promise<import("axios").AxiosResponse<any[]>>;
+    getInstanceNotifications(params: Pagination): Promise<import("axios").AxiosResponse<any[]>>;
     getSearchFilters(params?: SearchFilters): Promise<import("axios").AxiosResponse<any>>;
     sendInviteSms(params: InviteParams): Promise<import("axios").AxiosResponse<any>>;
     getTopKeywords(params: SearchFilters): Promise<import("axios").AxiosResponse<any>>;

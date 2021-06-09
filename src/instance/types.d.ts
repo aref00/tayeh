@@ -97,6 +97,7 @@ declare enum InvoiceType {
 }
 export declare type InvoicesParams = {
     page: number;
+    per_page: number;
     type: InvoiceType;
 };
 export declare type NewCustomer = {
