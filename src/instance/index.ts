@@ -55,7 +55,7 @@ export class Instance extends Base {
   }
 
   updateProduct(params: UpdateProduct) {
-    let path = `${resourceName}/${this.instance_id}/product/update`;
+    let path = `${resourceName}/${this.instance_id}/product`;
     return this.user_post<any>(path, params);
   }
 
