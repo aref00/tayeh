@@ -3,6 +3,12 @@ import { Sex } from "../instance/types";
 
 // enum
 
+export enum PaymentMethod {
+  tayeh='tayeh',
+  manual='manual',
+  zarinpal='zarinpal'
+}
+
 type DeliveryStatus = {};
 
 type DeliveryType = {};

@@ -10,6 +10,7 @@ import {
   UpdateAddress,
   InvoiceHistory,
   RegisterCustomer,
+  PaymentMethod,
 } from "./types";
 
 const resourceName = "customer";
@@ -158,9 +159,9 @@ export class Customer extends Base {
     return this.delete<any>(path);
   }
 
-  setCartDelivery(body: NewAddress) {
+  setCartDelivery(body: NewAddress, methods: PaymentMethod) {
     let path = `${resourceName}/cart/delivery`;
-    return this.post<any>(path, { address: body });
+    return this.post<any>(path, { address: body, payment_method: methods });
   }
 
   setAvatar(avatar_id: string) {
