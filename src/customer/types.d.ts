@@ -1,5 +1,10 @@
 import { Pagination } from "src/base";
 import { Sex } from "../instance/types";
+export declare enum PaymentMethod {
+    tayeh = "tayeh",
+    manual = "manual",
+    zarinpal = "zarinpal"
+}
 declare type DeliveryStatus = {};
 declare type DeliveryType = {};
 declare type Position = {

@@ -186,4 +186,9 @@ export class Customer extends Base {
     let path = `${resourceName}/credit`;
     return this.get<any>(path);
   }
+
+  getCartPay() {
+    let path = `${resourceName}/cart/pay`;
+    return this.get<any>(path);
+  }
 }
