@@ -110,6 +110,14 @@ export type SetProPrices = {
 
 // ---------- INVOICE ----------
 
+enum DeliveryStatus {
+  IN_INVENTORY = 0,
+  SENDING = 1,
+  SENT = 2,
+  DELIVERED = 3,
+  RETURNED = 4
+}
+
 enum InvoiceType {
   SOLD = "sold", //فروش
   BOUGHT = "bought", //خرید
@@ -124,6 +132,10 @@ export type InvoicesParams = {
   page: number;
   per_page: number;
   type: InvoiceType;
+};
+
+export type SetDeliveryStatus = {
+  status: DeliveryStatus;
 };
 
 // ---------- CUSTOMER ----------

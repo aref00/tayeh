@@ -1,5 +1,5 @@
 import { Base, Pagination } from "../base";
-import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif, AutoRemaining, BatchRemaining } from "./types";
+import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif, AutoRemaining, BatchRemaining, SetDeliveryStatus } from "./types";
 export declare class Instance extends Base {
     getProducts(params?: ProductParams): Promise<import("axios").AxiosResponse<any[]>>;
     createProduct(params: NewProduct): Promise<import("axios").AxiosResponse<any>>;
@@ -15,7 +15,8 @@ export declare class Instance extends Base {
     setProductPriceFilter(product_id: string, params: SetProPrices): Promise<import("axios").AxiosResponse<any>>;
     getInstanceInvoices(params?: InvoicesParams): Promise<import("axios").AxiosResponse<any[]>>;
     getInstanceInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
-    deleteInstanceInvoice(invoice_id: number): Promise<import("axios").AxiosResponse<any>>;
+    deleteInstanceInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
+    setDeliveryStatus(invoice_id: string, body: SetDeliveryStatus): Promise<import("axios").AxiosResponse<any>>;
     getInstanceCustomers(params?: SearchParams): Promise<import("axios").AxiosResponse<any[]>>;
     getInstanceCustomer(customer_id: string): Promise<import("axios").AxiosResponse<any>>;
     deleteInstanceCustomer(customer_id: number): Promise<import("axios").AxiosResponse<any>>;

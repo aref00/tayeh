@@ -39,4 +39,5 @@ export declare class Customer extends Base {
     getInvoicesHistory(params?: InvoiceHistory): Promise<import("axios").AxiosResponse<any>>;
     getInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
     getCustomerCredit(): Promise<import("axios").AxiosResponse<any>>;
+    getCartPay(): Promise<import("axios").AxiosResponse<any>>;
 }

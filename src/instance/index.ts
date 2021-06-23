@@ -29,7 +29,8 @@ import {
   InvoicesParams,
   CreateNotif,
   AutoRemaining,
-  BatchRemaining
+  BatchRemaining,
+  SetDeliveryStatus
 } from "./types";
 
 const resourceName = "instance";
@@ -113,9 +114,14 @@ export class Instance extends Base {
     return this.user_get<any>(path);
   }
 
-  deleteInstanceInvoice(invoice_id: number) {
+  deleteInstanceInvoice(invoice_id: string) {
     let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}`;
     return this.delete<any>(path);
+  }
+
+  setDeliveryStatus(invoice_id: string, body:SetDeliveryStatus) {
+    let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}/delivery-status`;
+    return this.user_post<any>(path, body);
   }
 
   // // ---------- INSTANCE-CUSTOMER ----------

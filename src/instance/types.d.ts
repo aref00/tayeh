@@ -86,6 +86,13 @@ export declare type SetProPrices = {
     filter_id: string;
     prices: Price[];
 };
+declare enum DeliveryStatus {
+    IN_INVENTORY = 0,
+    SENDING = 1,
+    SENT = 2,
+    DELIVERED = 3,
+    RETURNED = 4
+}
 declare enum InvoiceType {
     SOLD = "sold",
     BOUGHT = "bought",
@@ -99,6 +106,9 @@ export declare type InvoicesParams = {
     page: number;
     per_page: number;
     type: InvoiceType;
+};
+export declare type SetDeliveryStatus = {
+    status: DeliveryStatus;
 };
 export declare type NewCustomer = {
     name: string;
