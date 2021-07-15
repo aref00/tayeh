@@ -30,7 +30,7 @@ import {
   CreateNotif,
   AutoRemaining,
   BatchRemaining,
-  SetDeliveryStatus
+  SetDeliveryStatus,
 } from "./types";
 
 const resourceName = "instance";
@@ -100,6 +100,11 @@ export class Instance extends Base {
     return this.user_post<any>(path, params);
   }
 
+  deleteOptionPrice(product_id: string, option_id: string) {
+    let path = `${resourceName}/${this.instance_id}/product/${product_id}/option/${option_id}/price`;
+    return this.user_delete<any>(path);
+  }
+
   // // ---------- INSTANCE-INVOICES ----------
   getInstanceInvoices(params?: InvoicesParams) {
     let query = `${resourceName}/${this.instance_id}/invoices`;
@@ -119,7 +124,7 @@ export class Instance extends Base {
     return this.delete<any>(path);
   }
 
-  setDeliveryStatus(invoice_id: string, body:SetDeliveryStatus) {
+  setDeliveryStatus(invoice_id: string, body: SetDeliveryStatus) {
     let path = `${resourceName}/${this.instance_id}/invoice/${invoice_id}/delivery-status`;
     return this.user_post<any>(path, body);
   }

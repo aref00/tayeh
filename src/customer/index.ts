@@ -11,6 +11,7 @@ import {
   InvoiceHistory,
   RegisterCustomer,
   PaymentMethod,
+  DepositMoney
 } from "./types";
 
 const resourceName = "customer";
@@ -190,5 +191,10 @@ export class Customer extends Base {
   getCartPay() {
     let path = `${resourceName}/cart/pay`;
     return this.get<any>(path);
+  }
+
+  depositCustomerMoney(body: DepositMoney){
+    const path = `${resourceName}/deposit`;
+    return this.put<any>(path, body);
   }
 }

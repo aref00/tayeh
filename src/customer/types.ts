@@ -100,3 +100,7 @@ export type CustomerResetPass = {
   old_password: string;
   new_password: string;
 };
+
+export type DepositMoney = {
+  Amount: number;
+}
