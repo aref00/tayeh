@@ -13,6 +13,7 @@ export declare class Instance extends Base {
     deleteProductMedia(product_id: string, media_id: string): Promise<import("axios").AxiosResponse<any>>;
     setProductFeatures(product_id: string, body: SetFeatures): Promise<import("axios").AxiosResponse<any>>;
     setProductPriceFilter(product_id: string, params: SetProPrices): Promise<import("axios").AxiosResponse<any>>;
+    deleteOptionPrice(product_id: string, option_id: string): Promise<import("axios").AxiosResponse<any>>;
     getInstanceInvoices(params?: InvoicesParams): Promise<import("axios").AxiosResponse<any[]>>;
     getInstanceInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
     deleteInstanceInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;

@@ -31,6 +31,8 @@ import {
   AutoRemaining,
   BatchRemaining,
   SetDeliveryStatus,
+  NewDeliveryMethod,
+  SetMethodStatus
 } from "./types";
 
 const resourceName = "instance";
@@ -274,6 +276,23 @@ export class Instance extends Base {
 
   updateBanner(body: EditBanner) {
     let path = `${resourceName}/${this.instance_id}/banner/update`;
+    return this.user_post<any>(path, body);
+  }
+
+  // // ---------- INSTANCE-DELIVERY-METHODS ----------
+
+  getInstanceDeliveryMethods() {
+    let path = `${resourceName}/${this.instance_id}/delivery-methods`;
+    return this.user_get<any[]>(path);
+  }
+
+  createInstanceDeliveryMethod(body: NewDeliveryMethod) {
+    let path = `${resourceName}/${this.instance_id}/delivery-method`;
+    return this.user_put<any>(path, body);
+  }
+
+  setDeliveryMethodStatus(method_id: string, body: SetMethodStatus) {
+    let path = `${resourceName}/${this.instance_id}/delivery-method/${method_id}`;
     return this.user_post<any>(path, body);
   }
 

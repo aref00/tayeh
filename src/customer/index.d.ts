@@ -1,5 +1,5 @@
 import { Base, Pagination } from "../base";
-import { CustomerResetPass, AddToCartBody, ToggleFavorite, UpdateCartItem, UpdateCustomer, NewAddress, UpdateAddress, InvoiceHistory, RegisterCustomer, PaymentMethod } from "./types";
+import { CustomerResetPass, AddToCartBody, ToggleFavorite, UpdateCartItem, UpdateCustomer, NewAddress, UpdateAddress, InvoiceHistory, RegisterCustomer, PaymentMethod, DepositMoney } from "./types";
 export declare class Customer extends Base {
     getPassword(mobile: string): Promise<import("axios").AxiosResponse<{
         access_token: any;
@@ -40,4 +40,5 @@ export declare class Customer extends Base {
     getInvoice(invoice_id: string): Promise<import("axios").AxiosResponse<any>>;
     getCustomerCredit(): Promise<import("axios").AxiosResponse<any>>;
     getCartPay(): Promise<import("axios").AxiosResponse<any>>;
+    depositCustomerMoney(body: DepositMoney): Promise<import("axios").AxiosResponse<any>>;
 }

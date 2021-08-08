@@ -4,9 +4,9 @@ import { Sex } from "../instance/types";
 // enum
 
 export enum PaymentMethod {
-  tayeh='tayeh',
-  manual='manual',
-  zarinpal='zarinpal'
+  tayeh = "tayeh",
+  manual = "manual",
+  zarinpal = "zarinpal",
 }
 
 type DeliveryStatus = {};
@@ -103,4 +103,4 @@ export type CustomerResetPass = {
 
 export type DepositMoney = {
   Amount: number;
-}
+};

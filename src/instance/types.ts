@@ -115,7 +115,7 @@ enum DeliveryStatus {
   SENDING = 1,
   SENT = 2,
   DELIVERED = 3,
-  RETURNED = 4
+  RETURNED = 4,
 }
 
 enum InvoiceType {
@@ -284,4 +284,16 @@ export class AutoRemaining {
 
 export class BatchRemaining {
   remainings: AutoRemaining[];
+}
+
+// ------------------------- Delivery-Method -----------------------
+
+export class NewDeliveryMethod {
+  id?: String;
+  name: string;
+  price: number = 0;
+}
+
+export class SetMethodStatus {
+  active: boolean;
 }

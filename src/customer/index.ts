@@ -160,9 +160,9 @@ export class Customer extends Base {
     return this.delete<any>(path);
   }
 
-  setCartDelivery(body: NewAddress, methods: PaymentMethod) {
+  setCartDelivery(body: NewAddress, d_method_id: string, methods: PaymentMethod) {
     let path = `${resourceName}/cart/delivery`;
-    return this.post<any>(path, { address: body, payment_method: methods });
+    return this.post<any>(path, { address: body, delivery_method: d_method_id, payment_method: methods });
   }
 
   setAvatar(avatar_id: string) {
@@ -196,5 +196,10 @@ export class Customer extends Base {
   depositCustomerMoney(body: DepositMoney){
     const path = `${resourceName}/deposit`;
     return this.put<any>(path, body);
+  }
+
+  getCartDeliveryMethods(){
+    let path = `${resourceName}/delivery-methods`;
+    return this.get<any>(path);
   }
 }

@@ -81,4 +81,7 @@ export declare type CustomerResetPass = {
     old_password: string;
     new_password: string;
 };
+export declare type DepositMoney = {
+    Amount: number;
+};
 export {};
