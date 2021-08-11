@@ -32,7 +32,8 @@ import {
   BatchRemaining,
   SetDeliveryStatus,
   NewDeliveryMethod,
-  SetMethodStatus
+  SetMethodStatus,
+  CategoryStatus
 } from "./types";
 
 const resourceName = "instance";
@@ -216,6 +217,11 @@ export class Instance extends Base {
   ) {
     let path = `${resourceName}/${this.instance_id}/category/${category_id}/filter/${filter_id}/option/${option_id}`;
     return this.user_delete<any>(path);
+  }
+
+  setCategoryStatus(category_id: string, body: CategoryStatus){
+    let path = `${resourceName}/${this.instance_id}/category/${category_id}/status`;
+    return this.user_put<any>(path, body);
   }
 
   // // ---------- INSTANCE-BRANDS ----------

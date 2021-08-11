@@ -1,5 +1,5 @@
 import { Base, Pagination } from "../base";
-import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif, AutoRemaining, BatchRemaining, SetDeliveryStatus } from "./types";
+import { NewProduct, UpdateProduct, SetFeatures, NewCustomer, UpdateCustomer, SearchParams, CategoryParams, NewCategory, EditCategory, FilterGroup, CategoryFilter, NewBrand, EditBrand, BannerParams, NewBannerCat, NewBanner, EditBanner, InviteParams, ProductParams, SetProPrices, CreatePrice, UpdatePrice, UpdatePrices, ProductMedia, SearchFilters, InvoicesParams, CreateNotif, AutoRemaining, BatchRemaining, SetDeliveryStatus, NewDeliveryMethod, SetMethodStatus } from "./types";
 export declare class Instance extends Base {
     getProducts(params?: ProductParams): Promise<import("axios").AxiosResponse<any[]>>;
     createProduct(params: NewProduct): Promise<import("axios").AxiosResponse<any>>;
@@ -44,6 +44,9 @@ export declare class Instance extends Base {
     createBanner(body: NewBanner): Promise<import("axios").AxiosResponse<any>>;
     deleteBanner(banner_id: string): Promise<import("axios").AxiosResponse<any>>;
     updateBanner(body: EditBanner): Promise<import("axios").AxiosResponse<any>>;
+    getInstanceDeliveryMethods(): Promise<import("axios").AxiosResponse<any[]>>;
+    createInstanceDeliveryMethod(body: NewDeliveryMethod): Promise<import("axios").AxiosResponse<any>>;
+    setDeliveryMethodStatus(method_id: string, body: SetMethodStatus): Promise<import("axios").AxiosResponse<any>>;
     createNotification(body: CreateNotif): Promise<import("axios").AxiosResponse<any>>;
     getInstanceNotifications(params: Pagination): Promise<import("axios").AxiosResponse<any[]>>;
     getSearchFilters(params?: SearchFilters): Promise<import("axios").AxiosResponse<any>>;

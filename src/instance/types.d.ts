@@ -224,4 +224,12 @@ export declare class AutoRemaining {
 export declare class BatchRemaining {
     remainings: AutoRemaining[];
 }
+export declare class NewDeliveryMethod {
+    id?: String;
+    name: string;
+    price: number;
+}
+export declare class SetMethodStatus {
+    active: boolean;
+}
 export {};

@@ -202,4 +202,9 @@ export class Customer extends Base {
     let path = `${resourceName}/delivery-methods`;
     return this.get<any>(path);
   }
+
+  getLatestUnseenNotification(){
+    let path = `${resourceName}/notifications/last-unseen`;
+    return this.get<any>(path);
+  }
 }

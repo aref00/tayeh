@@ -196,6 +196,10 @@ export type CategoryFilter = {
   group_id?: string;
 };
 
+export class CategoryStatus{
+  hide: boolean;
+}
+
 // ------------------------- Brand -----------------------
 
 export type NewBrand = {
