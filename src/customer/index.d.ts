@@ -42,4 +42,5 @@ export declare class Customer extends Base {
     getCartPay(): Promise<import("axios").AxiosResponse<any>>;
     depositCustomerMoney(body: DepositMoney): Promise<import("axios").AxiosResponse<any>>;
     getCartDeliveryMethods(): Promise<import("axios").AxiosResponse<any>>;
+    getLatestUnseenNotification(): Promise<import("axios").AxiosResponse<any>>;
 }

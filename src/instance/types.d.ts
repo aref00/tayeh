@@ -155,6 +155,9 @@ export declare type CategoryFilter = {
     category_id: string;
     group_id?: string;
 };
+export declare class CategoryStatus {
+    hide: boolean;
+}
 export declare type NewBrand = {
     name: string;
     translated_name: string;
