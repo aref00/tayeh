@@ -160,7 +160,7 @@ export class Customer extends Base {
     return this.delete<any>(path);
   }
 
-  setCartDelivery(body: NewAddress, d_method_id: string, methods: PaymentMethod) {
+  setCartDelivery(body: NewAddress, d_method_id?: string | null, methods?: PaymentMethod) {
     let path = `${resourceName}/cart/delivery`;
     return this.post<any>(path, { address: body, delivery_method: d_method_id, payment_method: methods });
   }
