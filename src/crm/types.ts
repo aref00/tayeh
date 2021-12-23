@@ -1,9 +1,5 @@
 import { Pagination } from "../base";
 
-
-enum smsTypes {
-}
-
 export type SearchParams = Pagination & {
   search?: string;
 };

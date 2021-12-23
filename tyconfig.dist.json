@@ -1,0 +1,8 @@
+{
+    "name": "project_name",
+    "api_url": "http://api.tayeh.ir",
+    "auth_url": "http://auth.tayeh.ir",
+    "media_url": "http://media.tayeh.ir",
+    "api_access": "",
+    "instance_id": 1 
+}

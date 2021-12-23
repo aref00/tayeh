@@ -1,9 +1,10 @@
-# Tayeh Web Client (version: 1.0.0-alpha.0):
-@tayeh/web-client implementation in JS and TS
+# Tayeh Client:
+@tayeh.js implementation in JS and TS
 
 -   Easy to Use
 -   Compatible
--   Comprehensive
+-   Comprehensive  
+
 ## ![introduction](https://img.icons8.com/nolan/40/training.png) Introduction:
 Hello. I hope you are well =))
 We are proud that on behalf of [Pchas Company](https://pchas.ir/) , we can provide our new technology to you, dear developers and users.
@@ -24,83 +25,95 @@ Go to the [Tayeh website](https://tayeh.ir/) and get `API_KEY` as your username 
 We can now start the installation using this information...
 ### Installation and Usage:
 Install the package from `npm` or `yarn`
-We named it "@tayeh/web-client":
+We named it "tayeh.js":
 ```
-npm install @tayeh/web-client
+npm install tayeh.js
 # or
-yarn add @tayeh/web-client
+yarn add tayeh.js
 ```
 and require it in your project:
 ```
-const TayehClient = require('tayeh-client');
+const TayehClient = require('tayeh.js');
 // or
-import TayehClient from 'tayeh-client';
+import TayehClient from 'tayeh.js';
 ```
 Then create an instance: (The values you received from the site apply here)
 ```
-const  tayeh  =  new  TayehClient({API_KEY: 'API_KEY', API_SECRET: 'API_SECRET'});
+const  tayeh  =  new  TayehClient({
+    name: "project name (can be everything)",
+    api_access: "your instance access key",
+    instance_id: "access key"
+});
 ```
 After creating an instance in the project and sending the input arguments, a custom `API _ACCESS` will be generated for you to use in the library's internal requests.
 ## ![speaker](https://img.icons8.com/nolan/40/speaker.png) Requests:
-Library API requests are currently categorized into `User`, `Instance`, and `Media` classes.
+Library API requests are currently categorized into `User`, `Instance`, `Customer`, `Product`, `Crm` and `Media` classes.
 In this document, we try to provide you with a complete guide for using the functions of these libraries. Be sure to read this guide first.
 Then it is enough to call the equivalent method from the created instance to achieve the desired result.
 for example:
 
     //Get an instance with an ID 
-    tayeh.getInstance(2).then((data) =>  {
+    tayeh.getProducts().then((data) =>  {
     //you have data. use it
     })
 We start the guide here...
 ### Instance:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
-| getInstance |(instance_id:  number)||
-| createInstance |(params:  NewInstance)||
-| updateInstance |(params:  UpdateInstance)||
-||||
-| getInstancePage |(page_number:  number, params?: { text?:  string; creator_id?:  number })||
-||||
-| getInstanceProducts |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| createInstanceProduct |(instance_id:  number, params:  NewProduct)||
-| deleteInstanceProduct |(instance_id:  number, product_id:  number)||
-| updateInstanceProduct |(instance_id:  number, params:  UpdateProduct)||
-||||
-| getInstanceTransactions |(instance_id:  number)||
-| findInstanceTransactions |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getProductTransactions |(instance_id:  number, product_id:  number)||
-| deleteInstanceTransaction |(instance_id:  number, transaction_id:  number)||
-| createInstanceTransaction |(instance_id:  number, params:  NewTransaction)||
-| updateInstanceTransaction |(instance_id:  number, params:  UpdateTransaction)||
-||||
-| getInstanceInvoices |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getInstanceInvoice |(instance_id:  number, invoice_id:  number)||
-| deleteInstanceInvoice |(instance_id:  number, invoice_id:  number)||
-| createInstanceInvoice |(instance_id:  number, params:  NewInvoice)||
-| updateInstanceInvoice |(instance_id:  number, params:  UpdateInvoice)||
-||||
-| getInstanceSeries |(instance_id:  number, params?: { page?:  number; per_page?: number; type?:  string; page_unit?:  string; })||
-||||
-| getInstanceTotal |(instance_id:  number, params?: { page?:  number; per_page?: number; product_id?:  number; })||
-||||
-| getInstanceRevenue |(instance_id:  number, params?: { unit?:  string; product_id?:  number; start?:  number; end?:  number; })||
-||||
-| getInstanceCustomers |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getInstanceCustomer |(instance_id:  number, customer_id:  number)||
-| deleteInstanceCustomer |(instance_id:  number, customer_id:  number)||
-| createInstanceCustomer |(instance_id:  number, params:  NewCustomer)||
-| updateInstanceCustomer |(instance_id:  number, params:  UpdateCustomer)||
-||||
-| getInstanceUsers |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| getInstanceUser |(instance_id:  number, user_id:  number)||
-| deleteInstanceUser |(instance_id:  number, user_id:  number)||
-| createInstanceUser |(instance_id:  number, params:  NewUser)||
-| updateInstanceUser |(instance_id:  number, params:  UpdateUser)||
-||||
-| getInstanceAddresses |(instance_id:  number, params?: { page?:  number; per_page?: number; search?:  string })||
-| deleteInstanceAddress |(instance_id:  number, address_id:  number)||
-| createInstanceAddress |(instance_id:  number, params:  NewAddress)||
-| updateInstanceAddress |(instance_id:  number, params:  UpdateAddress)||
+|getProducts|(params?: ProductParams)||
+|createProduct|(params: NewProduct)||
+|deleteProduct|(product_id: string)||
+|updateProduct|(params: UpdateProduct)||
+|createProductPrice|(params: CreatePrice)||
+|updateProductPrice|(params: UpdatePrice)||
+|updateProductPrices|(params: UpdatePrices)||
+|getProductPrices|(product_id: string)||
+|addProductMedia|(product_id: string, params: ProductMedia)||
+|deleteProductMedia|(product_id: string, media_id: string)||
+|setProductFeatures|(product_id: string, body: SetFeatures)||
+|setProductPriceFilter|(product_id: string, params: SetProPrices)||
+|deleteOptionPrice|(product_id: string, option_id: string)||
+|getInstanceInvoices|(params?: InvoicesParams)||
+|getInstanceInvoice|(invoice_id: string)||
+|deleteInstanceInvoice|(invoice_id: string)||
+|setDeliveryStatus|(invoice_id: string, body: SetDeliveryStatus)||
+|getInstanceCustomers|(params?: SearchParams)||
+|getInstanceCustomer|(customer_id: string)||
+|deleteInstanceCustomer|(customer_id: number)||
+|createInstanceCustomer|(params: NewCustomer)||
+|updateInstanceCustomer|(customer_id: string, params: UpdateCustomer)||
+|acceptInstanceCustomer|(customer_id: string)||
+|getCategories|(params?: CategoryParams)||
+|createCategory|(params: NewCategory)||
+|updateCategory|(params: EditCategory)||
+|deleteCategory|(category_id: string)||
+|createCategoryFilterGroup|(category_id: string, params: FilterGroup)||
+|createCategoryFilter|(category_id: string, params: CategoryFilter)||
+|getCategoryFeatures|(category_id: string)||
+|deleteCategoryFilter|(category_id: string, filter_id: string)||
+|deleteFilterOption|(category_id: string, filter_id: string, option_id: string)||
+|setCategoryStatus|(category_id: string, body: CategoryStatus)||
+|createBrand|(params: NewBrand)||
+|updateBrand|(params: EditBrand)||
+|deleteBrand|(brand_id: string)||
+|getBrands|()||
+|createBannerCategory|(body: NewBannerCat)||
+|getBannerCategories|()||
+|deleteBannerCategory|(category_id: string)||
+|getBanners|(params?: BannerParams)||
+|createBanner|(body: NewBanner)||
+|deleteBanner|(banner_id: string)||
+|updateBanner|(body: EditBanner)||
+|getInstanceDeliveryMethods|()||
+|createInstanceDeliveryMethod|(body: NewDeliveryMethod)||
+|setDeliveryMethodStatus|(method_id: string, body: SetMethodStatus)||
+|createNotification|(body: CreateNotif)||
+|getInstanceNotifications|(params: Pagination)||
+|getSearchFilters|(params?: SearchFilters)||
+|sendInviteSms|(params: InviteParams)||
+|getTopKeywords|(params: SearchFilters)||
+|updateRemainingWithChoices|(body: AutoRemaining)||
+|updateRemainingsWithChoices|(body: BatchRemaining)||
 ### User:
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
@@ -113,7 +126,52 @@ Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
 |---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
 | getMedia |(media_id:  number)||
-| uploadMedia |(params:  NewMedia)||
+| uploadMedia |(params:  NewMedia)|| 
+
+### Customer:
+Method title|Input Arguments|Response (T) Wraped in Promise<AxiosResponse<`T`>>
+|---------------------------|-----------------------------|-----------------------------
+| getPassword|(mobile: string)| `AuthResponse`| true
+| customerVerify|(mobile: string, code: string)| `AuthResponse`| true
+| getVerification|(email: string)| `AuthResponse`| true
+| emailVerify|(email: string, code: string)| `AuthResponse`| true
+| customerLogin|(username: string, password: string)| `AuthResponse`| true
+| customerRegister|(body: RegisterCustomer)| `AuthResponse`| true
+| resetCustomerPassword|(body: CustomerResetPass)| `void`| true
+| getCustomerMe|()| `GetCustomerProfileResposne`| true
+| getCustomer|()| `GetCustomerProfileResposne`| true
+| updateCustomer|(body: UpdateCustomer)| `SimpleErr`| true
+| addProductToCart|(body: AddToCartBody)| `SimpleErr`| true
+| toggleProductFavorite|(body: ToggleFavorite)| `SimpleErr`| true
+| getCustomerCart|(params: Pagination)| `GetCustomerCartResponse`| true
+| updateCartItem|(body: UpdateCartItem)| `any`| true
+| deleteCartItem|(cart_item_id: string)| `SimpleErr`| true
+| getNotifications|(params?: Pagination)| `{objects: GetCustomerNotificationResponse[];count: number;`}| true
+| getCustomerNotification|(notification_id: string)| `GetCustomerNotificationResponse`| true
+| getFavorites|(params: Pagination)| `any`| true
+| getProductsHistory|(params: Pagination)| `[GetCustomerFavoriteProductResponse]`| true
+| getAddresses|()| `GetCustomerAddressResponse[]`| true
+| createAddress|(body: NewAddress)| `SimpleErr`| true
+| updateAddress|(body: UpdateAddress)| `void`| true
+| deleteAddress|(address_id: string)| `SimpleErr`| true
+| setCartDelivery|(body: NewAddress, d_method_id?: string, methods?: PaymentMethod)| `SimpleErr`| true
+| setAvatar|(avatar_id: string)| `SimpleErr`| true
+| getInvoicesHistory|(params?: InvoiceHistory)| `[GetCustomerInvoiceResponse]`| true
+| getInvoice|(invoice_id: string)| `GetCustomerInvoiceResponse`| true
+| getCustomerCredit|()| `GetCustomerCreditResponse`| true
+| getCartPay|()| `PayCustomerCartResponse`| true
+| depositCustomerMoney|(body: DepositMoney)| `CustomerDepositResponse`| true
+| getCartDeliveryMethods|()| `GetCustomerDeliveryMethodsResponse`| true
+| getLatestUnseenNotification|()| `GetCustomerNotificationResponse[]`| true
+
+### Country:
+Method title|Input Arguments|Defaults & Limits|Descriptions|Sample output
+|---------------------------|-----------------------------|-----------------------------|-----------------------------|-----------------------------
+|getCountries|(params: SearchParams)||
+|getIranProvinces|(params: Qsearch)||
+|getStateCities|(state_id: string, params: Qsearch)||
+
+
 ## ![contribution](https://img.icons8.com/cotton/40/crowdfunding.png) Contribution:
 Contributions are welcome. Please submit an issue if you see something broken or in need of improving.
 You can also contact us through the communication channels mentioned in [Tayeh](https://tayeh.ir/) and [Pchas Company](https://pchas.ir/) websites.

@@ -1,17 +1,19 @@
 {
-  "name": "@tayeh/web-client",
-  "version": "1.1.0-alpha",
+  "name": "tayeh.js",
+  "version": "0.1.83",
   "description": "tayeh shop-api client",
   "main": "dist/index.js",
-  "types": "src/types.ts",
-  "source": "src/index.ts",
+  "files": [
+    "dist/**/*",
+    "*.md"
+  ],
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
     "test": "jest",
     "build": "microbundle",
     "dev": "microbundle watch",
-    "package": "npm run test && npm run build && cp ./package.json ./dist/package.json && cd ./dist/ && npm publish --publich"
+    "package": "npm run test && npm run build && npm publish --public"
   },
   "repository": {
     "type": "git",
@@ -41,10 +43,25 @@
     "ts-jest": "^26.4.4"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "app-root-path": "^3.0.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "querystringify": "^2.2.0",
     "urix": "^0.1.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }

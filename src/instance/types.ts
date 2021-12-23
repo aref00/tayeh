@@ -1,37 +1,9 @@
 import { Pagination } from "../base";
-import { customer } from "../customer/types"
-import { user } from '../user/types'
-
-// ---------- ENUMS ----------
 
 export enum Sex {
   male,
   female,
   na,
-}
-
-export enum user_role {
-  user,
-  manager,
-  admin,
-}
-
-enum SubUser_Status {
-  pending,
-  accepted,
-  rejected,
-}
-
-enum Invoice_Type {
-  Sold,
-  Bought,
-}
-
-enum Transaction_Type {
-  buy,
-  sell,
-  income,
-  cost,
 }
 
 // ---------- GENERAL ----------
@@ -40,290 +12,130 @@ export type SearchParams = Pagination & {
   search?: string;
 };
 
-export type RevenueParams = {
-  unit?: string;
-  product_id?: number;
-  start?: number;
-  end?: number;
+export type SearchFilters = {
+  category?: string;
 };
 
-export type TotalParams = Pagination & {
-  product_id?: number;
-};
-
-export type SeriesParams = Pagination & {
-  type?: string;
-  page_unit?: string;
-};
-
-export type InstancePageParams = {
-  text?: string;
-  creator_id?: number;
-};
-
-export type reminder = {};
-
-export type Province = {
-  id: number;
-  name: string;
-  addresses: address[];
-  instances: instance[];
-  users: user[];
-  date_created: Date;
-  date_updated: Date;
-};
-
-export type City = {
-  id: number;
-  province_id: number;
-  county_id: number;
-  name: string;
-  addresses: address[];
-  instances: instance[];
-  users: user[];
-  date_created: Date;
-  date_updated: Date;
-};
-
-type source = {
-  id: number;
-  to_transaction_id: number;
-  to_transaction: Transaction;
-  from_transaction_id: number;
-  from_transaction: Transaction;
-  count: number;
-  date_created: Date;
-  date_updated: Date;
-};
-
-export type Payment = {
-  id: number;
-  Amount: number;
-  url: string;
-  paid: boolean;
-  type: string;
-  user_id: number;
-  subscription_id: number;
-  invoice_id: number;
-  user: user;
-  date_created: Date;
-  date_paid: Date;
-};
-
-export type subscription = {
-  id: number;
-  user_id: number;
-  user: user;
-  type: user;
-  payment: Payment;
-  gift: boolean;
-  active: boolean;
-  date_created: Date;
-  date_updated: Date;
-};
-
-// ---------- INSTANCE ----------
-
-export type instance = {
-  id: number;
-  name: string;
-  credit: number;
-  description: string;
-  type: string;
-  category: string;
-  owner_id: number;
-  addresses: address[];
-  province_id: number;
-  city_id: number;
-  users_count: number;
-  invoices_count: number;
-  products_count: number;
-  transactions_count: number;
-  inventory_type: string;
-  image_id: number;
-};
-
-export type NewInstance = {};
-
-export type UpdateInstance = {
-  instance_id: number;
+export type InviteParams = {
+  mobile: string;
 };
 
 // ---------- PRODUCTS ----------
 
-export type Product = {
-  id: number;
+enum ProductSort {
+  fresh,
+  price_low_2_high,
+  price_high_2_low,
+  discount,
+  bestsellers,
+}
+
+type SetProductFeaturesRequestFilter = {
+  category_id: string;
+  position?: number;
+  group_id?: string;
   name: string;
-  description: string;
-  instance_id: number;
-  instance: instance;
-  transactions: Transaction[];
-  reminders: reminder[];
-  predicted_percent: number;
-  remaining: number;
-  date_created: string;
+  id: string;
+  type?: CategoryFilterType;
+};
+
+type SetProductFeaturesRequestFeature = {
+  filter_id: string;
+  text?: string;
+  id?: string | null;
+};
+
+export type ProductParams = SearchParams & {
+  suggested?: boolean;
+  min_price?: number;
+  max_price?: number;
+  category?: string;
+  brands?: string[];
+  only_available?: boolean;
+  discounted?: boolean;
+  sort?: ProductSort;
+  filters?: string[];
+  similar_to?: string;
 };
 
 export type NewProduct = {
   name: string;
-  description?: string;
-  predicted_percent?: number;
-};
-
-export type CreatedProduct = {
-  err: string;
-  response: string;
-};
-
-export type DeletedProduct = {
-  err: string;
-  response: string;
-};
-
-export type UpdateProduct = {
-  id: number;
-  name?: string;
-  description?: string;
-  predicted_percent?: number;
-};
-
-export type UpdatedProduct = {
-  err: string;
-  response: string;
-};
-
-// ---------- TRANSACTION ----------
-
-export type Transaction = {
-  id: number;
-  transaction_no: number;
-  instance_id: number;
-  instance: instance;
-  product_id: number;
-  from_sources: source;
-  to_transactions: source;
-  reminders: reminder;
-  count: number;
-  remaining: number;
-  value: number;
-  type: Transaction_Type;
-  name: string;
-  paid: string;
-  date_paid: string;
   description: string;
-  invoice_id: number;
-  options: string;
-  locked: boolean;
-  archived: boolean;
-  creator_id: number;
-  date_created: string;
-  date_updated: string;
-  date_archived: string;
+  category_id: string;
+  brand_id: string;
+  image_id: string;
+  barcode: string;
+  price: number;
+  price_with_off: number;
+  predicted_percent: number;
 };
 
-export type NewTransaction = {
-  product_id: number;
-  count: number;
-  value: number;
-  name: string;
-  description: string;
-  type: Transaction_Type;
-  paid: boolean;
+export type UpdateProduct = NewProduct & {
+  id: string;
 };
 
-export type CreatedTransaction = {
-  err: string;
-  transaction: Transaction;
+export type CreatePrice = {
+  product_id: string;
+  option_id: string;
+  price: number;
+  price_with_off: number;
 };
 
-export type UpdateTransaction = {
-  id: number;
-  product_id: number;
-  count: number;
-  value: number;
-  name: string;
-  description: string;
-  invoice_id: number;
-  options: string;
-  locked: boolean;
+export type UpdatePrice = CreatePrice & {
+  id: string;
 };
 
-export type UpdatedTransaction = {
-  err: string;
-  transaction: Transaction;
+export type UpdatePrices = UpdatePrice[];
+
+export type ProductMedia = {
+  media: string;
+};
+
+export type SetFeatures = {
+  filters: SetProductFeaturesRequestFilter[];
+  features: SetProductFeaturesRequestFeature[];
+};
+
+class Price {
+  id: string = null;
+  price: number = 0;
+  price_with_off: number = null;
+  option_id: string;
+}
+
+export type SetProPrices = {
+  filter_id: string;
+  prices: Price[];
 };
 
 // ---------- INVOICE ----------
 
-export type Invoice = {
-  id: number;
-  invoice_number: number;
-  file_id: number;
-  file: string;
-  transactions: Transaction[];
-  type: number;
-  total: number;
-  payment: Payment;
-  instance_id: number;
-  instance: instance;
-  reminders: reminder[];
-  admin_id: number;
-  customer_id: number;
-  customer: customer;
-  more_info: string;
-  sent: boolean;
-  paid: boolean;
-  date_paid: string;
-  date_sent: string;
-  done: boolean;
-  date_arrived: string;
-  closed: boolean;
-  date_created: string;
-  date_updated: string;
+enum DeliveryStatus {
+  IN_INVENTORY = 0,
+  SENDING = 1,
+  SENT = 2,
+  DELIVERED = 3,
+  RETURNED = 4,
+}
+
+enum InvoiceType {
+  SOLD = "sold", //فروش
+  BOUGHT = "bought", //خرید
+  INCOME = "income", //درآمد
+  COST = "cost", // هزینه
+  RETURN_FROM_SOLD = "rs", // بازگشت از فروش
+  RETURN_FROM_BOUGHT = "rb", // بازگشت از خرید
+  TRANSFER = "transfer", //انتقال
+}
+
+export type InvoicesParams = {
+  page: number;
+  per_page: number;
+  type: InvoiceType;
 };
 
-export type Invoices = {
-  invoices: Invoice[];
-  count: number;
-};
-
-export type NewInvoice = {
-  transactions: number[];
-  count: number;
-  value: number;
-  name: string;
-  description: string;
-  type: string;
-  paid: boolean;
-};
-
-export type CreatedInvoice = {
-  err: string;
-};
-
-export type DeletedInvoice = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
-};
-
-export type UpdateInvoice = {
-  id: number;
-  invoice_number: number;
-  file_id: number;
-  type: Invoice_Type;
-  total: number;
-  customer_id: number;
-  more_info: string;
-  sent: boolean;
-  done: boolean;
-  closed: boolean;
-};
-
-export type UpdatedInvoice = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
+export type SetDeliveryStatus = {
+  status: DeliveryStatus;
 };
 
 // ---------- CUSTOMER ----------
@@ -334,97 +146,158 @@ export type NewCustomer = {
   mobile: string;
 };
 
-export type CreatedCustomer = {
-  err: string;
-};
-
 export type UpdateCustomer = {
   customer_id: number;
 };
 
-export type UpdatedCustomer = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
+// ------------------------- Category -----------------------
+
+type CategoryFilterType = {
+  TEXT: "text";
+  SELECT: "select";
+  NUMBER: "number";
+  BOOLEAN: "boolean";
+  COLOR: "color";
+  RATING: "rating";
+  IMAGE: "image";
 };
 
-// ---------- SUB_USER ----------
-
-export type sub_user = {
-  id: number;
-  instance_id: number;
-  instance: instance;
-  user_id: number;
-  user: user;
-  creator_id: number;
-  creator: user;
-  reminders: reminder[];
-  status: SubUser_Status;
-  date_created: Date;
-  date_updated: Date;
+type Option = {
+  value: string;
+  id: string;
+  category_filter_id: string;
 };
 
-export type sub_users = {
-  users: sub_user[];
-  count: number;
+export type CategoryParams = SearchParams & {
+  show_filters?: boolean;
+  parent_id?: number;
+  category_id?: string;
 };
 
-export type NewUser = {
+export type NewCategory = {
   name: string;
+  parent_id: string;
+};
+
+export type EditCategory = NewCategory & {
+  id: string;
   description: string;
-  mobile: string;
 };
 
-export type CreatedUser = {
-  err: string;
+export type FilterGroup = {
+  name: string;
 };
 
-export type DeletedUser = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
+export type CategoryFilter = {
+  name: string;
+  options: Option[];
+  type: CategoryFilterType;
+  category_id: string;
+  group_id?: string;
 };
 
-export type UpdateUser = {
-  user_id: number;
+export class CategoryStatus{
+  hide: boolean;
+}
+
+// ------------------------- Brand -----------------------
+
+export type NewBrand = {
+  name: string;
+  translated_name: string;
+  logo_id: string;
 };
 
-// ---------- ADDRESS ----------
+export type EditBrand = NewBrand & {
+  id: string;
+};
 
-export type address = {
-  id: number;
-  province_id: number;
-  city_id: number;
-  lat: string;
-  lng: string;
-  address: string;
-  user_id: number;
-  user: user;
-  reminders: reminder[];
-  primary_address: boolean;
-  instance_id: number;
-  instance: instance;
+// ------------------------- BANNER -----------------------
+
+enum Banner_Size {
+  all,
+  small,
+  medium,
+  large,
+}
+
+enum BannerPosition {
+  CUSTOM = "custom",
+  MAIN = "main",
+  SOCIAL_SHOP = "social_shop",
+}
+
+enum BannerSize {
+  ALL = "all",
+  SMALL = "small",
+  MEDIUM = "medium",
+  LARGE = "large",
+}
+
+enum BannerLinkType {
+  NONE = "none",
+  URL = "url",
+  PRODUCT = "product",
+  CATEGORY = "category",
+}
+
+export type BannerParams = {
+  category?: string;
+  size?: Banner_Size;
+};
+
+export type NewBannerCat = {
+  type: BannerPosition;
+  title: string;
+};
+
+export type NewBanner = {
+  banner_category_id: string;
+  link_type: BannerLinkType;
+  link: string;
+  media_id: string;
+  size: BannerSize;
   title: string;
   description: string;
-  phone: string;
-  creator_id: number;
-  date_created: string;
-  date_updated: string;
+  status: boolean; //true
 };
 
-export type addresses = {
-  addresses: address[];
-  count: number;
+export type EditBanner = NewBanner & {
+  id: string;
 };
 
-export type NewAddress = {};
+// ------------------------- Notifications -----------------------
 
-export type DeletedAddress = {
-  raw: any;
-  affected: number;
-  generatedMaps: any;
+export type CreateNotif = {
+  customer_id: string;
+  title: string;
+  message: string;
+  clipboard: string;
+  url: string;
 };
 
-export type UpdateAddress = {
-  address_id: number;
-};
+// ------------------------- Auto-Remaining -----------------------
+
+export class AutoRemaining {
+  product_id: string;
+  remaining: number;
+  price_id: string;
+  inventory_id?: string = null;
+  choices?: string[] = [];
+}
+
+export class BatchRemaining {
+  remainings: AutoRemaining[];
+}
+
+// ------------------------- Delivery-Method -----------------------
+
+export class NewDeliveryMethod {
+  id?: String;
+  name: string;
+  price: number = 0;
+}
+
+export class SetMethodStatus {
+  active: boolean;
+}
