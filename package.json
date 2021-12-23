@@ -7,14 +7,13 @@
     "dist/**/*",
     "*.md"
   ],
-  "types": "src/types.ts",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
     "test": "jest",
     "build": "microbundle",
     "dev": "microbundle watch",
-    "package": "npm run test && npm run build && cp ./package.json ./dist/package.json && cd ./dist/ && npm publish --publich"
+    "package": "npm run test && npm run build && npm publish --public"
   },
   "repository": {
     "type": "git",
@@ -50,5 +49,19 @@
     "isomorphic-unfetch": "^3.0.0",
     "querystringify": "^2.2.0",
     "urix": "^0.1.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }
