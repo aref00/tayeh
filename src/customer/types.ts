@@ -138,6 +138,7 @@ class CartItem extends ProductInfo {
 }
 
 export type GetCustomerCartResponse = {
+  id: string;
   items: CartItem[];
   total_price: number;
   total_price_with_off: number;
