@@ -76,7 +76,7 @@ export type NewAddress = {
   description?: string;
   location: Location;
   position: Position;
-  reciver_name: string;
+  receiver_name: string;
   phone?: string;
   mobile?: string;
   id_card?: string;
