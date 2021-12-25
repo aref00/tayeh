@@ -18,8 +18,8 @@ type DeliveryType = {};
 // general
 
 type Position = {
-  latitude: string;
-  longitude: string;
+  latitude?: string;
+  longitude?: string;
 };
 
 type Location = {
@@ -73,14 +73,14 @@ export type RegisterCustomer = {
 
 export type NewAddress = {
   title: string;
-  description: string;
+  description?: string;
   location: Location;
   position: Position;
   reciver_name: string;
-  phone: string;
-  mobile: string;
-  id_card: string;
-  postcode: string;
+  phone?: string;
+  mobile?: string;
+  id_card?: string;
+  postcode?: string;
 };
 
 export type UpdateAddress = NewAddress & {
