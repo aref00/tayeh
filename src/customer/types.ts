@@ -31,7 +31,7 @@ type Location = {
 
 export type AddToCartBody = {
   product_id: string;
-  price_id: string;
+  price_id?: string;
   choices: string[] | [];
   count?: number;
 };
