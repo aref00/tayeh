@@ -200,8 +200,8 @@ export class Customer extends Base {
     return this.get<GetCustomerCreditResponse>(path);
   }
 
-  getCartPay() {
-    let path = `${resourceName}/cart/pay`;
+  getCartPay(discount?: string) {
+    let path = `${resourceName}/cart/pay?${discount?'discount='+discount:''}`;
     return this.get<PayCustomerCartResponse>(path);
   }
 
