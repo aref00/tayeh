@@ -18,8 +18,8 @@ type DeliveryType = {};
 // general
 
 type Position = {
-  latitude: string;
-  longitude: string;
+  latitude?: string;
+  longitude?: string;
 };
 
 type Location = {
@@ -31,7 +31,7 @@ type Location = {
 
 export type AddToCartBody = {
   product_id: string;
-  price_id: string;
+  price_id?: string;
   choices: string[] | [];
   count?: number;
 };
@@ -73,14 +73,14 @@ export type RegisterCustomer = {
 
 export type NewAddress = {
   title: string;
-  description: string;
+  description?: string;
   location: Location;
   position: Position;
-  reciver_name: string;
-  phone: string;
-  mobile: string;
-  id_card: string;
-  postcode: string;
+  receiver_name: string;
+  phone?: string;
+  mobile?: string;
+  id_card?: string;
+  postcode?: string;
 };
 
 export type UpdateAddress = NewAddress & {
@@ -138,6 +138,7 @@ class CartItem extends ProductInfo {
 }
 
 export type GetCustomerCartResponse = {
+  id: string;
   items: CartItem[];
   total_price: number;
   total_price_with_off: number;

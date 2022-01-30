@@ -24,9 +24,9 @@ export abstract class Base {
     // const options = optionsReader.plainRead();
     this.API_ACCESS = options.api_access;
     this.USER_ACCESS;
-    this.basePath = options.api_url;
-    this.authPath = options.auth_url;
-    this.mediaPath = options.media_url;
+    this.basePath = options.api_url||"api.tayeh.ir";
+    this.authPath = options.auth_url||"auth.tayeh.ir";
+    this.mediaPath = options.media_url||"media.tayeh.ir";
     this.instance_id = options.instance_id;
     // this.API_KEY = process.env[config.API_KEY_VARIABLE || "TAYEH_API_KEY"];
     // this.API_SECRET =
